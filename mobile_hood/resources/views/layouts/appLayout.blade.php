@@ -29,7 +29,7 @@
     <nav class="navbar navbar-expand-lg px-5 py-0">
         <div class="w-100 d-flex justify-content-between align-items-center px-5">
             <a class="navbar-brand p-0" href="{{ route('home') }}">
-                <img src="/img/logo_circle.png" alt="">
+                <img src="/img/logos/logo_circle.png" alt="">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -63,8 +63,8 @@
                         </li>
                     @endguest
                     <li class="nav-item ms-3">
-                        <button class="btn text-light"
-                            style="background-color: #e31010;">{{ __('messages.become_partner_btn') }}</button>
+                        <a href="{{ route('partners') }}" class="btn text-light"
+                            style="background-color: #e31010;">{{ __('messages.become_partner_btn') }}</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a href="#" class="btn dropdown-toggle text-light ms-3" style="background-color: #e31010;"
@@ -161,7 +161,7 @@
     <footer style="background-color: #eff0f3; padding: 2% 15%;">
         <div class="d-flex justify-content-between border-bottom border-dark border-2 border-opacity-75 mb-4 pb-4">
             <div>
-                <img src="/img/logo_circle.png" alt="">
+                <img src="/img/logos/logo_circle.png" alt="">
                 <h5>{{ __('messages.slogan') }}</h5>
             </div>
             <div class="d-flex align-items-center">

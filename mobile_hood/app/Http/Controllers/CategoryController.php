@@ -73,8 +73,8 @@ class CategoryController extends Controller
 
         $category->name = $request->name;
 
-        if ($request->has('categories')) {
-            $category->parent_id = $request->categories[0];
+        if ($request->has('category')) {
+            $category->parent_id = $request->category[0];
         }
 
         $category->save();

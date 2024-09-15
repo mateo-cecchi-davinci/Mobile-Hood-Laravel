@@ -33,7 +33,6 @@
                                 <td>{{ __('messages.brand') }}</td>
                                 <td>{{ __('messages.price') }}</td>
                                 <td>{{ __('messages.category') }}</td>
-                                <td>{{ __('messages.image') }}</td>
                                 <td>{{ __('messages.actions') }}</td>
                             </tr>
                         </thead>
@@ -46,36 +45,18 @@
                                         <td>{{ $p->brand }}</td>
                                         <td>{{ $p->price }}</td>
                                         <td>{{ $p->category->name }}</td>
-                                        <td>{{ $p->image }}</td>
-                                        <form method="post"
-                                            action="{{ route('products.destroy', ['product' => $p->id]) }}"
-                                            class="row px-3">
-                                            @csrf
-                                            @method('DELETE')
-                                            <div class="dropstart">
-                                                <div role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <i class="bx bx-dots-vertical-rounded bx-fw opacity-75"></i>
-                                                </div>
-                                                <ul class="dropdown-menu dropdown-menu-end" data-bs-theme="dark">
-                                                    <li>
-                                                        <a href="{{ route('products.show', ['product' => $p->id]) }}"
-                                                            class="dropdown-item fs-6">
-                                                            {{ __('messages.show') }}
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="{{ route('products.edit', ['product' => $p->id]) }}"
-                                                            class="dropdown-item fs-6">
-                                                            {{ __('messages.edit') }}
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <input type="submit" class="dropdown-item fs-6"
-                                                            value="{{ __('messages.delete') }}">
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </form>
+                                        <td>
+                                            <form method="post"
+                                                action="{{ route('products.destroy', ['product' => $p->id]) }}">
+                                                @csrf
+                                                @method('DELETE')
+                                                <a href="{{ route('products.show', ['product' => $p->id]) }}"
+                                                    class="btn btn-primary btn-sm">{{ __('messages.show') }}</a>
+                                                <a href="{{ route('products.edit', ['product' => $p->id]) }}"
+                                                    class="btn btn-warning btn-sm">{{ __('messages.edit') }}</a>
+                                                <input type="submit" class="btn btn-danger btn-sm"
+                                                    value="{{ __('messages.delete') }}">
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach

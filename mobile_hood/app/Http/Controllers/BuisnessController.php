@@ -40,8 +40,8 @@ class BuisnessController extends Controller
             'logo' => 'required|image|mimes:jpg,png,jpeg,webp',
             'street' => 'required|string|max:255',
             'number' => 'required|integer',
-            'users' => 'required|array|min:0|max:1',
-            'categories' => 'required|array|min:0|max:1',
+            'user' => 'required|array|min:0|max:1',
+            'category' => 'required|array|min:0|max:1',
         ]);
 
         $buisness = new Buisness();
@@ -51,8 +51,8 @@ class BuisnessController extends Controller
         $buisness->logo = $imagePath;
         $buisness->street = $request->street;
         $buisness->number = $request->number;
-        $buisness->fk_buisnesses_users = $request->users[0];
-        $buisness->category = $request->categories[0];
+        $buisness->fk_buisnesses_users = $request->user[0];
+        $buisness->category = $request->category[0];
 
         $buisness->save();
 
@@ -88,8 +88,8 @@ class BuisnessController extends Controller
             'logo' => 'required|image|mimes:jpg,png,jpeg,webp',
             'street' => 'required|string|max:255',
             'number' => 'required|integer',
-            'users' => 'required|array|min:0|max:1',
-            'categories' => 'required|array|min:0|max:1',
+            'user' => 'required|array|min:0|max:1',
+            'category' => 'required|array|min:0|max:1',
         ]);
 
         $buisness->name = $request->name;
@@ -106,8 +106,8 @@ class BuisnessController extends Controller
 
         $buisness->street = $request->street;
         $buisness->number = $request->number;
-        $buisness->fk_buisnesses_users = $request->users[0];
-        $buisness->category = $request->categories[0];
+        $buisness->fk_buisnesses_users = $request->user[0];
+        $buisness->category = $request->category[0];
 
         $buisness->save();
 

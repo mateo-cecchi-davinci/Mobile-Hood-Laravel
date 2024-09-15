@@ -37,7 +37,7 @@
                             <div class="form-group row mb-3 align-items-center">
                                 <label class="col-sm-2 col-label-form">{{ __('messages.parent_category') }}</label>
                                 <div class="col-sm-10">
-                                    <select name="categories[]" class="form-select" aria-label="Default select example">
+                                    <select name="category[]" class="form-select" aria-label="Default select example">
                                         <option value="" selected>{{ __('messages.select_category') }}</option>
                                         @foreach ($categories as $c)
                                             @if ($category->parent != null)

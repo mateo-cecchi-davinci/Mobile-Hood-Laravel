@@ -76,4 +76,7 @@ return [
     'butcher_shop' => 'Butcher Shop',
     'grocery_store' => 'Grocery Store',
     'winery' => 'Winery',
+    'how_do_we_work' => 'How do we work?',
+    'faqs' => 'Faqs',
+    'go_back' => 'Go back',
 ];

@@ -23,7 +23,7 @@ return new class extends Migration
             $table->unsignedBigInteger('fk_products_categories');
             $table->foreign('fk_products_categories')->references('id')
                 ->on('categories');
-            $table->boolean('is_active');
+            $table->boolean('is_active')->default(true);
         });
     }
 

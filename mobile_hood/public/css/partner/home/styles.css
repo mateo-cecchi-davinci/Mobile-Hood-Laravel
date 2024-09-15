@@ -1,0 +1,176 @@
+.banner {
+    background-image: url("/img/partner/partner_banner.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.banner-opacity {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.banner-height {
+    min-height: 100vh;
+}
+
+.banner-list {
+    list-style-type: none;
+}
+
+.banner-card {
+    padding: 40px;
+}
+
+.banner-card p {
+    background-color: #ffba3b;
+}
+
+.red-bg {
+    background-color: #e31010;
+}
+
+.strong {
+    font-size: 4rem;
+}
+
+@media (max-width: 599.95px) {
+    .strong {
+        font-size: 2.5rem;
+    }
+}
+
+.steps-title {
+    line-height: 1;
+}
+
+.steps-text {
+    padding: 0 18%;
+}
+
+.bg-blue {
+    background-color: #0458fc;
+}
+
+.takeaway_girl-bg {
+    background: linear-gradient(
+        180deg,
+        rgba(4, 88, 252, 1) 0%,
+        rgba(4, 88, 252, 1) 50%,
+        #e31010 50%,
+        #e31010 100%
+    );
+}
+
+.takeaway_girl-img {
+    width: 50vw;
+}
+
+.takeaway_girl-img img {
+    width: 100%;
+    height: auto;
+}
+
+.takeaway_girl-text {
+    max-width: 560px;
+}
+
+.orange-bg {
+    background-color: #ffba3b;
+}
+
+.info-img {
+    background-color: #eeeeee;
+    height: 160px;
+}
+
+.info-img img {
+    width: 120px;
+    height: 120px;
+}
+
+.lightblue-bg {
+    background-color: rgba(0, 220, 255, 1);
+    padding-top: 70px;
+}
+
+.lightblue-bg h1 {
+    line-height: 1;
+}
+
+.lightblue-bg div p {
+    max-width: 560px;
+}
+
+.images-bg {
+    background: linear-gradient(
+        180deg,
+        rgba(0, 220, 255, 1) 0%,
+        rgba(0, 220, 255, 1) 70%,
+        rgba(255, 228, 56, 1) 70%,
+        rgba(255, 228, 56, 1) 100%
+    );
+}
+
+.images-bg .side-images {
+    max-width: 250px;
+    max-height: 250px;
+    width: 30vw;
+    height: 30vw;
+}
+
+.images-bg .side-images img {
+    width: 100%;
+    height: 100%;
+}
+
+.images-bg .middle-image {
+    max-width: 375px;
+    max-height: 375px;
+    width: 40vw;
+    height: 40vw;
+}
+
+.images-bg .middle-image img {
+    width: 100%;
+    height: 100%;
+}
+
+.yellow-bg {
+    background-color: rgba(255, 228, 56, 1);
+    padding-bottom: 72px;
+}
+
+.yellow-bg div div p {
+    max-width: 560px;
+}
+
+.faqs-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin: auto;
+    width: 80%;
+    padding: 50px 0;
+}
+
+.faq .head {
+    display: flex;
+    padding: 25px 0px;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.faq .content {
+    height: 0px;
+    overflow-y: hidden;
+    border-bottom: 2px solid #eeeeee;
+}
+
+.faq.active .head svg {
+    transform: rotate(180deg);
+}
+
+.faq.active .content {
+    height: auto;
+}

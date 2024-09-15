@@ -26,6 +26,10 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('/partners', function () {
+    return view('partners.home');
+})->name('partners');
+
 Auth::routes();
 
 Route::prefix('admin')->middleware([Authenticate::class, AdminMiddleware::class])->group(function () {
@@ -38,4 +42,4 @@ Route::prefix('admin')->middleware([Authenticate::class, AdminMiddleware::class]
 
 Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');

@@ -58,7 +58,7 @@
                             <div class="form-group row mb-3 align-items-center">
                                 <label class="col-sm-2 col-label-form">{{ __('messages.owner') }}</label>
                                 <div class="col-sm-10">
-                                    <select name="users[]" class="form-select">
+                                    <select name="user[]" class="form-select">
                                         <option value="" selected>{{ __('messages.select_user') }}</option>
                                         @foreach ($users as $user)
                                             <option @selected($buisness->fk_buisnesses_users == $user->id) value="{{ $user->id }}">
@@ -70,7 +70,7 @@
                             <div class="form-group row mb-3 align-items-center">
                                 <label class="col-sm-2 col-label-form">{{ __('messages.category') }}</label>
                                 <div class="col-sm-10">
-                                    <select name="categories[]" class="form-select" aria-label="Default select example">
+                                    <select name="category[]" class="form-select" aria-label="Default select example">
                                         <option value="" selected>{{ __('messages.select_category') }}</option>
                                         @foreach ($categories as $c)
                                             <option @selected($buisness->category == $c) value="{{ $c }}">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -41,17 +42,18 @@ class ProductController extends Controller
     {
         $request->validate([
             'model' => 'required|string|max:255',
-            'image' => 'required|string|max:255',
             'brand' => 'required|string|max:255',
             'description' => 'required|string|max:525',
             'price' => 'required|numeric',
             'category' => 'required|array|min:1|max:1',
+            'image' => 'required|image|mimes:jpg,png,jpeg,webp',
         ]);
 
         $product = new Product();
 
         $product->model = $request->model;
-        $product->image = $request->image;
+        $imagePath = $request->file('image')->store('products', 'public');
+        $product->image = $imagePath;
         $product->brand = $request->brand;
         $product->description = $request->description;
         $product->price = $request->price;
@@ -81,15 +83,23 @@ class ProductController extends Controller
     {
         $request->validate([
             'model' => 'required|string|max:255',
-            'image' => 'required|string|max:255',
             'brand' => 'required|string|max:255',
             'description' => 'required|string|max:525',
             'price' => 'required|numeric',
             'category' => 'required|array|min:1|max:1',
+            'image' => 'required|image|mimes:jpg,png,jpeg,webp',
         ]);
 
         $product->model = $request->model;
-        $product->image = $request->image;
+        if ($request->has('image')) {
+            $imagePath = $request->file('image')->store('products', 'public');
+
+            if ($product->image) {
+                Storage::disk('public')->delete($product->image);
+            }
+
+            $product->image = $imagePath;
+        }
         $product->brand = $request->brand;
         $product->description = $request->description;
         $product->price = $request->price;

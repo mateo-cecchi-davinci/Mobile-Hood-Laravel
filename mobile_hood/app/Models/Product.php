@@ -36,4 +36,13 @@ class Product extends Model
     {
         return $this->belongsToMany(Buisness::class, 'orders_products', 'fk_buisnesses_products_products', 'fk_buisnesses_products_buisnesses');
     }
+
+    public function getImageURL()
+    {
+        if ($this->image) {
+            return url('storage/' . $this->image);
+        }
+
+        return "/img/noImageFound.jpg";
+    }
 }

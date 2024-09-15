@@ -1,4 +1,4 @@
-@extends('layouts.appLayouts')
+@extends('layouts.appLayout')
 @section('content')
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -18,7 +18,7 @@
                             <div class="col col-md-6">{{ __('messages.edit_product') }}</div>
                             <div class="col col-md-6">
                                 <a href="{{ route('products.index') }}" class="btn btn-sm float-end text-light"
-                                    style="background-color: #ae0876;">{{ __('messages.back') }}</a>
+                                    style="background-color: #e31010;">{{ __('messages.back') }}</a>
                             </div>
                         </div>
                     </div>
@@ -68,8 +68,14 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="form-group row mb-3">
+                                <label class="col-sm-2 col-label-form">{{ __('messages.image') }}</label>
+                                <div class="col-sm-10">
+                                    <input type="file" name="image" class="form-control" required>
+                                </div>
+                            </div>
                             <div class="text-center">
-                                <input type="submit" class="btn text-light" style="background-color: #ae0876;"
+                                <input type="submit" class="btn text-light" style="background-color: #e31010;"
                                     value="{{ __('messages.update') }}">
                             </div>
                         </form>

@@ -76,4 +76,7 @@ return [
     'butcher_shop' => 'Carnicería',
     'grocery_store' => 'Verdulería',
     'winery' => 'Bodega',
+    'how_do_we_work' => '¿Cómo funcionamos?',
+    'faqs' => 'Preguntas Frecuentes',
+    'go_back' => 'Volver al inicio',
 ];
