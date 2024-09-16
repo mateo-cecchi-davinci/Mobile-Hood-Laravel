@@ -9,7 +9,7 @@
                         <div class="row align-items-center">
                             <div class="col col-md-6">{{ __('messages.details') }}</div>
                             <div class="col col-md-6">
-                                <a href="{{ route('categories.index') }}"
+                                <a href="{{ route('buisnesses.index') }}"
                                     class="btn btn-success btn-sm float-end">{{ __('messages.back') }}</a>
                             </div>
                         </div>
