@@ -77,6 +77,15 @@ class UserSeeder extends Seeder
                 'password' => bcrypt('12345678'),
                 'is_manager' => true,
                 'is_admin' => false,
+            ],
+            [
+                'name' => 'Agus',
+                'lastname' => 'Risso',
+                'email' => 'agusrisso@gmail.com',
+                'phone' => '12345678',
+                'password' => bcrypt('12345678'),
+                'is_manager' => false,
+                'is_admin' => false,
             ]
         ]);
     }
