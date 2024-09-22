@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use DateTime;
 use Illuminate\Database\Eloquent\Model;
 
 class Buisness extends Model
@@ -52,6 +53,17 @@ class Buisness extends Model
             return url('storage/' . $this->logo);
         }
         return "/img/noImageFound.jpg";
+    }
+
+    public function convertTo12HourFormat($time)
+    {
+        $dateTime = DateTime::createFromFormat('H:i:s', $time);
+
+        if ($dateTime) {
+            return $dateTime->format('h:iA');
+        }
+
+        return null;
     }
 
     function convertTo12HourFormatWithoutMeridian($time)

@@ -18,7 +18,7 @@ class HomeController extends Controller
 
     public function __construct()
     {
-        $this->buisnesses = Buisness::where('is_active', true)->with(['location'])->get();
+        $this->buisnesses = Buisness::where('is_active', true)->with(['location', 'hours'])->get();
         $this->maps = config('googlemaps.maps');
     }
 
@@ -42,9 +42,22 @@ class HomeController extends Controller
 
         $buisness = $this->buisnesses->firstWhere('id', $request->buisness);
 
+        $dayIndex = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+        $days = [
+            'sunday' => 'Domingo',
+            'monday' => 'Lunes',
+            'tuesday' => 'Martes',
+            'wednesday' => 'Miércoles',
+            'thursday' => 'Jueves',
+            'friday' => 'Viernes',
+            'saturday' => 'Sábado'
+        ];
+
         return view('buisness', [
             'buisness' => $buisness,
-            'maps' => $this->maps
+            'maps' => $this->maps,
+            'dayIndex' => $dayIndex,
+            'days' => $days
         ]);
     }
 }
