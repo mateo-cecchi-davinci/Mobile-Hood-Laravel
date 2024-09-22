@@ -181,7 +181,7 @@
         <p>{{ __('messages.rights') }}</p>
     </footer>
 
-    <script src="/js/sidebar.js"></script>
+    <script src="/js/components/sidebar.js"></script>
 
     @yield('scripts')
 </body>

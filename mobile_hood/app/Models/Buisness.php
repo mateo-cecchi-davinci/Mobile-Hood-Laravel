@@ -25,6 +25,16 @@ class Buisness extends Model
         return $this->belongsTo(User::class, 'fk_buisnesses_users', 'id');
     }
 
+    public function location()
+    {
+        return $this->hasOne(Location::class, 'fk_locations_buisnesses', 'id');
+    }
+
+    public function hours()
+    {
+        return $this->hasMany(Hours::class, 'fk_buisness_hours_buisness', 'id');
+    }
+
     public function products()
     {
         return $this->belongsToMany(Product::class, 'buisnesses_products', 'fk_buisnesses_products_buisnesses', 'fk_buisnesses_products_products')
@@ -42,5 +52,15 @@ class Buisness extends Model
             return url('storage/' . $this->logo);
         }
         return "/img/noImageFound.jpg";
+    }
+
+    function convertTo12HourFormatWithoutMeridian($time)
+    {
+        return date('h:i', strtotime($time));
+    }
+
+    function getMeridian($time)
+    {
+        return date('A', strtotime($time));
     }
 }

@@ -10,6 +10,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BuisnessController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\LocationsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,10 +22,6 @@ use App\Http\Controllers\CategoryController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('home');
-});
 
 Route::get('/partners', function () {
     return view('partners.home');
@@ -38,8 +35,15 @@ Route::prefix('admin')->middleware([Authenticate::class, AdminMiddleware::class]
     Route::resource('/categories', CategoryController::class);
     Route::resource('/products', ProductController::class);
     Route::resource('/orders', OrderController::class);
+    Route::resource('/locations', LocationsController::class);
 });
 
 Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::get('/profile', function () {
+    return view('profile');
+})->name('profile');
+
+Route::post('/buisness', [HomeController::class, 'buisness'])->name('buisness');

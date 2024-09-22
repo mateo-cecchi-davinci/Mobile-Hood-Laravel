@@ -17,6 +17,9 @@
     <link rel="stylesheet" href="https://unpkg.com/simplebar@latest/dist/simplebar.css" />
 
     <link rel="stylesheet" href="/css/sidebar/styles.css">
+    <link rel="stylesheet" href="/css/layout/app/styles.css">
+    <link rel="stylesheet" href="/css/home/styles.css">
+    <link rel="stylesheet" href="/css/buisness/styles.css">
 
     <title>{{ config('app.name', 'Mobile Hood') }}</title>
 
@@ -26,64 +29,101 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg px-5 py-0">
-        <div class="w-100 d-flex justify-content-between align-items-center px-5">
-            <a class="navbar-brand p-0" href="{{ route('home') }}">
-                <img src="/img/logos/logo_circle.png" alt="">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div id="navbarSupportedContent">
-                <ul class="navbar-nav mb-2 mb-lg-0">
-                    @guest
-                        <li class="nav-item ms-3">
-                            <a class="nav-link active" aria-current="page"
-                                href="{{ route('login') }}">{{ __('messages.login') }}</a>
-                        </li>
-                        <li class="nav-item ms-3">
-                            <a class="nav-link active" aria-current="page"
-                                href="{{ route('register') }}">{{ __('messages.signin') }}</a>
-                        </li>
-                    @else
-                        <li class="nav-item ms-3">
-                            <a class="nav-link active" aria-current="page" href="">{{ __('messages.profile') }}</a>
-                        </li>
-                        <li class="nav-item ms-3">
-                            <a class="nav-link active" href="{{ route('logout') }}"
-                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                {{ __('messages.logout') }}
-                            </a>
 
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                        </li>
-                    @endguest
+    <nav class="d-flex d-lg-none sticky-top border-bottom bg-white justify-content-between align-items-center sm-nav">
+        <a class="p-0 sm-logo-container" href="{{ route('home') }}">
+            <img src="/img/logos/logo_circle.png" alt="mobile hood logo">
+        </a>
+        <a href="{{ route('partners') }}" class="text-decoration-none text-light bg-red p-2 rounded" type="button">
+            {{ __('messages.become_partner_btn') }}
+        </a>
+    </nav>
+
+    <nav class="navbar navbar-expand py-0 d-none d-lg-block border-bottom lg-nav">
+        <div class="container-fluid">
+            <a class="p-0 logo-container" href="{{ route('home') }}">
+                <img src="/img/logos/logo_circle.png" alt="mobile hood logo">
+            </a>
+            <ul class="navbar-nav mb-2 mb-lg-0">
+                @guest
                     <li class="nav-item ms-3">
-                        <a href="{{ route('partners') }}" class="btn text-light"
-                            style="background-color: #e31010;">{{ __('messages.become_partner_btn') }}</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a href="#" class="btn dropdown-toggle text-light ms-3" style="background-color: #e31010;"
-                            type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            {{ Config::get('languages')[App::getLocale()] }}
+                        <a class="nav-link active" aria-current="page" href="{{ route('login') }}">
+                            {{ __('messages.login') }}
                         </a>
-                        <ul class="dropdown-menu">
-                            @foreach (Config::get('languages') as $lang => $language)
-                                @if ($lang != App::getLocale())
-                                    <li class="dropdown-item">
-                                        <a href="{{ route('lang.switch', $lang) }}"
-                                            class="text-decoration-none text-dark">{{ $language }}</a>
-                                    </li>
-                                @endif
-                            @endforeach
-                        </ul>
                     </li>
-                </ul>
-            </div>
+                    <li class="nav-item ms-3">
+                        <a class="nav-link active" aria-current="page" href="{{ route('register') }}">
+                            {{ __('messages.signin') }}
+                        </a>
+                    </li>
+                @else
+                    <li class="pointer profile-dropdown">
+                        <div class="dropdown">
+                            <div class="d-flex justify-content-between align-items-center fw-medium"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <span>
+                                    {{ Auth::user()->name }}
+                                </span>
+                                <i class="bx bx-chevron-down bx-fw"></i>
+                            </div>
+                            <ul class="dropdown-menu fw-medium border-top-0 rounded-top-0">
+                                <li class="d-flex align-items-center mb-4">
+                                    <i class="bx bx-home bx-fw icon ms-2 fs-3"></i>
+                                    <a class="text-decoration-none text-dark" href="{{ route('home') }}">Inicio</a>
+                                </li>
+                                <li class="d-flex align-items-center mb-4">
+                                    <i class="bx bx-heart bx-fw icon ms-2 fs-3"></i>
+                                    <a class="text-decoration-none text-dark" href="#">Mis favoritos</a>
+                                </li>
+                                <li class="d-flex align-items-center mb-4">
+                                    <i class="bx bx-detail bx-fw icon ms-2 fs-3"></i>
+                                    <a class="text-decoration-none text-dark" href="#">Mis pedidos</a>
+                                </li>
+                                <li class="d-flex align-items-center mb-4">
+                                    <i class="bx bx-user bx-fw icon ms-2 fs-3"></i>
+                                    <a class="text-decoration-none text-dark" href="{{ route('profile') }}">
+                                        Mi perfil
+                                    </a>
+                                </li>
+                                <li class="d-flex align-items-center">
+                                    <i class="bx bx-exit bx-fw icon ms-2 fs-3"></i>
+                                    <a class="text-decoration-none text-dark" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        {{ __('messages.logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                @endguest
+                <li class="nav-item ms-3">
+                    <a href="{{ route('partners') }}" class="text-decoration-none text-light bg-red p-2 rounded"
+                        type="button">
+                        {{ __('messages.become_partner_btn') }}
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="text-decoration-none dropdown-toggle text-light ms-3 bg-red p-2 rounded"
+                        type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ Config::get('languages')[App::getLocale()] }}
+                    </a>
+                    <ul class="dropdown-menu">
+                        @foreach (Config::get('languages') as $lang => $language)
+                            @if ($lang != App::getLocale())
+                                <li class="dropdown-item">
+                                    <a href="{{ route('lang.switch', $lang) }}" class="text-decoration-none text-dark">
+                                        {{ $language }}
+                                    </a>
+                                </li>
+                            @endif
+                        @endforeach
+                    </ul>
+                </li>
+            </ul>
         </div>
     </nav>
 
@@ -138,6 +178,12 @@
                             </a>
                         </li>
                         <li>
+                            <a href="{{ route('locations.index') }}">
+                                <i class="bx bxs-map mt-1"></i>
+                                <span class="link_name">Ubicaciones</span>
+                            </a>
+                        </li>
+                        <li>
                             <a href="{{ route('orders.index') }}">
                                 <i class="bx bxs-cart mt-1"></i>
                                 <span class="link_name mt-1">{{ __('messages.orders') }}</span>
@@ -158,22 +204,67 @@
     <main>
         @yield('content')
     </main>
-    <footer style="background-color: #eff0f3; padding: 2% 15%;">
-        <div class="d-flex justify-content-between border-bottom border-dark border-2 border-opacity-75 mb-4 pb-4">
+
+    <footer class="d-none d-lg-block lg-footer">
+        <div class="d-flex justify-content-between border-bottom border-light border-2 border-opacity-75 mb-4 pb-4">
             <div>
                 <img src="/img/logos/logo_circle.png" alt="">
-                <h5>{{ __('messages.slogan') }}</h5>
+                <h5 class="text-light">{{ __('messages.slogan') }}</h5>
             </div>
             <div class="d-flex align-items-center">
-                <a href="" class="text-decoration-none text-dark">{{ __('Partner Portal') }}</a>
-                <p class="m-0 ms-2">|</p>
-                <a href="" class="ms-2 text-decoration-none text-dark">{{ __('messages.yt_link') }}</a>
+                <a href="{{ route('partners') }}" class="text-decoration-none text-light">
+                    {{ __('Partner Portal') }}
+                </a>
+                <p class="m-0 ms-2 text-light">|</p>
+                <a href="" class="ms-2 text-decoration-none text-light">{{ __('messages.yt_link') }}</a>
             </div>
         </div>
-        <p>{{ __('messages.rights') }}</p>
+        <p class="text-light">{{ __('messages.rights') }}</p>
     </footer>
 
-    <script src="/js/sidebar.js"></script>
+    <footer class="sticky-bottom d-block d-lg-none p-4 bg-body-tertiary border-top top-shadow">
+        <div class="d-flex justify-content-between align-items-center p-1 container">
+            <form method="GET" action="{{ route('home') }}" enctype="multipart/form-data">
+                @csrf
+                <button type="submit" class="border-0 bg-transparent text-dark fw-semibold opacity-75">
+                    <div class="d-flex flex-column align-items-center">
+                        <i class="bx bx-user bx-fw fs-2 opacity-75 nav-icon mb-1"></i>
+                    </div>
+                    Inicio
+                </button>
+            </form>
+            <form method="GET" action="#" enctype="multipart/form-data">
+                @csrf
+                <button type="submit" class="border-0 bg-transparent text-dark fw-semibold opacity-75">
+                    <div class="d-flex flex-column align-items-center">
+                        <i class="bx bx-user bx-fw fs-2 opacity-75 nav-icon mb-1"></i>
+                    </div>
+                    Mis favoritos
+                </button>
+            </form>
+            <form method="GET" action="#" enctype="multipart/form-data">
+                @csrf
+                <button type="submit" class="border-0 bg-transparent text-dark fw-semibold opacity-75">
+                    <div class="d-flex flex-column align-items-center">
+                        <i class="bx bx-user bx-fw fs-2 opacity-75 nav-icon mb-1"></i>
+                    </div>
+                    Pedidos
+                </button>
+            </form>
+            <form method="GET" action="{{ route('profile') }}" enctype="multipart/form-data">
+                @csrf
+                <button type="submit" class="border-0 bg-transparent text-dark fw-semibold opacity-75">
+                    <div class="d-flex flex-column align-items-center">
+                        <i class="bx bx-user bx-fw fs-2 opacity-75 nav-icon mb-1"></i>
+                    </div>
+                    Mi perfil
+                </button>
+            </form>
+        </div>
+    </footer>
+
+    <script src="/js/components/sidebar.js"></script>
+    <script src="https://unpkg.com/simplebar@latest/dist/simplebar.min.js"></script>
 
     @yield('scripts')
 </body>

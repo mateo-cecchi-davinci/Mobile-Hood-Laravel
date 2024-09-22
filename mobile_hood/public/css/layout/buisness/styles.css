@@ -1,0 +1,69 @@
+.logo-container {
+    width: 3.125rem;
+    height: auto;
+}
+
+.logo-container img {
+    width: 100%;
+    height: auto;
+}
+
+#map {
+    width: 100%;
+    height: 7rem;
+    transition: height 0.5s ease-in-out;
+}
+
+.map-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.gm-style-mtc-bbw,
+.gm-fullscreen-control,
+.gmnoprint {
+    display: none;
+}
+
+.modal-logo-container {
+    width: 100px;
+    height: auto;
+}
+
+.rating {
+    background-color: #ebf0ca;
+    color: #657d02;
+    font-size: 0.75rem;
+}
+
+.lg-footer {
+    background-color: #e31010;
+    padding: 2% 15%;
+}
+
+.iUDdTV {
+    flex-wrap: wrap;
+    margin-bottom: 26px;
+}
+
+.bmrUML {
+    display: flex;
+}
+
+.hJzIXA {
+    width: 50px;
+    border-radius: 6px;
+    margin-right: 20px;
+    margin-bottom: 16px;
+    height: 30px;
+}
+
+.iUDdTV img {
+    border-style: none;
+}

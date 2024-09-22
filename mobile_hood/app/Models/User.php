@@ -49,4 +49,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Buisness::class, 'id', 'fk_buisnesses_users');
     }
+
+    public function isAdmin()
+    {
+        return $this->is_admin;
+    }
 }
