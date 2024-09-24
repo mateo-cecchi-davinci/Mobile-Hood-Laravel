@@ -8,6 +8,16 @@
     height: auto;
 }
 
+.logo-container-2 {
+    width: 3.75rem;
+    height: auto;
+}
+
+.logo-container-2 img {
+    width: 100%;
+    height: auto;
+}
+
 #map {
     width: 100%;
     height: 7rem;
@@ -66,4 +76,22 @@
 
 .iUDdTV img {
     border-style: none;
+}
+
+.second-nav {
+    position: fixed;
+    top: 0;
+    opacity: 0;
+    z-index: -1;
+    transition:
+        opacity 0.3s ease-in-out,
+        z-index 0.3s ease-in-out;
+}
+
+.search-border {
+    border: 1px solid #dee2e6;
+}
+
+.search-border:hover {
+    border: 1px solid #212529;
 }

@@ -27,7 +27,7 @@
 
 <body>
 
-    <nav class="navbar navbar-expand py-0 d-none d-lg-block border-bottom lg-nav">
+    <nav class="navbar navbar-expand py-0 border-bottom">
         <div class="container-fluid">
             <div class="d-flex align-items-center">
                 <a href="{{ route('home') }}"><i
@@ -140,6 +140,32 @@
         </div>
     </nav>
 
+    <nav class="navbar navbar-expand bg-white second-nav fixed-top">
+        <div class="container-fluid">
+            <div class="d-flex align-items-center me-4">
+                <a href="{{ route('home') }}">
+                    <i class="bx bx-chevron-left fs-1 fw-medium opacity-75 text-dark pt-1"></i>
+                </a>
+                <a class="p-0 logo-container-2" href="{{ route('home') }}">
+                    <img src="/img/logos/logo_circle.png" alt="mobile hood logo">
+                </a>
+            </div>
+            <div class="row w-100">
+                <div class="col col-md-6 col-xl-4">
+                    <div class="d-flex align-items-center justify-content-between search-border rounded-2">
+                        <input type="text" class="search-input border-0 col-10 ps-2 rounded-2"
+                            placeholder="Buscar productos...">
+                        <div class="search-btn-container bg-white rounded-2">
+                            <button class="sm-search-btn text-light border-0 mt-2 me-2">
+                                <i class="bx bx-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
     <main>
         @yield('content')
     </main>
@@ -164,6 +190,7 @@
     <script src="https://maps.googleapis.com/maps/api/js?key={{ $maps }}&callback=initMap&libraries=marker" async
         defer></script>
     <script src="/js/Google/mapInfo.js"></script>
+    <script src="/js/components/secondNav.js"></script>
 
     @yield('scripts')
 </body>

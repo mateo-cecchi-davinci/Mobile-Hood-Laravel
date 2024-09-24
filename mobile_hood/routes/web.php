@@ -47,3 +47,5 @@ Route::get('/profile', function () {
 })->name('profile');
 
 Route::post('/buisness', [HomeController::class, 'buisness'])->name('buisness');
+
+Route::get('/filter-products', [HomeController::class, 'filterProducts'])->name('filter-products');

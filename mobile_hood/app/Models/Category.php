@@ -21,12 +21,12 @@ class Category extends Model
 
     public function products()
     {
-        return $this->hasMany(Product::class, 'id', 'fk_products_categories');
+        return $this->hasMany(Product::class, 'fk_products_categories', 'id');
     }
 
-    public function buisnesses()
+    public function buisness()
     {
-        return $this->hasMany(Buisness::class, 'id', 'fk_categories_buisnesses');
+        return $this->belongsTo(Buisness::class, 'fk_categories_buisnesses', 'id');
     }
 
     public function parent()

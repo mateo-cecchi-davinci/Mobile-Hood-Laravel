@@ -29,7 +29,7 @@
     height: 3rem;
 }
 
-.search-btn {
+.sm-search-btn {
     background-color: #e31010;
     width: 2rem;
     height: 2rem;
@@ -37,4 +37,66 @@
 
 .search-input:focus {
     outline: none;
+}
+
+.dropdown-menu {
+    background-color: transparent !important;
+    border-color: transparent !important;
+    position: static !important;
+    transform: none !important;
+}
+
+.icon {
+    font-size: xx-large;
+}
+
+.product-img-container {
+    width: max(5vw, 5.125rem);
+    height: auto;
+}
+
+.line {
+    border-right: 1px solid rgb(234, 227, 227);
+    width: auto;
+    height: 1.875rem;
+    margin: 0 15px;
+}
+
+.scroll-container {
+    width: 100%;
+    overflow: hidden;
+    text-wrap: nowrap;
+    user-select: none;
+    cursor: pointer;
+}
+
+.toast-msg {
+    width: 320px;
+    height: 72px;
+    position: fixed;
+    top: -250px;
+    right: -850px;
+    opacity: 0;
+    transition:
+        right 0.5s ease-in-out,
+        opacity 0.5s ease-in-out;
+}
+
+.toast-msg.show {
+    right: -800px;
+    opacity: 1;
+}
+
+.toast-msg.close {
+    right: -850px;
+    opacity: 0;
+}
+
+.lg-icon {
+    font-size: x-large;
+}
+
+.close-icon {
+    font-size: xx-large;
+    cursor: pointer;
 }

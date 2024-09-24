@@ -42,9 +42,9 @@ class Buisness extends Model
             ->withPivot('amount');
     }
 
-    public function category()
+    public function categories()
     {
-        return $this->belongsTo(Category::class, 'fk_categories_buisnesses', 'id');
+        return $this->hasMany(Category::class, 'fk_categories_buisnesses', 'id');
     }
 
     public function getImageURL()
