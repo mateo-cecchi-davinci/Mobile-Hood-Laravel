@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use App\Http\Middleware\Authenticate;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\AdminMiddleware;
@@ -48,4 +49,6 @@ Route::get('/profile', function () {
 
 Route::post('/buisness', [HomeController::class, 'buisness'])->name('buisness');
 
-Route::get('/filter-products', [HomeController::class, 'filterProducts'])->name('filter-products');
+Route::get('/filter-products', [HomeController::class, 'filterProducts']);
+Route::post('/add-products', [CartController::class, 'addProducts']);
+Route::post('/delete-cart-products', [CartController::class, 'delete']);

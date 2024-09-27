@@ -50,6 +50,11 @@ class User extends Authenticatable
         return $this->hasMany(Buisness::class, 'id', 'fk_buisnesses_users');
     }
 
+    public function carts()
+    {
+        return $this->hasMany(Cart::class, 'fk_carts_users', 'id');
+    }
+
     public function isAdmin()
     {
         return $this->is_admin;

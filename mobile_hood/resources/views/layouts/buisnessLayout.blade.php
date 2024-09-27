@@ -51,15 +51,15 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <span id="lat" class="d-none">{{ $buisness->location->lat }}</span>
-                                <span id="lng" class="d-none">{{ $buisness->location->lng }}</span>
+                                <span id="lat" class="d-none">{{ $buisnessModel->location->lat }}</span>
+                                <span id="lng" class="d-none">{{ $buisnessModel->location->lng }}</span>
                                 <div class="map-container mb-3">
                                     <div id="map"></div>
                                 </div>
                                 <div class="d-flex mb-4">
                                     <div class="modal-logo-container border border-dark rounded-2 me-2">
-                                        <img src="{{ $buisness->getImageUrl() }}" alt="{{ $buisness->name }} logo"
-                                            class="img-fluid rounded-2">
+                                        <img src="{{ $buisnessModel->getImageUrl() }}"
+                                            alt="{{ $buisnessModel->name }} logo" class="img-fluid rounded-2">
                                     </div>
                                     <div>
                                         <div class="d-inline rating rounded-1">
@@ -111,7 +111,7 @@
                                     class="sc-basr2n-0 hJzIXA mb-5">
                                 <h5 class="fw-semibold mb-3">Horarios</h5>
                                 @php
-                                    $openDays = $buisness->hours->pluck('day_of_week')->toArray();
+                                    $openDays = $buisnessModel->hours->pluck('day_of_week')->toArray();
                                 @endphp
                                 @foreach ($days as $key => $day)
                                     @php
@@ -120,10 +120,10 @@
                                     <div class="d-flex justify-content-between align-items-center">
                                         <p>{{ $day }}</p>
                                         @if ($isOpen)
-                                            @foreach ($buisness->hours as $hour)
+                                            @foreach ($buisnessModel->hours as $hour)
                                                 @if ($dayIndex[$hour->day_of_week] == $day)
                                                     <p>
-                                                        {{ $buisness->convertTo12HourFormat($hour->opening_time) . ' a ' . $buisness->convertTo12HourFormat($hour->closing_time) }}
+                                                        {{ $buisnessModel->convertTo12HourFormat($hour->opening_time) . ' a ' . $buisnessModel->convertTo12HourFormat($hour->closing_time) }}
                                                     </p>
                                                 @endif
                                             @endforeach
@@ -150,23 +150,25 @@
                     <img src="/img/logos/logo_circle.png" alt="mobile hood logo">
                 </a>
             </div>
-            <div class="row w-100">
+            {{-- <div class="row w-100">
                 <div class="col col-md-6 col-xl-4">
-                    <div class="d-flex align-items-center justify-content-between search-border rounded-2">
-                        <input type="text" class="search-input border-0 col-10 ps-2 rounded-2"
+                    <form id="searchForm" action="{{ route('filter-products') }}" action="GET"
+                        class="d-flex align-items-center justify-content-between search-border rounded-2">
+                        <input type="hidden" name="buisness" id="buisnessId" value="{{ $buisnessModel->id }}">
+                        <input type="text" name="query" class="search-input border-0 col-10 ps-2 rounded-2"
                             placeholder="Buscar productos...">
                         <div class="search-btn-container bg-white rounded-2">
                             <button class="sm-search-btn text-light border-0 mt-2 me-2">
                                 <i class="bx bx-search"></i>
                             </button>
                         </div>
-                    </div>
+                    </form>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </nav>
 
-    <main>
+    <main class="user-select-none">
         @yield('content')
     </main>
 
@@ -191,6 +193,8 @@
         defer></script>
     <script src="/js/Google/mapInfo.js"></script>
     <script src="/js/components/secondNav.js"></script>
+    <script src="/js/components/input.js"></script>
+    <script src="/js/components/toastMsg.js"></script>
 
     @yield('scripts')
 </body>

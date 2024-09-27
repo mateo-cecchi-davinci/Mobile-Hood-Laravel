@@ -19,7 +19,6 @@
     <link rel="stylesheet" href="/css/sidebar/styles.css">
     <link rel="stylesheet" href="/css/layout/app/styles.css">
     <link rel="stylesheet" href="/css/home/styles.css">
-    <link rel="stylesheet" href="/css/buisness/styles.css">
 
     <title>{{ config('app.name', 'Mobile Hood') }}</title>
 

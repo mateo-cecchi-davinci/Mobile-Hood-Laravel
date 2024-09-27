@@ -36,7 +36,7 @@ return new class extends Migration
         DB::statement('ALTER TABLE buisness_hours DROP CONSTRAINT chk_day_of_week');
 
         Schema::table('buisness_hours', function (Blueprint $table) {
-            $table->dropForeign('fk_buisness_hours_buisness');
+            $table->dropForeign(['fk_buisness_hours_buisness']);
         });
 
         Schema::dropIfExists('buisness_hours');

@@ -95,3 +95,31 @@
 .search-border:hover {
     border: 1px solid #212529;
 }
+
+.sm-font {
+    font-size: 0.75rem;
+}
+
+.btn-continue {
+    background-color: #e31010;
+    padding: 14px 0;
+}
+
+.edit-check {
+    width: 20px;
+    height: 20px;
+}
+
+.cart-nav {
+    padding: 20px 24px;
+}
+
+.btn-cart-nav {
+    background-color: #e31010;
+    height: 50px;
+}
+
+.sm-img {
+    width: 2.375rem;
+    height: auto;
+}
