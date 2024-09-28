@@ -1,3 +1,7 @@
+document.addEventListener("partialViewLoaded", function () {
+    assignEditBehavior();
+});
+
 document.addEventListener("updateCartEvents", assignEditBehavior);
 
 let products = [];
