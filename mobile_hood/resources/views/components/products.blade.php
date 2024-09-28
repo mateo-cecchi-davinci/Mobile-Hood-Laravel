@@ -23,7 +23,7 @@
                                 <i class="bx bx-x fs-1 position-absolute top-0 start-0 pointer pt-2 ps-2"
                                     data-bs-dismiss="modal"></i>
                                 <p
-                                    class="m-0 fs-5 fw-semibold text-center position-absolute top-0 start-50 translate-middle-x pt-2">
+                                    class="m-0 fs-5 fw-semibold text-center position-absolute top-0 start-50 translate-middle-x pt-2 lh-1">
                                     <small>{{ $product['model'] }}</small>
                                 </p>
                             </div>
@@ -132,7 +132,7 @@
                     data-bs-target="#{{ Str::slug($product['model']) }}Modal">
                     <div class="d-flex align-items-center justify-content-between">
                         <div>
-                            <p class="m-0 fs-5"><small>{{ $product['model'] }}</small></p>
+                            <p class="mb-1 fs-5 lh-1"><small>{{ $product['model'] }}</small></p>
                             <p class="mb-2 opacity-75 lh-1"><small>{{ $product['description'] }}</small></p>
                             <div class="d-flex align-items-center">
                                 <p class="m-0 fs-5 fw-semibold">${{ $product['price'] }}</p>

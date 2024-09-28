@@ -17,22 +17,10 @@
                 </div>
                 <p class="m-0"><small>({{ rand(700, 1200) }})</small></p>
             </div>
-            <div class="row w-100">
-                <div class="col col-md-6 col-lg-4">
-                    <div class="d-flex align-items-center rounded-2">
-                        <form id="searchForm" class="col-10">
-                            <input type="hidden" name="buisness" id="buisnessId" value="{{ $buisness['id'] }}">
-                            <input type="text" id="searchInput" name="query"
-                                class="search-input border-0 rounded-start-2 w-100 ps-2" placeholder="Buscar productos...">
-                        </form>
-                        <div class="search-btn-container bg-white rounded-end-2">
-                            <button class="sm-search-btn text-light border-0 mt-2 me-2">
-                                <i class="bx bx-search"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+            @include('components.inputs.products', [
+                'id' => $buisness['id'],
+            ])
         </div>
     </div>
 
@@ -61,46 +49,11 @@
                 </div>
             </div>
         </div>
-        <div class="d-block d-xl-none py-4">
-            <div class="d-flex flex-nowrap align-items-center">
-                <i class="bx bx-search bx-fw my-auto me-2"></i>
 
-                <button type="button" class="btn btn-sm rounded-pill bg-secondary-subtle text-dark fw-semibold"
-                    data-bs-toggle="modal" data-bs-target="#menu">
-                    <div class="d-flex align-items-center">
-                        <span>Menú</span>
-                        <i class="bx bx-chevron-down m-0 p-0"></i>
-                    </div>
-                </button>
-
-                <div class="modal fade" id="menu" tabindex="-1" aria-labelledby="menuLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            @foreach ($productsByCategory as $category_name => $products)
-                                <a href="#{{ $category_name }}"
-                                    class="modal-header d-flex flex-column text-decoration-none text-dark">
-                                    <h5 class="fw-semibold m-auto"><small>{{ $category_name }}</small></h5>
-                                    <p class="m-0 opacity-75">
-                                        <small>
-                                            {{ count($products) . ' ' . 'productos' }}
-                                        </small>
-                                    </p>
-                                </a>
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
-
-                <div class="line me-3"></div>
-
-                <div class="scroll-container">
-                    @foreach ($categories as $category)
-                        <a href="#{{ $category->name }}"
-                            class="btn btn-sm rounded-pill bg-secondary-subtle text-dark fw-semibold me-3">{{ $category->name }}</a>
-                    @endforeach
-                </div>
-            </div>
-        </div>
+        @include('components.carousels.menu', [
+            'productsByCategory' => $productsByCategory,
+            'categories' => $categories,
+        ])
 
         <div id="products-list" class="col col-xl-6">
             @include('components.products', [
@@ -110,7 +63,7 @@
         </div>
 
         <div id="cart" class="col-12 col-xl-3">
-            @include('components.cart', [
+            @include('components.cart.cart', [
                 'buisness' => $buisness,
                 'cartProducts' => $cartProducts,
             ])

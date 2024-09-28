@@ -1,58 +1,47 @@
+document.addEventListener("partialViewLoaded", function () {
+    assignEditBehavior();
+});
+
 document.addEventListener("updateCartEvents", assignEditBehavior);
 
 let products = [];
 
 function assignEditBehavior() {
-    const editCartLarge = document.getElementById("edit-cart");
-    const editCartModal = document.getElementById("edit-cart-modal");
-    const continueForm = document.getElementById("continue");
-    const deleteForm = document.getElementById("delete");
+    document.querySelectorAll(".edit-cart").forEach((button) => {
+        button.removeEventListener("click", () => handleEdit(button));
+        button.addEventListener("click", () => handleEdit(button));
+    });
 
-    editCartLarge?.removeEventListener("click", handleEdit);
-    editCartModal?.removeEventListener("click", handleModalEdit);
-    editCartLarge?.addEventListener("click", handleEdit);
-    editCartModal?.addEventListener("click", handleModalEdit);
+    document.querySelectorAll(".edit-check").forEach((checkbox) => {
+        checkbox.addEventListener("change", handleCheckboxChange);
+    });
 
-    continueForm?.removeEventListener("submit", deleteSelectedProducts);
-    deleteForm?.removeEventListener("submit", deleteSelectedProducts);
-    continueForm?.addEventListener("submit", deleteSelectedProducts);
-    deleteForm?.addEventListener("submit", deleteSelectedProducts);
+    //const continueForm = document.getElementById("continue");
+    //continueForm?.removeEventListener("submit", deleteSelectedProducts);
+    //continueForm?.addEventListener("submit", deleteSelectedProducts);
 
-    document
-        .querySelectorAll(".edit-check, .edit-check-modal")
-        .forEach((checkbox) => {
-            checkbox.addEventListener("change", handleCheckboxChange);
-        });
+    document.querySelectorAll(".delete").forEach((form) => {
+        form.removeEventListener("submit", deleteSelectedProducts);
+        form.addEventListener("submit", deleteSelectedProducts);
+    });
 
-    function handleEdit() {
-        toggleButtonText(editCartLarge);
-        toggleEditMode("large");
-    }
-
-    function handleModalEdit() {
-        toggleButtonText(editCartModal);
-        toggleEditMode("modal");
+    function handleEdit(button) {
+        toggleButtonText(button);
+        toggleEditMode();
     }
 
     function toggleButtonText(button) {
-        button.textContent === "Editar" ? "Aceptar" : "Editar";
+        button.textContent =
+            button.textContent === "Editar" ? "Aceptar" : "Editar";
     }
 }
 
-function toggleEditMode(type) {
-    const quantities = document.querySelectorAll(
-        type === "large" ? ".cart-quantity" : ".cart-quantity-modal",
-    );
-
-    quantities.forEach((quantity) => {
+function toggleEditMode() {
+    document.querySelectorAll(".cart-quantity").forEach((quantity) => {
         quantity.classList.toggle("d-none");
     });
 
-    const checkboxes = document.querySelectorAll(
-        type === "large" ? ".edit-check" : ".edit-check-modal",
-    );
-
-    checkboxes.forEach((checkbox) => {
+    document.querySelectorAll(".edit-check").forEach((checkbox) => {
         checkbox.classList.toggle("d-none");
     });
 }
@@ -83,6 +72,8 @@ function deleteSelectedProducts(event) {
         this.querySelector('input[name="cartProducts"]').value,
     );
 
+    console.log(products);
+
     fetch("/delete-cart-products", {
         method: "POST",
         headers: {
@@ -98,6 +89,7 @@ function deleteSelectedProducts(event) {
     })
         .then((response) => response.json())
         .then((data) => {
+            products = [];
             document.getElementById("cart").innerHTML = data.cart;
             document.dispatchEvent(new Event("updateCartEvents"));
         })

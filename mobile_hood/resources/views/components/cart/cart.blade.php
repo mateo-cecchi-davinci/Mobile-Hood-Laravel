@@ -9,37 +9,16 @@
     @else
         <div class="d-flex align-items-center justify-content-between border-bottom mb-2">
             <p class="m-0 fw-semibold fs-5">Mi pedido</p>
-            <p id="edit-cart" class="m-0 fw-semibold sm-font pointer">Editar</p>
+            <p class="m-0 fw-semibold sm-font pointer edit-cart">Editar</p>
         </div>
-        @foreach ($cartProducts as $cartProduct)
-            <div class="card my-2 px-3 py-2 rounded-1 fw-medium">
-                <div class="d-flex align-items-center justify-content-between">
-                    <div class="d-flex align-items-center">
-                        <input class="edit-check me-2 d-none check-{{ $cartProduct['product']['id'] }} pointer"
-                            type="checkbox">
-                        <p class="m-0 me-2 cart-quantity">{{ $cartProduct['quantity'] }}x</p>
-                        <p class="m-0 lh-1">{{ $cartProduct['product']['model'] }}</p>
-                    </div>
-                    <p class="m-0">${{ $cartProduct['product']['price'] * $cartProduct['quantity'] }}</p>
-                </div>
-            </div>
-        @endforeach
-        {{-- <form id="continue">
-            @csrf
-            <input type="hidden" name="user" value="{{ Auth::check() ? Auth::user()->id : '' }}">
-            <button class="w-100 border-0 text-light fw-semibold btn-continue rounded-pill mt-3 mb-1">
-                Continuar
-            </button>
-        </form> --}}
-        <form id="delete">
-            @csrf
-            <input type="hidden" name="user" value="{{ Auth::check() ? Auth::user()->id : '' }}">
-            <input type="hidden" name="buisness" value="{{ $buisness['id'] }}">
-            <input type="hidden" name="cartProducts" value="{{ json_encode($cartProducts) }}">
-            <button class="w-100 border-0 text-light fw-semibold btn-continue rounded-pill mt-3 mb-1">
-                Eliminar seleccionados
-            </button>
-        </form>
+        @include('components.cart.order', [
+            'cartProducts' => $cartProducts,
+        ])
+
+        @include('components.cart.deleteButton', [
+            'buisness' => $buisness,
+            'cartProducts' => $cartProducts,
+        ])
     @endif
 </div>
 
@@ -47,7 +26,12 @@
     <div class="d-block d-xl-none fixed-bottom bg-white cart-nav">
         <button class="border-0 w-100 fw-semibold text-light btn-cart-nav rounded-pill" data-bs-toggle="modal"
             data-bs-target="#cartModal">
-            Ver mi pedido ${{ $cartProduct['product']['price'] * $cartProduct['quantity'] }}
+            Ver mi pedido $
+            <span>
+                @include('components.cart.subtotal', [
+                    'cartProducts' => $cartProducts,
+                ])
+            </span>
         </button>
     </div>
     <div class="modal fade" id="cartModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -57,7 +41,7 @@
                 <div class="d-flex align-items-center fw-semibold justify-content-between mb-5">
                     <i class="bx bx-chevron-left fs-1 pointer" data-bs-dismiss="modal"></i>
                     <p class="m-0">Mi pedido a retirar</p>
-                    <p id="edit-cart-modal" class="m-0 sm-font pointer">Editar</p>
+                    <p class="m-0 fw-semibold sm-font pointer edit-cart">Editar</p>
                 </div>
                 <div class="d-flex align-items-center shadow-sm mb-3">
                     <div class="sm-img border rounded-2 me-4">
@@ -69,23 +53,23 @@
                     </div>
                 </div>
                 <p class="mb-3 fw-semibold">Vas a retirar:</p>
-                @foreach ($cartProducts as $cartProduct)
-                    <div class="card my-2 px-3 py-2 rounded-1 fw-medium">
-                        <div class="d-flex align-items-center justify-content-between">
-                            <div class="d-flex align-items-center">
-                                <input class="edit-check-modal me-2 d-none pointer" type="checkbox">
-                                <p class="m-0 me-2 cart-quantity-modal">{{ $cartProduct['quantity'] }}x</p>
-                                <p class="m-0 lh-1">{{ $cartProduct['product']['model'] }}</p>
-                            </div>
-                            <p class="m-0">${{ $cartProduct['product']['price'] * $cartProduct['quantity'] }}
-                            </p>
-                        </div>
-                    </div>
-                @endforeach
+                @include('components.cart.order', [
+                    'cartProducts' => $cartProducts,
+                ])
                 <div class="my-4 border-bottom"></div>
                 <div class="d-flex align-items-center justify-content-between">
                     <p class="m-0">Subtotal</p>
-                    <p class="m-0">${{ $cartProduct['product']['price'] * $cartProduct['quantity'] }}</p>
+                    <p class="m-0">$
+                        @include('components.cart.subtotal', [
+                            'cartProducts' => $cartProducts,
+                        ])
+                    </p>
+                </div>
+                <div class="d-flex h-100 align-items-end">
+                    @include('components.cart.deleteButton', [
+                        'buisness' => $buisness,
+                        'cartProducts' => $cartProducts,
+                    ])
                 </div>
             </div>
         </div>

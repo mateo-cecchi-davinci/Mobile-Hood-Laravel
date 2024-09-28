@@ -40,7 +40,7 @@ class CartController extends Controller
         $buisness = $this->getBuisness(intval($data['buisness']))->toArray();
 
         $products = view('components.products', compact('buisness', 'productsByCategory', 'cartProducts'))->render();
-        $cart = view('components.cart', compact('buisness', 'cartProducts'))->render();
+        $cart = view('components.cart.cart', compact('buisness', 'cartProducts'))->render();
 
         return response()->json([
             'products' => $products,
@@ -57,6 +57,7 @@ class CartController extends Controller
                 if ($cart['fk_carts_users'] == $data['user'] && $cart['fk_carts_products'] == $product) {
                     $carts = $this->getCart($cart['fk_carts_users'], $cart['fk_carts_products']);
 
+                    Log::info($carts);
                     foreach ($carts as $cartModel) {
                         $cartModel->delete();
                     }
@@ -64,12 +65,14 @@ class CartController extends Controller
                     unset($data['cartProducts'][$key]);
                 }
             }
+
+            $data['cartProducts'] = array_values($data['cartProducts']);
         }
 
         $cartProducts = $data['cartProducts'];
         $buisness = $this->getBuisness(intval($data['buisness']));
 
-        $cart = view('components.cart', compact('cartProducts', 'buisness'))->render();
+        $cart = view('components.cart.cart', compact('cartProducts', 'buisness'))->render();
 
         return response()->json([
             'success' => 'Productos eliminados con éxito',

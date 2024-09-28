@@ -88,6 +88,24 @@
         z-index 0.3s ease-in-out;
 }
 
+.nav-sm-buisness-name {
+    flex: 1 1 0%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: relative;
+    text-align: center;
+    z-index: 0;
+    max-width: 70%;
+    margin: 0px auto;
+}
+
+.sm-nav {
+    max-width: 100%;
+    padding: 0 4% 0.625rem;
+    overflow: hidden;
+}
+
 .search-border {
     border: 1px solid #dee2e6;
 }
