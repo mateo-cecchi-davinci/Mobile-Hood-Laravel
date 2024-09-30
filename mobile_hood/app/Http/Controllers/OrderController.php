@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -100,5 +101,24 @@ class OrderController extends Controller
         ]);
 
         return redirect(route('products.index'))->with('success', __('messages.delete_order_message'));
+    }
+
+    public function order(Request $request)
+    {
+        $request->merge([
+            'cartProducts' => json_decode($request->input('cartProducts'), true)
+        ]);
+
+        $request->validate([
+            'user' => 'required|exists:users,id',
+            'buisness' => 'required|exists:buisnesses,id',
+            'cartProducts' => 'required|array',
+        ]);
+
+        return view('order', [
+            'user' => $request->user,
+            'buisness' => $request->buisness,
+            'cartProducts' => $request->cartProducts,
+        ]);
     }
 }

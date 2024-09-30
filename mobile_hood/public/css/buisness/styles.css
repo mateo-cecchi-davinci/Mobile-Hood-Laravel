@@ -106,6 +106,18 @@
     z-index: 1030;
 }
 
+.btn-order {
+    background-color: #e31010;
+    padding: 0.875rem 0;
+}
+
+.modal-btns-container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 0 1.25rem 1.25rem;
+}
+
 .modal-product-img {
     width: 40%;
     height: auto;

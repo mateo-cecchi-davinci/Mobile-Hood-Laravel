@@ -5,6 +5,7 @@ document.addEventListener("partialViewLoaded", function () {
 document.addEventListener("updateCartEvents", assignEditBehavior);
 
 let products = [];
+let check = [];
 
 function assignEditBehavior() {
     document.querySelectorAll(".edit-cart").forEach((button) => {
@@ -15,10 +16,6 @@ function assignEditBehavior() {
     document.querySelectorAll(".edit-check").forEach((checkbox) => {
         checkbox.addEventListener("change", handleCheckboxChange);
     });
-
-    //const continueForm = document.getElementById("continue");
-    //continueForm?.removeEventListener("submit", deleteSelectedProducts);
-    //continueForm?.addEventListener("submit", deleteSelectedProducts);
 
     document.querySelectorAll(".delete").forEach((form) => {
         form.removeEventListener("submit", deleteSelectedProducts);
@@ -37,23 +34,49 @@ function assignEditBehavior() {
 }
 
 function toggleEditMode() {
-    document.querySelectorAll(".cart-quantity").forEach((quantity) => {
-        quantity.classList.toggle("d-none");
-    });
+    const quantities = document.querySelectorAll(".cart-quantity");
+    const checkboxes = document.querySelectorAll(".edit-check");
 
-    document.querySelectorAll(".edit-check").forEach((checkbox) => {
+    quantities.forEach((quantity, index) => {
+        const checkbox = checkboxes[index];
+        quantity.classList.toggle("d-none");
         checkbox.classList.toggle("d-none");
     });
 }
 
 function handleCheckboxChange(event) {
     const productId = event.target.classList[2].split("-")[1];
+    const checkboxes = document.querySelectorAll(".edit-check");
+    const continueBtns = document.querySelectorAll(".continue-btn");
+    const deleteBtns = document.querySelectorAll(".delete-btn");
+    const anyChecked = Array.from(checkboxes).some(
+        (checkbox) => checkbox.checked,
+    );
+
     if (event.target.checked) {
         if (!products.includes(productId)) {
             products.push(productId);
         }
     } else {
         products = products.filter((id) => id !== productId);
+    }
+
+    if (anyChecked) {
+        continueBtns.forEach((button) => {
+            button.classList.add("d-none");
+        });
+
+        deleteBtns.forEach((button) => {
+            button.classList.remove("d-none");
+        });
+    } else {
+        continueBtns.forEach((button) => {
+            button.classList.remove("d-none");
+        });
+
+        deleteBtns.forEach((button) => {
+            button.classList.add("d-none");
+        });
     }
 }
 
@@ -72,8 +95,6 @@ function deleteSelectedProducts(event) {
         this.querySelector('input[name="cartProducts"]').value,
     );
 
-    console.log(products);
-
     fetch("/delete-cart-products", {
         method: "POST",
         headers: {
@@ -90,6 +111,7 @@ function deleteSelectedProducts(event) {
         .then((response) => response.json())
         .then((data) => {
             products = [];
+            check = [];
             document.getElementById("cart").innerHTML = data.cart;
             document.dispatchEvent(new Event("updateCartEvents"));
         })

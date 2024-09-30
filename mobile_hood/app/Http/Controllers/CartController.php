@@ -3,13 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
-use App\Models\User;
-use App\Models\Product;
 use App\Models\Buisness;
 use App\Http\Requests\CartRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use App\Http\Requests\DeleteCartProductsRequest;
+use App\Http\Requests\DeleteFromCartRequest;
 
 class CartController extends Controller
 {
@@ -48,7 +46,7 @@ class CartController extends Controller
         ]);
     }
 
-    public function delete(DeleteCartProductsRequest $request)
+    public function delete(DeleteFromCartRequest $request)
     {
         $data = $request->validated();
 

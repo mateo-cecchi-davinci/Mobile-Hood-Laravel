@@ -52,3 +52,4 @@ Route::post('/buisness', [HomeController::class, 'buisness'])->name('buisness');
 Route::get('/filter-products', [HomeController::class, 'filterProducts']);
 Route::post('/add-products', [CartController::class, 'addProducts']);
 Route::post('/delete-cart-products', [CartController::class, 'delete']);
+Route::post('/order', [OrderController::class, 'order'])->name('order');

@@ -1,6 +1,3 @@
-@php
-    $first = true;
-@endphp
 <nav class="navbar navbar-expand scroll p-0">
     <div class="d-none d-lg-block w-100 bg-white second-nav">
         @include('components.navs.buisnessProfile.scroll.content.lg', [

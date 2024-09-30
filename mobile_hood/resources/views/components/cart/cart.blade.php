@@ -15,6 +15,11 @@
             'cartProducts' => $cartProducts,
         ])
 
+        @include('components.cart.continueButton', [
+            'buisness' => $buisness,
+            'cartProducts' => $cartProducts,
+        ])
+
         @include('components.cart.deleteButton', [
             'buisness' => $buisness,
             'cartProducts' => $cartProducts,
@@ -37,13 +42,13 @@
     <div class="modal fade" id="cartModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-hidden="true">
         <div class="modal-dialog modal-fullscreen-sm-down modal-dialog-centered">
-            <div class="modal-content p-4">
-                <div class="d-flex align-items-center fw-semibold justify-content-between mb-5">
+            <div class="modal-content">
+                <div class="d-flex align-items-center fw-semibold justify-content-between mb-5 px-4 pt-4">
                     <i class="bx bx-chevron-left fs-1 pointer" data-bs-dismiss="modal"></i>
                     <p class="m-0">Mi pedido a retirar</p>
                     <p class="m-0 fw-semibold sm-font pointer edit-cart">Editar</p>
                 </div>
-                <div class="d-flex align-items-center shadow-sm mb-3">
+                <div class="d-flex align-items-center shadow-sm mb-3 px-4">
                     <div class="sm-img border rounded-2 me-4">
                         <img class="rounded-2 img-fluid" src="storage/{{ $buisness['logo'] }}" alt="logo del negocio">
                     </div>
@@ -52,25 +57,32 @@
                         <p class="m-0 opacity-75">30 - 45 min | $1.669 envío | Mínimo $5.799</p>
                     </div>
                 </div>
-                <p class="mb-3 fw-semibold">Vas a retirar:</p>
-                @include('components.cart.order', [
-                    'cartProducts' => $cartProducts,
-                ])
+                <p class="mb-3 fw-semibold px-4">Vas a retirar:</p>
+                <div class="px-4 ">
+                    @include('components.cart.order', [
+                        'cartProducts' => $cartProducts,
+                    ])
+                </div>
                 <div class="my-4 border-bottom"></div>
-                <div class="d-flex align-items-center justify-content-between">
-                    <p class="m-0">Subtotal</p>
-                    <p class="m-0">$
+                <div class="d-flex align-items-center justify-content-between mb-5 px-4">
+                    <p class="mb-5">Subtotal</p>
+                    <p class="mb-5">$
                         @include('components.cart.subtotal', [
                             'cartProducts' => $cartProducts,
                         ])
                     </p>
                 </div>
-                <div class="d-flex h-100 align-items-end">
+                <div class="modal-btns-container">
+                    @include('components.cart.continueButton', [
+                        'buisness' => $buisness,
+                        'cartProducts' => $cartProducts,
+                    ])
                     @include('components.cart.deleteButton', [
                         'buisness' => $buisness,
                         'cartProducts' => $cartProducts,
                     ])
                 </div>
+
             </div>
         </div>
     </div>

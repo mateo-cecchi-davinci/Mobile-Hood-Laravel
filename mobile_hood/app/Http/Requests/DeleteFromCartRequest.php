@@ -8,7 +8,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpFoundation\Response;
 
-class DeleteCartProductsRequest extends FormRequest
+class DeleteFromCartRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

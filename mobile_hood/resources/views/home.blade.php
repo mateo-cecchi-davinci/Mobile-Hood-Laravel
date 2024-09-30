@@ -14,8 +14,7 @@
 
         @foreach ($buisnesses as $buisness)
             <div class="card p-3 mt-3 shadow">
-                <form action="{{ route('buisness', ['buisness' => $buisness]) }}" method="POST"
-                    enctype="multipart/form-data">
+                <form action="{{ route('buisness', ['buisness' => $buisness]) }}" method="POST">
                     @csrf
                     <button class="border-0 w-100 bg-transparent" type="input">
                         <div class="d-flex justify-content-between">

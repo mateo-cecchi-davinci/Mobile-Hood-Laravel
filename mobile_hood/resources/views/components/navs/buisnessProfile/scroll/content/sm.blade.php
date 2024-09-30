@@ -6,6 +6,5 @@
     @include('components.carousels.menu', [
         'productsByCategory' => $productsByCategory,
         'categories' => $categories,
-        'first' => $first,
     ])
 </div>
