@@ -33,6 +33,7 @@
                                 <td>{{ __('messages.brand') }}</td>
                                 <td>{{ __('messages.price') }}</td>
                                 <td>{{ __('messages.category') }}</td>
+                                <td>Stock</td>
                                 <td>{{ __('messages.actions') }}</td>
                             </tr>
                         </thead>
@@ -45,6 +46,7 @@
                                         <td>{{ $p->brand }}</td>
                                         <td>{{ $p->price }}</td>
                                         <td>{{ $p->category->name }}</td>
+                                        <td>{{ $p->stock }}</td>
                                         <td>
                                             <form method="post"
                                                 action="{{ route('products.destroy', ['product' => $p->id]) }}">

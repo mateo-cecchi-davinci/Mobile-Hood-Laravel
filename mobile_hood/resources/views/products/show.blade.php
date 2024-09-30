@@ -24,6 +24,7 @@
                             <li>{{ __('messages.description') }}: {{ $product->description }}</li>
                             <li>{{ __('messages.price') }}: {{ $product->price }}</li>
                             <li>{{ __('messages.category') }}: {{ $product->category->name }}</li>
+                            <li>Stock: {{ $product->stock }}</li>
                         </ul>
                     </div>
                 </div>

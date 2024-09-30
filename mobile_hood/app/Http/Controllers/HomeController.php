@@ -103,7 +103,7 @@ class HomeController extends Controller
 
     private function getProducts(Category $category)
     {
-        return Product::where(['is_active' => true, 'fk_products_categories' => $category->id])->get();
+        return Product::where(['is_active' => true, 'fk_products_categories' => $category->id])->where('stock', '>', 0)->get();
     }
 
     public function filterProducts(Request $request)

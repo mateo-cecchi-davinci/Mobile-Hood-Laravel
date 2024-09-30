@@ -53,3 +53,5 @@ Route::get('/filter-products', [HomeController::class, 'filterProducts']);
 Route::post('/add-products', [CartController::class, 'addProducts']);
 Route::post('/delete-cart-products', [CartController::class, 'delete']);
 Route::post('/order', [OrderController::class, 'order'])->name('order');
+
+Route::post('/mp_payment_notification', [OrderController::class, 'mp_payment_notification'])->name('mp_payment_notification');

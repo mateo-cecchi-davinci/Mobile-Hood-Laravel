@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('description');
             $table->double('price');
             $table->string('brand');
+            $table->integer('stock');
             $table->unsignedBigInteger('fk_products_categories');
             $table->foreign('fk_products_categories')->references('id')
                 ->on('categories');

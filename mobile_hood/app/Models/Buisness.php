@@ -36,12 +36,6 @@ class Buisness extends Model
         return $this->hasMany(Hours::class, 'fk_buisness_hours_buisness', 'id');
     }
 
-    public function products()
-    {
-        return $this->belongsToMany(Product::class, 'buisnesses_products', 'fk_buisnesses_products_buisnesses', 'fk_buisnesses_products_products')
-            ->withPivot('amount');
-    }
-
     public function categories()
     {
         return $this->hasMany(Category::class, 'fk_categories_buisnesses', 'id');

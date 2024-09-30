@@ -15,7 +15,7 @@ class ProductController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->products = Product::where('is_active', true)->get();
+        $this->products = Product::where('is_active', true)->where('stock', '>', 0)->get();
         $this->categories = Category::where('is_active', true)->get();
     }
 
@@ -46,6 +46,7 @@ class ProductController extends Controller
             'description' => 'required|string|max:525',
             'price' => 'required|numeric',
             'category' => 'required|array|min:1|max:1',
+            'stock' => 'required|integer',
             'image' => 'required|image|mimes:jpg,png,jpeg,webp',
         ]);
 
@@ -57,6 +58,7 @@ class ProductController extends Controller
         $product->brand = $request->brand;
         $product->description = $request->description;
         $product->price = $request->price;
+        $product->stock = $request->stock;
         $product->fk_products_categories = $request->category[0];
 
         $product->save();
@@ -87,6 +89,7 @@ class ProductController extends Controller
             'description' => 'required|string|max:525',
             'price' => 'required|numeric',
             'category' => 'required|array|min:1|max:1',
+            'stock' => 'required|integer',
             'image' => 'required|image|mimes:jpg,png,jpeg,webp',
         ]);
 
@@ -103,6 +106,7 @@ class ProductController extends Controller
         $product->brand = $request->brand;
         $product->description = $request->description;
         $product->price = $request->price;
+        $product->stock = $request->stock;
         $product->fk_products_categories = $request->category[0];
 
         $product->save();

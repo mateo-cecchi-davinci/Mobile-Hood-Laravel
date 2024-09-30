@@ -69,6 +69,13 @@
                                 </div>
                             </div>
                             <div class="form-group row mb-3">
+                                <label class="col-sm-2 col-label-form">Stock</label>
+                                <div class="col-sm-10">
+                                    <input type="number" name="stock" class="form-control" value="{{ $product->stock }}"
+                                        required>
+                                </div>
+                            </div>
+                            <div class="form-group row mb-3">
                                 <label class="col-sm-2 col-label-form">{{ __('messages.image') }}</label>
                                 <div class="col-sm-10">
                                     <input type="file" name="image" class="form-control" required>

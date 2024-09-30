@@ -30,11 +30,6 @@ class Product extends Model
             ->withPivot('amount');
     }
 
-    public function buisnesses()
-    {
-        return $this->belongsToMany(Buisness::class, 'orders_products', 'fk_buisnesses_products_products', 'fk_buisnesses_products_buisnesses');
-    }
-
     public function carts()
     {
         return $this->hasMany(Cart::class, 'fk_carts_products', 'id');

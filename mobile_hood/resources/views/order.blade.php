@@ -95,11 +95,33 @@
                             {{ $total }}
                         </p>
                     </div>
-                    <button class="border-0 rounded-1 text-light red-bg rounded-pill fw-semibold btn-payment">
-                        Finalizar compra
-                    </button>
+                    <div id="wallet_container"></div>
                 </div>
             </div>
         </div>
     </div>
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
+    <script>
+        const mp = new MercadoPago('{{ config('mercadopago.public_key') }}');
+
+        const renderComponent = async () => {
+            if (window.checkoutButton) window.checkoutButton.unmount();
+
+            await mp.bricks().create("wallet", "wallet_container", {
+                initialization: {
+                    preferenceId: "{{ $preference->id }}",
+                    redirectMode: 'self',
+                },
+                customization: {
+                    texts: {
+                        action: 'pay',
+                        valueProp: 'security_details',
+                    },
+                },
+                locale: 'es',
+            });
+        }
+
+        renderComponent();
+    </script>
 @endsection

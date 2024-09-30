@@ -5,19 +5,24 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Order;
+use App\Models\Buisness;
+use App\Jobs\ProcessPayment;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+use App\Services\MercadoPagoService;
 
 class OrderController extends Controller
 {
     protected $orders;
     protected $users;
+    private $mercadoPagoService;
 
-    public function __construct()
+    public function __construct(MercadoPagoService $mercadoPagoService)
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
         $this->orders = Order::where('is_active', true)->with('products')->get();
         $this->users = User::where('is_active', true)->get();
+        $this->mercadoPagoService = $mercadoPagoService;
     }
 
     /**
@@ -115,10 +120,42 @@ class OrderController extends Controller
             'cartProducts' => 'required|array',
         ]);
 
+        $user = $this->getUser(intval($request->user));
+        //$buisness = $this->getBuisness(intval($request->buisness));
+
+        $location = [
+            'street_name' => 'Estados Unidos',
+            'street_number' => 972,
+            'city' => 'Buenos Aires',
+            'zip' => 'C1101AAT',
+            'details' => '',
+        ];
+
+        $data = [
+            'user' => $user,
+            'location' => $location,
+            'product_data' => $request->cartProducts
+        ];
+
+        $preference = $this->mercadoPagoService->createPreference($data);
+
         return view('order', [
             'user' => $request->user,
             'buisness' => $request->buisness,
             'cartProducts' => $request->cartProducts,
+            'preference' => $preference
         ]);
+    }
+
+    private function getUser($user)
+    {
+        return User::firstWhere(['is_active' => true, 'id' => $user]);
+    }
+
+    public function mp_payment_notification(Request $request)
+    {
+        ProcessPayment::dispatchSync($request->all());
+
+        return response()->json(['status' => 'success'], 200);
     }
 }
