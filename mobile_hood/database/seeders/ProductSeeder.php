@@ -3,11 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\Product;
-use App\Models\Buisness;
 use Illuminate\Database\Seeder;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 
 class ProductSeeder extends Seeder
 {
@@ -29,6 +27,8 @@ class ProductSeeder extends Seeder
                 'description' => 'Nalga entera x 1kg',
                 'price' => 8300,
                 'brand' => 'N/A',
+                'stock' => '20',
+                'stock' => '20',
                 'fk_products_categories' => 2,
             ],
             [
@@ -37,6 +37,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Tapa de Nalga entera x 1kg',
                 'price' => 6000,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 2,
             ],
             [
@@ -45,6 +46,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Peceto Novillo x 1kg',
                 'price' => 7900,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 2,
             ],
             [
@@ -53,6 +55,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Colita de cuadril Novillo x 1kg',
                 'price' => 10400,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 2,
             ],
             [
@@ -61,6 +64,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Bola de lomo x 1kg',
                 'price' => 13200,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 2,
             ],
             [
@@ -69,6 +73,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Tortuguita Novillo x 1kg',
                 'price' => 6000,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 2,
             ],
             [
@@ -77,6 +82,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Osobuco x 1kg',
                 'price' => 5500,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 2,
             ],
             [
@@ -85,6 +91,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Tapa de Asado x 1kg',
                 'price' => 6200,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 2,
             ],
             [
@@ -93,6 +100,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Marucha Novillo x 1kg',
                 'price' => 6500,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 2,
             ],
             [
@@ -101,6 +109,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Lomo x 1kg',
                 'price' => 12000,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 2,
             ],
             [
@@ -109,6 +118,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Ojo de Bife Novillo',
                 'price' => 9600,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 2,
             ],
             [
@@ -117,6 +127,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Bife de Chorizo Novillo x 1kg',
                 'price' => 9500,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 2,
             ],
             [
@@ -125,6 +136,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Asado x 1kg',
                 'price' => 10200,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 2,
             ],
             [
@@ -133,6 +145,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Estraña Novillito',
                 'price' => 9990,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 2,
             ],
             [
@@ -141,6 +154,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Matambre x 1kg',
                 'price' => 9600,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 2,
             ],
             [
@@ -149,6 +163,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Vacío x 1kg',
                 'price' => 9500,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 2,
             ],
             [
@@ -157,6 +172,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Panceta ahumada mini ev x 1kg',
                 'price' => 20925,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 3,
             ],
             [
@@ -165,6 +181,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Bondiola de Cerdo x 1kg',
                 'price' => 6900,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 3,
             ],
             [
@@ -173,6 +190,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Matambre de Cerdo x 1kg',
                 'price' => 9600,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 3,
             ],
             [
@@ -181,6 +199,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Churrasquito x 1kg',
                 'price' => 11655,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 3,
             ],
             [
@@ -189,6 +208,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Pechito de Cerdo x 1kg',
                 'price' => 4700,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 3,
             ],
             [
@@ -197,6 +217,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Paleta de Cerdo x 1kg',
                 'price' => 5000,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 3,
             ],
             [
@@ -205,6 +226,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Lomo de Cerdo x 1kg',
                 'price' => 11900,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 3,
             ],
             [
@@ -213,6 +235,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Cuadril de Cerdo x 1kg',
                 'price' => 10400,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 3,
             ],
             [
@@ -221,6 +244,7 @@ class ProductSeeder extends Seeder
                 'description' => '',
                 'price' => 3000,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 4,
             ],
             [
@@ -229,6 +253,7 @@ class ProductSeeder extends Seeder
                 'description' => '',
                 'price' => 5317,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 4,
             ],
             [
@@ -237,6 +262,7 @@ class ProductSeeder extends Seeder
                 'description' => '',
                 'price' => 2140,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 5,
             ],
 
@@ -250,6 +276,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Nalga entera x 1kg',
                 'price' => 8300,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 7,
             ],
             [
@@ -258,6 +285,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Tapa de Nalga entera x 1kg',
                 'price' => 6000,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 7,
             ],
             [
@@ -266,6 +294,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Peceto Novillo x 1kg',
                 'price' => 7900,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 7,
             ],
             [
@@ -274,6 +303,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Colita de cuadril Novillo x 1kg',
                 'price' => 10400,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 7,
             ],
             [
@@ -282,6 +312,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Bola de lomo x 1kg',
                 'price' => 13200,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 7,
             ],
             [
@@ -290,6 +321,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Tortuguita Novillo x 1kg',
                 'price' => 6000,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 7,
             ],
             [
@@ -298,6 +330,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Osobuco x 1kg',
                 'price' => 5500,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 7,
             ],
             [
@@ -306,6 +339,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Tapa de Asado x 1kg',
                 'price' => 6200,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 7,
             ],
             [
@@ -314,6 +348,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Marucha Novillo x 1kg',
                 'price' => 6500,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 7,
             ],
             [
@@ -322,6 +357,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Lomo x 1kg',
                 'price' => 12000,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 7,
             ],
             [
@@ -330,6 +366,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Ojo de Bife Novillo',
                 'price' => 9600,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 7,
             ],
             [
@@ -338,6 +375,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Bife de Chorizo Novillo x 1kg',
                 'price' => 9500,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 7,
             ],
             [
@@ -346,6 +384,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Asado x 1kg',
                 'price' => 10200,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 7,
             ],
             [
@@ -354,6 +393,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Estraña Novillito',
                 'price' => 9990,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 7,
             ],
             [
@@ -362,6 +402,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Matambre x 1kg',
                 'price' => 9600,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 7,
             ],
             [
@@ -370,6 +411,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Vacío x 1kg',
                 'price' => 9500,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 7,
             ],
             [
@@ -378,6 +420,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Panceta ahumada mini ev x 1kg',
                 'price' => 20925,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 8,
             ],
             [
@@ -386,6 +429,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Bondiola de Cerdo x 1kg',
                 'price' => 6900,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 8,
             ],
             [
@@ -394,6 +438,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Matambre de Cerdo x 1kg',
                 'price' => 9600,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 8,
             ],
             [
@@ -402,6 +447,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Churrasquito x 1kg',
                 'price' => 11655,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 8,
             ],
             [
@@ -410,6 +456,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Pechito de Cerdo x 1kg',
                 'price' => 4700,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 8,
             ],
             [
@@ -418,6 +465,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Paleta de Cerdo x 1kg',
                 'price' => 5000,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 8,
             ],
             [
@@ -426,6 +474,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Lomo de Cerdo x 1kg',
                 'price' => 11900,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 8,
             ],
             [
@@ -434,6 +483,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Cuadril de Cerdo x 1kg',
                 'price' => 10400,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 8,
             ],
             [
@@ -442,6 +492,7 @@ class ProductSeeder extends Seeder
                 'description' => '',
                 'price' => 3000,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 9,
             ],
             [
@@ -450,6 +501,7 @@ class ProductSeeder extends Seeder
                 'description' => '',
                 'price' => 5317,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 9,
             ],
             [
@@ -458,6 +510,7 @@ class ProductSeeder extends Seeder
                 'description' => '',
                 'price' => 2140,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 10,
             ],
 
@@ -471,6 +524,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Limón x 1kg',
                 'price' => 890,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 11,
             ],
             [
@@ -479,6 +533,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Mandarina x 1kg',
                 'price' => 890,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 11,
             ],
             [
@@ -487,6 +542,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Naranja x 1kg',
                 'price' => 890,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 11,
             ],
             [
@@ -495,6 +551,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Pomelo x 1kg',
                 'price' => 920,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 11,
             ],
             [
@@ -503,6 +560,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Melon blanco x 1kg',
                 'price' => 3999,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 11,
             ],
             [
@@ -511,6 +569,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Sandía x 1kg',
                 'price' => 1499,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 11,
             ],
             [
@@ -519,6 +578,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Kiwi x 1kg',
                 'price' => 3199,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 11,
             ],
             [
@@ -527,6 +587,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Banana x 1kg',
                 'price' => 1839,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 11,
             ],
             [
@@ -535,6 +596,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Pera x 1kg',
                 'price' => 1199,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 11,
             ],
             [
@@ -543,6 +605,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Manzana x 1kg',
                 'price' => 1839,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 11,
             ],
             [
@@ -551,6 +614,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Ciruela x 11kg',
                 'price' => 3759,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 11,
             ],
             [
@@ -559,6 +623,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Apio x 1kg',
                 'price' => 3890,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 12,
             ],
             [
@@ -567,6 +632,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Berenjena x 1kg',
                 'price' => 2490,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 12,
             ],
             [
@@ -575,6 +641,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Brócoli x 1kg',
                 'price' => 4399,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 12,
             ],
             [
@@ -583,6 +650,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Cebolla x 1kg',
                 'price' => 1199,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 12,
             ],
             [
@@ -591,6 +659,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Repollo x 1kg',
                 'price' => 1999,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 12,
             ],
             [
@@ -599,6 +668,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Champiñon Laminado Porto',
                 'price' => 2319,
                 'brand' => 'Porto',
+                'stock' => '20',
                 'fk_products_categories' => 12,
             ],
             [
@@ -607,6 +677,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Coliflor x 1kg',
                 'price' => 5519,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 12,
             ],
             [
@@ -615,6 +686,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Lechuga x 1kg',
                 'price' => 2159,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 12,
             ],
             [
@@ -623,6 +695,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Choclo x Unidad',
                 'price' => 2079,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 12,
             ],
             [
@@ -631,6 +704,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Papa x 1kg',
                 'price' => 1599,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 12,
             ],
             [
@@ -639,6 +713,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Tomate x 1kg',
                 'price' => 3224,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 12,
             ],
             [
@@ -647,6 +722,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Pepino x 1kg',
                 'price' => 2079,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 12,
             ],
             [
@@ -655,6 +731,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Morrón x 1kg',
                 'price' => 5199,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 12,
             ],
             [
@@ -663,6 +740,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Zanahoria x 1kg',
                 'price' => 1199,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 12,
             ],
             [
@@ -671,6 +749,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Aceite de Girasol Natura 900ml',
                 'price' => 1866,
                 'brand' => 'Natura',
+                'stock' => '20',
                 'fk_products_categories' => 14,
             ],
             [
@@ -679,6 +758,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Aceite de Girasol Natura 1.5 L',
                 'price' => 2995,
                 'brand' => 'Natura',
+                'stock' => '20',
                 'fk_products_categories' => 14,
             ],
             [
@@ -687,6 +767,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Aceite Oliva Extra Virgen Suave Cocinero 500ml',
                 'price' => 8850,
                 'brand' => 'Cocinero',
+                'stock' => '20',
                 'fk_products_categories' => 15,
             ],
             [
@@ -695,6 +776,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Aceite Oliva Lira Extra Virgen Pet 500ml',
                 'price' => 123,
                 'brand' => 'Lira',
+                'stock' => '20',
                 'fk_products_categories' => 15,
             ],
             [
@@ -703,6 +785,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Huevos Blancos Carnave Maples 30u',
                 'price' => 6400,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 16,
             ],
 
@@ -716,6 +799,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Limón x 1kg',
                 'price' => 890,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 17,
             ],
             [
@@ -724,6 +808,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Mandarina x 1kg',
                 'price' => 890,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 17,
             ],
             [
@@ -732,6 +817,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Naranja x 1kg',
                 'price' => 890,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 17,
             ],
             [
@@ -740,6 +826,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Pomelo x 1kg',
                 'price' => 920,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 17,
             ],
             [
@@ -748,6 +835,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Melon blanco x 1kg',
                 'price' => 3999,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 17,
             ],
             [
@@ -756,6 +844,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Sandía x 1kg',
                 'price' => 1499,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 17,
             ],
             [
@@ -764,6 +853,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Kiwi x 1kg',
                 'price' => 3199,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 17,
             ],
             [
@@ -772,6 +862,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Banana x 1kg',
                 'price' => 1839,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 17,
             ],
             [
@@ -780,6 +871,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Pera x 1kg',
                 'price' => 1199,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 17,
             ],
             [
@@ -788,6 +880,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Manzana x 1kg',
                 'price' => 1839,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 17,
             ],
             [
@@ -796,6 +889,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Ciruela x 11kg',
                 'price' => 3759,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 17,
             ],
             [
@@ -804,6 +898,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Apio x 1kg',
                 'price' => 3890,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 18,
             ],
             [
@@ -812,6 +907,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Berenjena x 1kg',
                 'price' => 2490,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 18,
             ],
             [
@@ -820,6 +916,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Brócoli x 1kg',
                 'price' => 4399,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 18,
             ],
             [
@@ -828,6 +925,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Cebolla x 1kg',
                 'price' => 1199,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 18,
             ],
             [
@@ -836,6 +934,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Repollo x 1kg',
                 'price' => 1999,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 18,
             ],
             [
@@ -844,6 +943,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Champiñon Laminado Porto',
                 'price' => 2319,
                 'brand' => 'Porto',
+                'stock' => '20',
                 'fk_products_categories' => 18,
             ],
             [
@@ -852,6 +952,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Coliflor x 1kg',
                 'price' => 5519,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 18,
             ],
             [
@@ -860,6 +961,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Lechuga x 1kg',
                 'price' => 2159,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 18,
             ],
             [
@@ -868,6 +970,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Choclo x Unidad',
                 'price' => 2079,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 18,
             ],
             [
@@ -876,6 +979,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Papa x 1kg',
                 'price' => 1599,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 18,
             ],
             [
@@ -884,6 +988,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Tomate x 1kg',
                 'price' => 3224,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 18,
             ],
             [
@@ -892,6 +997,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Pepino x 1kg',
                 'price' => 2079,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 18,
             ],
             [
@@ -900,6 +1006,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Morrón x 1kg',
                 'price' => 5199,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 18,
             ],
             [
@@ -908,6 +1015,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Zanahoria x 1kg',
                 'price' => 1199,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 18,
             ],
             [
@@ -916,6 +1024,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Aceite de Girasol Natura 900ml',
                 'price' => 1866,
                 'brand' => 'Natura',
+                'stock' => '20',
                 'fk_products_categories' => 19,
             ],
             [
@@ -924,6 +1033,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Aceite de Girasol Natura 1.5 L',
                 'price' => 2995,
                 'brand' => 'Natura',
+                'stock' => '20',
                 'fk_products_categories' => 19,
             ],
             [
@@ -932,6 +1042,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Aceite Oliva Extra Virgen Suave Cocinero 500ml',
                 'price' => 8850,
                 'brand' => 'Cocinero',
+                'stock' => '20',
                 'fk_products_categories' => 20,
             ],
             [
@@ -940,6 +1051,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Aceite Oliva Lira Extra Virgen Pet 500ml',
                 'price' => 123,
                 'brand' => 'Lira',
+                'stock' => '20',
                 'fk_products_categories' => 20,
             ],
             [
@@ -948,6 +1060,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Huevos Blancos Carnave Maples 30u',
                 'price' => 6400,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 21,
             ],
 
@@ -961,6 +1074,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Vino Elementos Malbec 750ml',
                 'price' => 6600,
                 'brand' => 'Elementos',
+                'stock' => '20',
                 'fk_products_categories' => 23,
             ],
             [
@@ -969,6 +1083,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Vino Portillo Malbec X 750ml',
                 'price' => 5499,
                 'brand' => 'Portillo',
+                'stock' => '20',
                 'fk_products_categories' => 23,
             ],
             [
@@ -977,6 +1092,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Vino Tinto Trumpeter Malbec 750ml Botella Rutini Wines',
                 'price' => 7898,
                 'brand' => 'Trumpeter',
+                'stock' => '20',
                 'fk_products_categories' => 23,
             ],
             [
@@ -985,6 +1101,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Vino Alma Mora Malbec X 750ml',
                 'price' => 6500,
                 'brand' => 'Alma Mora',
+                'stock' => '20',
                 'fk_products_categories' => 23,
             ],
             [
@@ -993,6 +1110,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Vino Blanco Dilema Dulce Natural 750ml',
                 'price' => 6000,
                 'brand' => 'Dilema',
+                'stock' => '20',
                 'fk_products_categories' => 24,
             ],
             [
@@ -1001,6 +1119,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Norton Cosecha Tardia Vino Dulce 750ml',
                 'price' => 3692,
                 'brand' => 'Norton',
+                'stock' => '20',
                 'fk_products_categories' => 24,
             ],
             [
@@ -1009,6 +1128,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Vino Blanco Dulce 750ml Marlo Vinos Tradic',
                 'price' => 6590,
                 'brand' => 'Bianchi',
+                'stock' => '20',
                 'fk_products_categories' => 24,
             ],
             [
@@ -1017,6 +1137,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Vino Emilia Nieto Senetiner Dulce Moscatel 750ml',
                 'price' => 6590,
                 'brand' => 'Nieto Senetiner',
+                'stock' => '20',
                 'fk_products_categories' => 24,
             ],
             [
@@ -1025,6 +1146,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Cosecha Tardía Vino Rosado Dulce 750ml',
                 'price' => 5230,
                 'brand' => 'Norton',
+                'stock' => '20',
                 'fk_products_categories' => 25,
             ],
             [
@@ -1033,6 +1155,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Vino Emilia Malbec Rosé Dulce Natural 750ml',
                 'price' => 7150,
                 'brand' => 'Nieto Senetiner',
+                'stock' => '20',
                 'fk_products_categories' => 25,
             ],
             [
@@ -1041,6 +1164,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Vino Rosado Dilema 750ml',
                 'price' => 4800,
                 'brand' => 'Dilema',
+                'stock' => '20',
                 'fk_products_categories' => 25,
             ],
             [
@@ -1049,6 +1173,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Vino Trivento Reserve Malbec Rose',
                 'price' => 6000,
                 'brand' => 'Rose Malbec',
+                'stock' => '20',
                 'fk_products_categories' => 25,
             ],
             [
@@ -1057,6 +1182,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Vino Trumpeter Syrah 750ml',
                 'price' => 7500,
                 'brand' => 'Trumpeter',
+                'stock' => '20',
                 'fk_products_categories' => 26,
             ],
             [
@@ -1065,6 +1191,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Botella De Vino Tinto Elementos Syrah El Esteco De 750ml',
                 'price' => 4735,
                 'brand' => 'Elementos',
+                'stock' => '20',
                 'fk_products_categories' => 26,
             ],
             [
@@ -1073,6 +1200,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Vino Syrah 750ml Benjamin Vinos Varietales',
                 'price' => 6500,
                 'brand' => 'Nieto Senetiner',
+                'stock' => '20',
                 'fk_products_categories' => 26,
             ],
             [
@@ -1081,6 +1209,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Nieto Senetiner Vino Syrah 750ml',
                 'price' => 10000,
                 'brand' => 'Nieto Senetiner',
+                'stock' => '20',
                 'fk_products_categories' => 26,
             ],
             [
@@ -1089,6 +1218,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Champagne Trumpeter Brut Nature 750ml',
                 'price' => 9940,
                 'brand' => 'Trumpeter',
+                'stock' => '20',
                 'fk_products_categories' => 27,
             ],
             [
@@ -1097,6 +1227,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Espumante Cinzano Pro Spritz 750ml',
                 'price' => 7510,
                 'brand' => 'Cinzano',
+                'stock' => '20',
                 'fk_products_categories' => 27,
             ],
             [
@@ -1105,6 +1236,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Chandon Extra Brut 750ml',
                 'price' => 11799,
                 'brand' => 'Chandon',
+                'stock' => '20',
                 'fk_products_categories' => 27,
             ],
             [
@@ -1113,6 +1245,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Champagne Alta Vista Extra Brut 750ml',
                 'price' => 10763,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 27,
             ],
 
@@ -1126,6 +1259,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Vino Elementos Malbec 750ml',
                 'price' => 6600,
                 'brand' => 'Elementos',
+                'stock' => '20',
                 'fk_products_categories' => 28,
             ],
             [
@@ -1134,6 +1268,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Vino Portillo Malbec X 750ml',
                 'price' => 5499,
                 'brand' => 'Portillo',
+                'stock' => '20',
                 'fk_products_categories' => 28,
             ],
             [
@@ -1142,6 +1277,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Vino Tinto Trumpeter Malbec 750ml Botella Rutini Wines',
                 'price' => 7898,
                 'brand' => 'Trumpeter',
+                'stock' => '20',
                 'fk_products_categories' => 28,
             ],
             [
@@ -1150,6 +1286,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Vino Alma Mora Malbec X 750ml',
                 'price' => 6500,
                 'brand' => 'Alma Mora',
+                'stock' => '20',
                 'fk_products_categories' => 28,
             ],
             [
@@ -1158,6 +1295,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Vino Blanco Dilema Dulce Natural 750ml',
                 'price' => 6000,
                 'brand' => 'Dilema',
+                'stock' => '20',
                 'fk_products_categories' => 29,
             ],
             [
@@ -1166,6 +1304,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Norton Cosecha Tardia Vino Dulce 750ml',
                 'price' => 3692,
                 'brand' => 'Norton',
+                'stock' => '20',
                 'fk_products_categories' => 29,
             ],
             [
@@ -1174,6 +1313,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Vino Blanco Dulce 750ml Marlo Vinos Tradic',
                 'price' => 6590,
                 'brand' => 'Bianchi',
+                'stock' => '20',
                 'fk_products_categories' => 29,
             ],
             [
@@ -1182,6 +1322,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Vino Emilia Nieto Senetiner Dulce Moscatel 750ml',
                 'price' => 6590,
                 'brand' => 'Moscatel',
+                'stock' => '20',
                 'fk_products_categories' => 29,
             ],
             [
@@ -1190,6 +1331,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Cosecha Tardía Vino Rosado Dulce 750ml',
                 'price' => 5230,
                 'brand' => 'Norton',
+                'stock' => '20',
                 'fk_products_categories' => 30,
             ],
             [
@@ -1198,6 +1340,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Vino Emilia Malbec Rosé Dulce Natural 750ml',
                 'price' => 7150,
                 'brand' => 'Nieto Senetiner',
+                'stock' => '20',
                 'fk_products_categories' => 30,
             ],
             [
@@ -1206,6 +1349,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Vino Rosado Dilema 750ml',
                 'price' => 4800,
                 'brand' => 'Dilema',
+                'stock' => '20',
                 'fk_products_categories' => 30,
             ],
             [
@@ -1214,6 +1358,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Vino Trivento Reserve Malbec Rose',
                 'price' => 6000,
                 'brand' => 'Rose Malbec',
+                'stock' => '20',
                 'fk_products_categories' => 30,
             ],
             [
@@ -1222,6 +1367,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Vino Trumpeter Syrah 750ml',
                 'price' => 7500,
                 'brand' => 'Trumpeter',
+                'stock' => '20',
                 'fk_products_categories' => 31,
             ],
             [
@@ -1230,6 +1376,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Botella De Vino Tinto Elementos Syrah El Esteco De 750ml',
                 'price' => 4735,
                 'brand' => 'Elementos',
+                'stock' => '20',
                 'fk_products_categories' => 31,
             ],
             [
@@ -1238,6 +1385,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Vino Syrah 750ml Benjamin Vinos Varietales',
                 'price' => 6500,
                 'brand' => 'Nieto Senetiner',
+                'stock' => '20',
                 'fk_products_categories' => 31,
             ],
             [
@@ -1246,6 +1394,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Nieto Senetiner Vino Syrah 750ml',
                 'price' => 10000,
                 'brand' => 'Nieto Senetiner',
+                'stock' => '20',
                 'fk_products_categories' => 31,
             ],
             [
@@ -1254,6 +1403,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Champagne Trumpeter Brut Nature 750ml',
                 'price' => 9940,
                 'brand' => 'Trumpeter',
+                'stock' => '20',
                 'fk_products_categories' => 32,
             ],
             [
@@ -1262,6 +1412,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Espumante Cinzano Pro Spritz 750ml',
                 'price' => 7510,
                 'brand' => 'Cinzano',
+                'stock' => '20',
                 'fk_products_categories' => 32,
             ],
             [
@@ -1270,6 +1421,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Chandon Extra Brut 750ml',
                 'price' => 11799,
                 'brand' => 'Chandon',
+                'stock' => '20',
                 'fk_products_categories' => 32,
             ],
             [
@@ -1278,6 +1430,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Champagne Alta Vista Extra Brut 750ml',
                 'price' => 10763,
                 'brand' => 'N/A',
+                'stock' => '20',
                 'fk_products_categories' => 32,
             ],
 

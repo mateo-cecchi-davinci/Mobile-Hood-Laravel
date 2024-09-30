@@ -5,10 +5,8 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Order;
-use App\Models\Buisness;
 use App\Jobs\ProcessPayment;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 use App\Services\MercadoPagoService;
 
 class OrderController extends Controller
@@ -121,19 +119,9 @@ class OrderController extends Controller
         ]);
 
         $user = $this->getUser(intval($request->user));
-        //$buisness = $this->getBuisness(intval($request->buisness));
-
-        $location = [
-            'street_name' => 'Estados Unidos',
-            'street_number' => 972,
-            'city' => 'Buenos Aires',
-            'zip' => 'C1101AAT',
-            'details' => '',
-        ];
 
         $data = [
             'user' => $user,
-            'location' => $location,
             'product_data' => $request->cartProducts
         ];
 

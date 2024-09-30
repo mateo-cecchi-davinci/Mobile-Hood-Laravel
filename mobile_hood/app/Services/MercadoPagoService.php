@@ -39,15 +39,6 @@ class MercadoPagoService
                 ],
                 "payer" => [
                     "name" => $data['user']->email,
-                    "address" => [
-                        "zip_code" => $data['location']['zip'],
-                        "street_name" => $data['location']['street_name'],
-                        "street_number" => $data['location']['street_number'],
-                    ]
-                ],
-                "metadata" => [
-                    "city" => $data['location']['city'],
-                    "details" => $data['location']['details'],
                 ],
                 "auto_return" => "approved",
                 "notification_url" => "https://8b46-186-138-51-114.ngrok-free.app/mp_payment_notification",

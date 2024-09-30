@@ -62,11 +62,6 @@ class ProcessPayment implements ShouldQueue
 
                 $email = $data['additional_info']['payer']['first_name'];
                 $payment = $data['transaction_amount'];
-                // $street_name = $data['additional_info']['payer']['address']['street_name'];
-                // $street_number = $data['additional_info']['payer']['address']['street_number'];
-                // $zip_code = $data['additional_info']['payer']['address']['zip_code'];
-                // $city = $data['metadata']['city'];
-                // $details = $data['metadata']['details'];
 
                 $user = User::select('id')
                     ->where('is_active', true)
@@ -95,7 +90,7 @@ class ProcessPayment implements ShouldQueue
                         $order->products()->attach($product->id, ['amount' => $item['quantity']]);
 
                         // Update the product stock
-                        //$product->decrement('stock', $item['quantity']);
+                        $product->decrement('stock', $item['quantity']);
                         $product->save();
                     }
                 }
