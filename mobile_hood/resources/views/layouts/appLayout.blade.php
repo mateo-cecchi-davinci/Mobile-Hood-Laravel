@@ -29,7 +29,8 @@
 
 <body>
 
-    <nav class="d-flex d-lg-none sticky-top border-bottom bg-white justify-content-between align-items-center sm-nav">
+    <nav
+        class="d-flex d-lg-none border-bottom bg-white justify-content-between align-items-center sm-nav user-select-none">
         <a class="p-0 sm-logo-container" href="{{ route('home') }}">
             <img src="/img/logos/logo_circle.png" alt="mobile hood logo">
         </a>
@@ -38,7 +39,7 @@
         </a>
     </nav>
 
-    <nav class="navbar navbar-expand py-0 d-none d-lg-block border-bottom lg-nav">
+    <nav class="navbar navbar-expand py-0 d-none d-lg-block border-bottom lg-nav user-select-none bg-white">
         <div class="container-fluid">
             <a class="p-0 logo-container" href="{{ route('home') }}">
                 <img src="/img/logos/logo_circle.png" alt="mobile hood logo">
@@ -129,7 +130,7 @@
     @guest
     @else
         @if (Auth::user()->is_admin)
-            <div class="sidebar fixed-top">
+            <div class="sidebar fixed-top user-select-none">
                 <div class="profile">
                     <div class="logo_details pt-4">
                         <i class="bx bx-planet icon text-light"></i>
@@ -200,14 +201,31 @@
         @endif
     @endguest
 
-    <main>
+    <main class="user-select-none">
         @yield('content')
     </main>
 
-    <footer class="d-none d-lg-block lg-footer">
+    {{--    ARREGLAR LOS FORMULARIOS DE LAS ORDENES    --}}
+
+    @if (!empty($orders))
+        <form action="{{ route('user-orders') }}" method="POST">
+            @csrf
+            @foreach ($orders as $order)
+                <input type="hidden" name="orders[]" value="{{ $order['id'] }}">
+            @endforeach
+            <button type="submit" class="fw-semibold d-flex align-items-center order-link user-select-none border-0">
+                <h3 class="me-1 mb-0">
+                    Ir a mi pedido
+                </h3>
+                <i class="bx bx-chevrons-right fs-1 order-link-open-btn"></i>
+            </button>
+        </form>
+    @endif
+
+    <footer class="d-none d-lg-block lg-footer user-select-none">
         <div class="d-flex justify-content-between border-bottom border-light border-2 border-opacity-75 mb-4 pb-4">
             <div>
-                <img src="/img/logos/logo_circle.png" alt="">
+                <img src="/img/logos/logo_circle.png" alt="logo de mobile hood">
                 <h5 class="text-light">{{ __('messages.slogan') }}</h5>
             </div>
             <div class="d-flex align-items-center">
@@ -221,40 +239,49 @@
         <p class="text-light">{{ __('messages.rights') }}</p>
     </footer>
 
-    <footer class="sticky-bottom d-block d-lg-none p-4 bg-body-tertiary border-top top-shadow">
+    <footer class="sticky-bottom d-block d-lg-none p-3 pt-4 bg-body-tertiary border-top top-shadow user-select-none">
         <div class="d-flex justify-content-between align-items-center p-1 container">
-            <form method="GET" action="{{ route('home') }}" enctype="multipart/form-data">
+            <form method="GET" action="{{ route('home') }}">
                 @csrf
                 <button type="submit" class="border-0 bg-transparent text-dark fw-semibold opacity-75">
                     <div class="d-flex flex-column align-items-center">
-                        <i class="bx bx-user bx-fw fs-2 opacity-75 nav-icon mb-1"></i>
+                        <i class="bx bx-home bx-fw fs-2 nav-icon mb-1"></i>
                     </div>
                     Inicio
                 </button>
             </form>
-            <form method="GET" action="#" enctype="multipart/form-data">
+            <form method="GET" action="#">
                 @csrf
                 <button type="submit" class="border-0 bg-transparent text-dark fw-semibold opacity-75">
                     <div class="d-flex flex-column align-items-center">
-                        <i class="bx bx-user bx-fw fs-2 opacity-75 nav-icon mb-1"></i>
+                        <i class="bx bx-heart bx-fw fs-2 nav-icon mb-1"></i>
                     </div>
                     Mis favoritos
                 </button>
             </form>
-            <form method="GET" action="#" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('user-orders') }}">
                 @csrf
-                <button type="submit" class="border-0 bg-transparent text-dark fw-semibold opacity-75">
+                <button type="submit" class="border-0 bg-transparent text-dark fw-semibold position-relative">
                     <div class="d-flex flex-column align-items-center">
-                        <i class="bx bx-user bx-fw fs-2 opacity-75 nav-icon mb-1"></i>
+                        <i class="bx bx-detail bx-fw fs-2 opacity-75 nav-icon mb-1 opacity-75"></i>
                     </div>
-                    Pedidos
+                    <span class="opacity-75">Pedidos</span>
+                    @if (!empty($orders) > 0)
+                        <span
+                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger pt-1">
+                            {{ count($orders) }}+
+                        </span>
+                        @foreach ($orders as $order)
+                            <input type="hidden" name="orders[]" value="{{ $order['id'] }}">
+                        @endforeach
+                    @endif
                 </button>
             </form>
-            <form method="GET" action="{{ route('profile') }}" enctype="multipart/form-data">
+            <form method="GET" action="{{ route('profile') }}">
                 @csrf
                 <button type="submit" class="border-0 bg-transparent text-dark fw-semibold opacity-75">
                     <div class="d-flex flex-column align-items-center">
-                        <i class="bx bx-user bx-fw fs-2 opacity-75 nav-icon mb-1"></i>
+                        <i class="bx bx-user bx-fw fs-2 nav-icon mb-1"></i>
                     </div>
                     Mi perfil
                 </button>
@@ -264,6 +291,7 @@
 
     <script src="/js/components/sidebar.js"></script>
     <script src="https://unpkg.com/simplebar@latest/dist/simplebar.min.js"></script>
+    <script src="/js/components/inputs/searchBuisness.js"></script>
 
     @yield('scripts')
 </body>

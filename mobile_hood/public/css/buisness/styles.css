@@ -38,6 +38,10 @@
     outline: none;
 }
 
+.buisness-profile-content {
+    min-height: 400px;
+}
+
 .dropdown-menu {
     background-color: transparent !important;
     border-color: transparent !important;
@@ -73,8 +77,9 @@
     width: 320px;
     height: 72px;
     position: fixed;
-    top: -250px;
-    right: -850px;
+    z-index: 9999;
+    top: 50px;
+    right: 0;
     opacity: 0;
     transition:
         right 0.5s ease-in-out,
@@ -82,12 +87,12 @@
 }
 
 .toast-msg.show {
-    right: -800px;
+    right: 50px;
     opacity: 1;
 }
 
 .toast-msg.close {
-    right: -850px;
+    right: 0;
     opacity: 0;
 }
 

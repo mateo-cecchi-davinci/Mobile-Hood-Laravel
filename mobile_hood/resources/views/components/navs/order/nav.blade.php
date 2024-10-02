@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand bg-white p-0 pb-5">
+<nav class="navbar navbar-expand bg-white p-0 mb-5 border-bottom">
     <div class="d-flex align-items-center my-2 me-4">
         <form action="{{ route('buisness', ['buisness' => $buisness]) }}" method="POST">
             @csrf

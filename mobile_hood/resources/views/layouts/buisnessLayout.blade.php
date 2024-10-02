@@ -48,6 +48,8 @@
         'productsByCategory' => $productsByCategory,
     ])
 
+    <div id="toastContainer"></div>
+
     <footer class="lg-footer d-none d-xl-block">
         <div class="d-flex justify-content-between border-bottom border-light border-2 border-opacity-75 mb-4 pb-4">
             <div>

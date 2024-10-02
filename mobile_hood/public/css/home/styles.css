@@ -31,3 +31,18 @@
 .icon {
     padding-top: 0.1rem;
 }
+
+.search-input,
+.search-btn-container {
+    height: 3rem;
+}
+
+.sm-search-btn {
+    background-color: #e31010;
+    width: 2rem;
+    height: 2rem;
+}
+
+.search-input:focus {
+    outline: none;
+}

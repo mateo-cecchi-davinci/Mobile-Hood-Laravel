@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="buisness-header">
+
         <div class="header text-light">
             <h3>{{ $buisness['name'] }}</h3>
             <p class="pointer mb-1" data-bs-toggle="modal" data-bs-target="#infoModal">
@@ -27,11 +28,11 @@
     <div id="loader-container">
         <video id="loaderVideo" autoplay muted loop>
             <source src="/loader/loader.webm" type="video/mp4">
-            Your browser does not support the video tag.
+            Error
         </video>
     </div>
 
-    <div class="row w-100 m-auto p-5 justify-content-center">
+    <div class="row w-100 m-auto p-5 justify-content-center buisness-profile-content">
         <div class="col col-xl-3 d-none d-xl-block">
             <div class="card p-4 shadow">
                 <div id="btn-categories" class="d-flex align-items-center pointer">

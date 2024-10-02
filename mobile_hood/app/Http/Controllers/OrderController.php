@@ -6,14 +6,16 @@ use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Order;
 use App\Jobs\ProcessPayment;
+use App\Models\Buisness;
 use Illuminate\Http\Request;
 use App\Services\MercadoPagoService;
 
 class OrderController extends Controller
 {
+    private $mercadoPagoService;
     protected $orders;
     protected $users;
-    private $mercadoPagoService;
+    protected $maps;
 
     public function __construct(MercadoPagoService $mercadoPagoService)
     {
@@ -21,6 +23,7 @@ class OrderController extends Controller
         $this->orders = Order::where('is_active', true)->with('products')->get();
         $this->users = User::where('is_active', true)->get();
         $this->mercadoPagoService = $mercadoPagoService;
+        $this->maps = config('googlemaps.maps');
     }
 
     /**
@@ -145,5 +148,26 @@ class OrderController extends Controller
         ProcessPayment::dispatchSync($request->all());
 
         return response()->json(['status' => 'success'], 200);
+    }
+
+    public function userOrders(Request $request)
+    {
+        $request->validate([
+            'buisness' => 'required',
+            'orders' => 'array'
+        ]);
+
+        $buisness = $this->getBuisness(intval($request->buisness));
+
+        return view('orders', [
+            'orders' => $request->orders,
+            'buisness' => $buisness,
+            'maps' => $this->maps
+        ]);
+    }
+
+    private function getBuisness($buisness)
+    {
+        return Buisness::firstWhere(['is_active' => true, 'id' => $buisness]);
     }
 }

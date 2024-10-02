@@ -50,8 +50,10 @@ Route::get('/profile', function () {
 Route::post('/buisness', [HomeController::class, 'buisness'])->name('buisness');
 
 Route::get('/filter-products', [HomeController::class, 'filterProducts']);
+Route::get('/filter-buisnesses', [HomeController::class, 'filterBuisnesses']);
 Route::post('/add-products', [CartController::class, 'addProducts']);
 Route::post('/delete-cart-products', [CartController::class, 'delete']);
 Route::post('/order', [OrderController::class, 'order'])->name('order');
+Route::post('/user-orders', [OrderController::class, 'userOrders'])->name('user-orders');
 
 Route::post('/mp_payment_notification', [OrderController::class, 'mp_payment_notification'])->name('mp_payment_notification');

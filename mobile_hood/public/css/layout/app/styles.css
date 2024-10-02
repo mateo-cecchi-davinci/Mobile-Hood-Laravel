@@ -2,6 +2,14 @@
     flex-grow: 0 !important;
 } */
 
+body {
+    height: 100vh;
+}
+
+#buisnesses {
+    min-height: 500px;
+}
+
 .nav-icon {
     padding-left: 0.1rem;
 }
@@ -56,6 +64,25 @@
 .lg-footer {
     background-color: #e31010;
     padding: 2% 15%;
+}
+
+.order-link {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    max-width: fit-content;
+    border-top-left-radius: 1.25rem;
+    padding: 24px 34px;
+    background-color: #ffba3b;
+    box-shadow: 0px -1px 25px -5px rgba(0, 0, 0, 0.47);
+    -webkit-box-shadow: 0px -1px 25px -5px rgba(0, 0, 0, 0.47);
+    -moz-box-shadow: 0px -1px 25px -5px rgba(0, 0, 0, 0.47);
+}
+
+@media (max-width: 992px) {
+    .order-link {
+        display: none;
+    }
 }
 
 @media (min-width: 576px) {

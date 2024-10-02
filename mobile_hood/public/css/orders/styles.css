@@ -1,0 +1,68 @@
+body {
+    height: 100vh;
+    overflow: hidden;
+}
+
+@media (max-height: 768px) and (min-height: 413px) {
+    body {
+        height: 768px;
+        overflow: scroll !important;
+    }
+
+    .order-state {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0;
+    }
+}
+
+@media (max-height: 412px) {
+    body {
+        height: 768px;
+        overflow: scroll !important;
+    }
+
+    .order-state {
+        position: fixed !important;
+        bottom: 0 !important;
+        right: 0 !important;
+    }
+}
+
+@media (max-width: 412px) {
+    .order-state {
+        position: fixed !important;
+        bottom: 0 !important;
+        width: 100%;
+    }
+}
+
+.logo-container {
+    width: 52px;
+    height: auto;
+}
+
+.order-state {
+    background-color: #e31010;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    position: absolute;
+    bottom: 0;
+}
+
+.sm-font {
+    font-size: 12px;
+}
+
+.icons {
+    color: #e31010;
+}
+
+.time {
+    transition: transform ease;
+    left: 0;
+}
+
+.move {
+    transform: translateX(81%);
+}

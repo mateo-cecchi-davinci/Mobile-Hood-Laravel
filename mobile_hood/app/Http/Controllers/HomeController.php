@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Product;
 use App\Models\Buisness;
 use App\Models\Category;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -34,8 +35,15 @@ class HomeController extends Controller
      */
     public function index()
     {
+        if (auth()->user()) {
+            $orders = $this->getUserOrders(auth()->user()->id);
+        } else {
+            $orders = [];
+        }
+
         return view('home', [
             'buisnesses' => $this->buisnesses,
+            'orders' => $orders
         ]);
     }
 
@@ -128,12 +136,33 @@ class HomeController extends Controller
                     $productsByCategory[$category->name] = $products;
                 }
             }
+
+            if (empty($productsByCategory)) {
+                session()->flash('toast');
+            }
         }
 
         return view('components.products', [
             'buisness' => $buisness,
             'query' => $query,
             'productsByCategory' => $productsByCategory
+        ]);
+    }
+
+    public function filterBuisnesses(Request $request)
+    {
+        $query = $request->input('query');
+
+        if (empty($query)) {
+            $buisnesses = $this->buisnesses;
+            //mostrar toast
+        } else {
+            $buisnesses = $this->getFilteredBuisnesses($query);
+        }
+
+        return view('components.buisnesses', [
+            'buisnesses' => $buisnesses,
+            'query' => $query
         ]);
     }
 
@@ -147,6 +176,11 @@ class HomeController extends Controller
         return Product::where(['is_active' => true, 'fk_products_categories' => $category->id])->where('model', 'like', "%{$query}%")->get();
     }
 
+    private function getFilteredBuisnesses($query)
+    {
+        return Buisness::where('is_active', true)->where('name', 'like', "%{$query}%")->get();
+    }
+
     private function getCartProducts(User $user, $buisnessId)
     {
         return Cart::select('fk_carts_users', 'fk_carts_products', DB::raw('SUM(quantity) as quantity'))
@@ -157,5 +191,10 @@ class HomeController extends Controller
             ->groupBy('fk_carts_users', 'fk_carts_products')
             ->with(['product'])
             ->get()->toArray();
+    }
+
+    private function getUserOrders($user)
+    {
+        return Order::select('id')->where(['fk_orders_users' => $user, 'state' => 'Pendiente'])->get()->toArray();
     }
 }
