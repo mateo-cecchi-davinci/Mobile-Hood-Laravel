@@ -38,6 +38,9 @@
     </nav>
 
     <div class="d-flex h-100">
+        <div id="buisnessLat" class="d-none">{{ $buisness->location->lat }}</div>
+        <div id="buisnessLng" class="d-none">{{ $buisness->location->lng }}</div>
+        <div id="orderTime" class="d-none">{{ $order->created_at }}</div>
         <div id="map" class="w-100 h-100">
 
         </div>
@@ -45,7 +48,11 @@
             <h3 class="fw-medium">Preparando tu orden...</h3>
             <div class="d-flex align-items-center mb-3">
                 <p class="m-0 sm-font me-1 fw-light">El pedido estará listo entre</p>
-                <p class="m-0">11:23 PM - 12:01 AM</p>
+                <p class="m-0">
+                    {{ \Carbon\Carbon::parse($order->created_at)->addMinutes(5)->format('h:i A') }}
+                    {{ ' - ' }}
+                    {{ \Carbon\Carbon::parse($order->created_at)->addMinutes(10)->format('h:i A') }}
+                </p>
             </div>
             <div class="d-flex align-items-center icons mb-3">
                 <i class="bx bx-store bx-border-circle bx-sm bg-light"></i>
@@ -67,33 +74,10 @@
     </div>
 </body>
 
-<script>
-    function moveIcon(startTime, endTime) {
-        const icon = document.querySelector('.time');
-        const start = new Date(startTime).getTime();
-        const end = new Date(endTime).getTime();
-        const remainingDuration = end - start;
-
-        if (remainingDuration > 0) {
-            icon.style.transitionDuration = remainingDuration + 'ms';
-
-            setTimeout(() => {
-                icon.classList.add('move');
-            }, 0);
-        }
-    }
-
-    const now = new Date();
-    const startTime = new Date(now.getTime()).toISOString();
-    const endTime = new Date(now.getTime() + 1 * 60 * 1000).toISOString();
-
-    moveIcon(startTime, endTime);
-</script>
-
+<script src="/js/components/prepearingOrder.js"></script>
 <script
     src="https://maps.googleapis.com/maps/api/js?key={{ $maps }}&libraries=directions&callback=initMap&libraries=marker"
     async defer></script>
-
 <script src="/js/Google/order.js"></script>
 
 </html>

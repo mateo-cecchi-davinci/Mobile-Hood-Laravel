@@ -2,6 +2,8 @@ let map;
 let marker = null;
 let lat, lng;
 
+const buisnessLat = document.getElementById("buisnessLat").innerHTML;
+const buisnessLng = document.getElementById("buisnessLng").innerHTML;
 const mapElement = document.getElementById("map");
 
 const userMarker = document.createElement("img");
@@ -13,7 +15,7 @@ businessMarker.src = "/img/markers/r/store_marker.png";
 function initMap() {
     var mapOptions = {
         center: new google.maps.LatLng(-34.6156548, -58.5156988),
-        zoom: 13,
+        zoom: 5,
         zoomControl: false,
         streetViewControl: false,
         mapId: "49efa54119f3fb2a",
@@ -29,9 +31,7 @@ function initMap() {
     map.setCenter(origin);
     addUserMarker(origin);
 
-    lat = -34.449658;
-    lng = -58.55447;
-    var destination = new google.maps.LatLng(lat, lng);
+    var destination = new google.maps.LatLng(buisnessLat, buisnessLng);
 
     addBusinessMarker(destination);
 

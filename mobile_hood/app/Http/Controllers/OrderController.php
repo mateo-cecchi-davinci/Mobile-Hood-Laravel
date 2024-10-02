@@ -158,9 +158,23 @@ class OrderController extends Controller
             'orders.*' => 'regex:/^[0-9]+$/'
         ]);
 
+        $order = $this->getOrder(intval($request->orders[0]));
+        $buisness = $this->getBuisness($order->buisness_id);
+
         return view('orders', [
-            'orders' => $request->orders,
+            'order' => $order,
+            'buisness' => $buisness,
             'maps' => $this->maps
         ]);
+    }
+
+    private function getOrder($order)
+    {
+        return Order::firstWhere(['id' => $order, 'state' => 'Pendiente', 'is_active' => true]);
+    }
+
+    private function getBuisness($buisness)
+    {
+        return Buisness::where(['id' => $buisness, 'is_active' => true])->with(['location'])->first();
     }
 }
