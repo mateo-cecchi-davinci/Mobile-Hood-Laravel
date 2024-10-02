@@ -125,7 +125,8 @@ class OrderController extends Controller
 
         $data = [
             'user' => $user,
-            'product_data' => $request->cartProducts
+            'product_data' => $request->cartProducts,
+            'buisness' => intval($request->buisness)
         ];
 
         $preference = $this->mercadoPagoService->createPreference($data);
@@ -153,21 +154,13 @@ class OrderController extends Controller
     public function userOrders(Request $request)
     {
         $request->validate([
-            'buisness' => 'required',
-            'orders' => 'array'
+            'orders' => 'array',
+            'orders.*' => 'regex:/^[0-9]+$/'
         ]);
-
-        $buisness = $this->getBuisness(intval($request->buisness));
 
         return view('orders', [
             'orders' => $request->orders,
-            'buisness' => $buisness,
             'maps' => $this->maps
         ]);
-    }
-
-    private function getBuisness($buisness)
-    {
-        return Buisness::firstWhere(['is_active' => true, 'id' => $buisness]);
     }
 }

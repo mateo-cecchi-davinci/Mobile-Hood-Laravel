@@ -155,7 +155,6 @@ class HomeController extends Controller
 
         if (empty($query)) {
             $buisnesses = $this->buisnesses;
-            //mostrar toast
         } else {
             $buisnesses = $this->getFilteredBuisnesses($query);
         }

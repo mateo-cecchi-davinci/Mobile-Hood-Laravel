@@ -15,6 +15,7 @@ class Order extends Model
         'created_at',
         'updated_at',
         'is_active',
+        'buisness_id',
     ];
 
     public function user()

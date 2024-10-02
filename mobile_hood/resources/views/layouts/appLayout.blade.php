@@ -205,8 +205,6 @@
         @yield('content')
     </main>
 
-    {{--    ARREGLAR LOS FORMULARIOS DE LAS ORDENES    --}}
-
     @if (!empty($orders))
         <form action="{{ route('user-orders') }}" method="POST">
             @csrf

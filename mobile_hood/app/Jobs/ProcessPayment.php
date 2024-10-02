@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use Carbon\Carbon;
+use App\Models\Cart;
 use App\Models\User;
 use App\Models\Order;
 use GuzzleHttp\Client;
@@ -62,6 +63,7 @@ class ProcessPayment implements ShouldQueue
 
                 $email = $data['additional_info']['payer']['first_name'];
                 $payment = $data['transaction_amount'];
+                $buisness = $data['metadata']['buisness'];
 
                 $user = User::select('id')
                     ->where('is_active', true)
@@ -75,6 +77,7 @@ class ProcessPayment implements ShouldQueue
                 $order->payment = $payment;
                 $current_date_time = Carbon::now()->toDateTimeString();
                 $order->created_at = $current_date_time;
+                $order->buisness_id = $buisness;
 
                 $order->save();
 
@@ -92,6 +95,12 @@ class ProcessPayment implements ShouldQueue
                         // Update the product stock
                         $product->decrement('stock', $item['quantity']);
                         $product->save();
+                    }
+
+                    $carts = Cart::where(['fk_carts_users' => $user['id'], 'fk_carts_products' => $product->id])->get();
+
+                    foreach ($carts as $cart) {
+                        $cart->delete();
                     }
                 }
             } catch (RequestException $e) {
