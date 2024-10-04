@@ -117,7 +117,7 @@
                                 </button>
                                 <input type="hidden" name="user"
                                     value="{{ Auth::check() ? Auth::user()->id : '' }}">
-                                <input type="hidden" name="buisness" value="{{ $buisness['id'] }}">
+                                <input type="hidden" name="business" value="{{ $business['id'] }}">
                                 <input type="hidden" name="quantity" id="quantity-{{ $product['id'] }}"
                                     value="1">
                                 <input type="hidden" name="productsByCategory"

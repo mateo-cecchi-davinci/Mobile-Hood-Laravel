@@ -1,5 +1,5 @@
 <form class="d-flex align-items-center rounded-1 border bg-white" style="max-width: 520px;">
-    <input type="hidden" name="buisness" id="buisnessId" value="{{ $id }}">
+    <input type="hidden" name="business" id="businessId" value="{{ $id }}">
     <input id="search-input" type="text" name="query" class="search-input border-0 rounded-start-1 w-100 ps-2"
         placeholder="Buscar productos...">
     <div class="search-btn-container bg-white rounded-end-1">

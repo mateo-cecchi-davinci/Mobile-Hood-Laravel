@@ -16,12 +16,12 @@
         ])
 
         @include('components.cart.continueButton', [
-            'buisness' => $buisness,
+            'business' => $business,
             'cartProducts' => $cartProducts,
         ])
 
         @include('components.cart.deleteButton', [
-            'buisness' => $buisness,
+            'business' => $business,
             'cartProducts' => $cartProducts,
         ])
     @endif
@@ -50,10 +50,10 @@
                 </div>
                 <div class="d-flex align-items-center shadow-sm mb-3 px-4">
                     <div class="sm-img border rounded-2 me-4">
-                        <img class="rounded-2 img-fluid" src="storage/{{ $buisness['logo'] }}" alt="logo del negocio">
+                        <img class="rounded-2 img-fluid" src="storage/{{ $business['logo'] }}" alt="logo del negocio">
                     </div>
                     <div>
-                        <p class="m-0 fw-semibold">{{ $buisness['name'] }}</p>
+                        <p class="m-0 fw-semibold">{{ $business['name'] }}</p>
                         <p class="m-0 opacity-75">30 - 45 min | $1.669 envío | Mínimo $5.799</p>
                     </div>
                 </div>
@@ -74,11 +74,11 @@
                 </div>
                 <div class="modal-btns-container">
                     @include('components.cart.continueButton', [
-                        'buisness' => $buisness,
+                        'business' => $business,
                         'cartProducts' => $cartProducts,
                     ])
                     @include('components.cart.deleteButton', [
-                        'buisness' => $buisness,
+                        'business' => $business,
                         'cartProducts' => $cartProducts,
                     ])
                 </div>

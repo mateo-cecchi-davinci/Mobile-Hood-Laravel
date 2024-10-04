@@ -1,0 +1,181 @@
+.business-header {
+    width: 100%;
+    height: 14.375rem;
+    background-image: url("https://pedidosya.dhmedia.io/image/pedidosya/profile-headers/portada-mostaza-07-23-jpg.jpg?quality=70&width=1440&webp=1");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.header {
+    width: 100%;
+    height: 14.375rem;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(0, 0, 0, 0.8015581232492998) 100%
+    );
+    padding: 4.375rem 4% 0;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.search-input,
+.search-btn-container {
+    height: 3rem;
+}
+
+.sm-search-btn {
+    background-color: #e31010;
+    width: 2rem;
+    height: 2rem;
+}
+
+.search-input:focus {
+    outline: none;
+}
+
+.business-profile-content {
+    min-height: 400px;
+}
+
+.dropdown-menu {
+    background-color: transparent !important;
+    border-color: transparent !important;
+    position: static !important;
+    transform: none !important;
+}
+
+.icon {
+    font-size: xx-large;
+}
+
+.product-img-container {
+    width: max(5vw, 5.125rem);
+    height: auto;
+}
+
+.line {
+    border-right: 1px solid rgb(234, 227, 227);
+    width: auto;
+    height: 1.875rem;
+    margin: 0 15px;
+}
+
+.scroll-container {
+    width: 100%;
+    overflow: hidden;
+    text-wrap: nowrap;
+    user-select: none;
+    cursor: pointer;
+}
+
+.toast-msg {
+    width: 320px;
+    height: 72px;
+    position: fixed;
+    z-index: 9999;
+    top: 50px;
+    right: 0;
+    opacity: 0;
+    transition:
+        right 0.5s ease-in-out,
+        opacity 0.5s ease-in-out;
+}
+
+.toast-msg.show {
+    right: 50px;
+    opacity: 1;
+}
+
+.toast-msg.close {
+    right: 0;
+    opacity: 0;
+}
+
+.lg-icon {
+    font-size: x-large;
+}
+
+.close-icon {
+    font-size: xx-large;
+    cursor: pointer;
+}
+
+.sticky-card {
+    position: sticky !important;
+    top: 4.75rem;
+    z-index: 1030;
+}
+
+.btn-order {
+    background-color: #e31010;
+    padding: 0.875rem 0;
+}
+
+.modal-btns-container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 0 1.25rem 1.25rem;
+}
+
+.modal-product-img {
+    width: 40%;
+    height: auto;
+}
+
+.sm-modal-product-img {
+    width: 60%;
+    height: auto;
+}
+
+.modal-header {
+    border-bottom: none !important;
+}
+
+.btn-add-order {
+    background-color: #e31010;
+}
+
+.amount {
+    width: 25px;
+}
+
+.quantity {
+    width: 20px;
+    text-align: center;
+}
+
+@media (max-width: 575px) {
+    .row > * {
+        padding-left: 0 !important;
+    }
+
+    .product-modal-footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+}
+
+#loader-container {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+#loaderVideo {
+    width: max(14vw, 13.75rem);
+    height: auto;
+}

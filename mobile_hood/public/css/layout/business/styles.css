@@ -1,0 +1,138 @@
+.logo-container {
+    width: 3.125rem;
+    height: auto;
+}
+
+.logo-container img {
+    width: 100%;
+    height: auto;
+}
+
+.logo-container-2 {
+    width: 3.75rem;
+    height: auto;
+}
+
+.logo-container-2 img {
+    width: 100%;
+    height: auto;
+}
+
+#map {
+    width: 100%;
+    height: 7rem;
+    transition: height 0.5s ease-in-out;
+}
+
+.map-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.gm-style-mtc-bbw,
+.gm-fullscreen-control,
+.gmnoprint {
+    display: none;
+}
+
+.modal-logo-container {
+    width: 100px;
+    height: auto;
+}
+
+.rating {
+    background-color: #ebf0ca;
+    color: #657d02;
+    font-size: 0.75rem;
+}
+
+.lg-footer {
+    background-color: #e31010;
+    padding: 2% 15%;
+}
+
+.iUDdTV {
+    flex-wrap: wrap;
+    margin-bottom: 26px;
+}
+
+.bmrUML {
+    display: flex;
+}
+
+.hJzIXA {
+    width: 50px;
+    border-radius: 6px;
+    margin-right: 20px;
+    margin-bottom: 16px;
+    height: 30px;
+}
+
+.iUDdTV img {
+    border-style: none;
+}
+
+.second-nav {
+    position: fixed;
+    top: 0;
+    opacity: 0;
+    z-index: -1;
+    transition:
+        opacity 0.3s ease-in-out,
+        z-index 0.3s ease-in-out;
+}
+
+.nav-sm-business-name {
+    flex: 1 1 0%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: relative;
+    text-align: center;
+    z-index: 0;
+    max-width: 70%;
+    margin: 0px auto;
+}
+
+.sm-nav {
+    max-width: 100%;
+    padding: 0 4% 0.625rem;
+    overflow: hidden;
+}
+
+.search-border {
+    border: 1px solid #dee2e6;
+}
+
+.search-border:hover {
+    border: 1px solid #212529;
+}
+
+.sm-font {
+    font-size: 0.75rem;
+}
+
+.edit-check {
+    width: 20px;
+    height: 20px;
+}
+
+.cart-nav {
+    padding: 20px 24px;
+}
+
+.btn-cart-nav {
+    background-color: #e31010;
+    height: 50px;
+}
+
+.sm-img {
+    width: 2.375rem;
+    height: auto;
+}

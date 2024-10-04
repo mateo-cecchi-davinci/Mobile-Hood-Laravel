@@ -1438,7 +1438,7 @@ class ProductSeeder extends Seeder
         ]);
 
         $products = Product::whereHas('category', function ($query) {
-            $query->where('fk_categories_buisnesses', 1);
+            $query->where('fk_categories_businesses', 1);
         })->get();
 
 
@@ -1452,7 +1452,7 @@ class ProductSeeder extends Seeder
         }
 
         $products = Product::whereHas('category', function ($query) {
-            $query->where('fk_categories_buisnesses', 2);
+            $query->where('fk_categories_businesses', 2);
         })->get();
 
 
@@ -1466,7 +1466,7 @@ class ProductSeeder extends Seeder
         }
 
         $products = Product::whereHas('category', function ($query) {
-            $query->where('fk_categories_buisnesses', 3);
+            $query->where('fk_categories_businesses', 3);
         })->get();
 
 
@@ -1480,7 +1480,7 @@ class ProductSeeder extends Seeder
         }
 
         $products = Product::whereHas('category', function ($query) {
-            $query->where('fk_categories_buisnesses', 4);
+            $query->where('fk_categories_businesses', 4);
         })->get();
 
 
@@ -1494,7 +1494,7 @@ class ProductSeeder extends Seeder
         }
 
         $products = Product::whereHas('category', function ($query) {
-            $query->where('fk_categories_buisnesses', 5);
+            $query->where('fk_categories_businesses', 5);
         })->get();
 
 
@@ -1508,7 +1508,7 @@ class ProductSeeder extends Seeder
         }
 
         $products = Product::whereHas('category', function ($query) {
-            $query->where('fk_categories_buisnesses', 6);
+            $query->where('fk_categories_businesses', 6);
         })->get();
 
 

@@ -90,7 +90,7 @@ function deleteSelectedProducts(event) {
         return;
     }
 
-    const buisness = this.querySelector('input[name="buisness"]').value;
+    const business = this.querySelector('input[name="business"]').value;
     const cartProducts = JSON.parse(
         this.querySelector('input[name="cartProducts"]').value,
     );
@@ -103,7 +103,7 @@ function deleteSelectedProducts(event) {
         },
         body: JSON.stringify({
             user: userId,
-            buisness: buisness,
+            business: business,
             cartProducts: cartProducts,
             products: products,
         }),

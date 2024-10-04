@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\User;
 use App\Models\Product;
-use App\Models\Buisness;
+use App\Models\Business;
 use App\Models\Category;
 use App\Models\Order;
 use Illuminate\Http\Request;
@@ -19,12 +19,12 @@ class HomeController extends Controller
      * @return void
      */
 
-    protected $buisnesses;
+    protected $businesses;
     protected $maps;
 
     public function __construct()
     {
-        $this->buisnesses = Buisness::where('is_active', true)->with(['location', 'hours'])->get();
+        $this->businesses = Business::where('is_active', true)->with(['location', 'hours'])->get();
         $this->maps = config('googlemaps.maps');
     }
 
@@ -42,19 +42,19 @@ class HomeController extends Controller
         }
 
         return view('home', [
-            'buisnesses' => $this->buisnesses,
+            'businesses' => $this->businesses,
             'orders' => $orders
         ]);
     }
 
-    public function buisness(Request $request)
+    public function business(Request $request)
     {
         $request->validate([
-            'buisness' => 'required|integer',
+            'business' => 'required|integer',
         ]);
 
-        $buisnessModel = $this->buisnesses->firstWhere('id', $request->buisness);
-        $buisness = $this->buisnesses->firstWhere('id', $request->buisness)->toArray();
+        $businessModel = $this->businesses->firstWhere('id', $request->business);
+        $business = $this->businesses->firstWhere('id', $request->business)->toArray();
 
         $dayIndex = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
         $days = [
@@ -67,7 +67,7 @@ class HomeController extends Controller
             'saturday' => 'Sábado'
         ];
 
-        $categories = $this->getChildCategories($buisness);
+        $categories = $this->getCategoriesWithProducts($business);
         $productsByCategory = [];
 
         foreach ($categories as $category) {
@@ -78,9 +78,9 @@ class HomeController extends Controller
         $cartProducts = [];
 
         if (auth()->check()) {
-            foreach ($productsByCategory as $categoryName => $products) {
+            foreach ($productsByCategory as $products) {
                 foreach ($products as $product) {
-                    $cartProductsArray = $this->getCartProducts(auth()->user(), $buisness['id']);
+                    $cartProductsArray = $this->getCartProducts(auth()->user(), $business['id']);
 
                     $cartProduct = collect($cartProductsArray)
                         ->firstWhere('fk_carts_products', $product['id']);
@@ -92,9 +92,9 @@ class HomeController extends Controller
             }
         }
 
-        return view('buisness', [
-            'buisnessModel' => $buisnessModel,
-            'buisness' => $buisness,
+        return view('business', [
+            'businessModel' => $businessModel,
+            'business' => $business,
             'maps' => $this->maps,
             'dayIndex' => $dayIndex,
             'days' => $days,
@@ -104,9 +104,9 @@ class HomeController extends Controller
         ]);
     }
 
-    private function getChildCategories($buisness)
+    private function getCategoriesWithProducts($business)
     {
-        return Category::where(['is_active' => true, 'fk_categories_buisnesses' => $buisness['id']])->whereHas('products')->get();
+        return Category::where(['is_active' => true, 'fk_categories_businesses' => $business['id']])->whereHas('products')->get();
     }
 
     private function getProducts(Category $category)
@@ -117,11 +117,11 @@ class HomeController extends Controller
     public function filterProducts(Request $request)
     {
         $query = $request->input('query');
-        $buisnessId = $request->input('buisness');
+        $businessId = $request->input('business');
 
-        $buisness = $this->getBuisness($buisnessId)->toArray();
+        $business = $this->getBusiness($businessId)->toArray();
 
-        $categories = $this->getChildCategories($buisness);
+        $categories = $this->getCategoriesWithProducts($business);
         $productsByCategory = [];
 
         if (empty($query)) {
@@ -143,31 +143,31 @@ class HomeController extends Controller
         }
 
         return view('components.products', [
-            'buisness' => $buisness,
+            'business' => $business,
             'query' => $query,
             'productsByCategory' => $productsByCategory
         ]);
     }
 
-    public function filterBuisnesses(Request $request)
+    public function filterBusinesses(Request $request)
     {
         $query = $request->input('query');
 
         if (empty($query)) {
-            $buisnesses = $this->buisnesses;
+            $businesses = $this->businesses;
         } else {
-            $buisnesses = $this->getFilteredBuisnesses($query);
+            $businesses = $this->getFilteredBusinesses($query);
         }
 
-        return view('components.buisnesses', [
-            'buisnesses' => $buisnesses,
+        return view('components.businesses', [
+            'businesses' => $businesses,
             'query' => $query
         ]);
     }
 
-    private function getBuisness($buisnessId)
+    private function getBusiness($businessId)
     {
-        return Buisness::firstwhere(['is_active' => true, 'id' => $buisnessId]);
+        return Business::firstwhere(['is_active' => true, 'id' => $businessId]);
     }
 
     private function getFilteredProducts(Category $category, $query)
@@ -175,18 +175,18 @@ class HomeController extends Controller
         return Product::where(['is_active' => true, 'fk_products_categories' => $category->id])->where('model', 'like', "%{$query}%")->get();
     }
 
-    private function getFilteredBuisnesses($query)
+    private function getFilteredBusinesses($query)
     {
-        return Buisness::where('is_active', true)->where('name', 'like', "%{$query}%")->get();
+        return Business::where('is_active', true)->where('name', 'like', "%{$query}%")->get();
     }
 
-    private function getCartProducts(User $user, $buisnessId)
+    private function getCartProducts(User $user, $businessId)
     {
         return Cart::select('fk_carts_users', 'fk_carts_products', DB::raw('SUM(quantity) as quantity'))
             ->join('products', 'carts.fk_carts_products', '=', 'products.id')
             ->join('categories', 'products.fk_products_categories', '=', 'categories.id')
             ->where('fk_carts_users', $user->id)
-            ->where('categories.fk_categories_buisnesses', $buisnessId)
+            ->where('categories.fk_categories_businesses', $businessId)
             ->groupBy('fk_carts_users', 'fk_carts_products')
             ->with(['product'])
             ->get()->toArray();

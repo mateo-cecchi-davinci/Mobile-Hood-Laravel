@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
                 'email' => 'cecchimateo@gmail.com',
                 'phone' => '1123456734',
                 'password' => bcrypt('12345678'),
-                'is_manager' => false,
+                'is_partner' => false,
                 'is_admin' => true,
             ],
             [
@@ -30,7 +30,7 @@ class UserSeeder extends Seeder
                 'email' => 'pepeojeda@gmail.com',
                 'phone' => '12345678',
                 'password' => bcrypt('12345678'),
-                'is_manager' => true,
+                'is_partner' => true,
                 'is_admin' => false,
             ],
             [
@@ -39,7 +39,7 @@ class UserSeeder extends Seeder
                 'email' => 'danielmolina@gmail.com',
                 'phone' => '12345678',
                 'password' => bcrypt('12345678'),
-                'is_manager' => true,
+                'is_partner' => true,
                 'is_admin' => false,
             ],
             [
@@ -48,7 +48,7 @@ class UserSeeder extends Seeder
                 'email' => 'pacoperez@gmail.com',
                 'phone' => '12345678',
                 'password' => bcrypt('12345678'),
-                'is_manager' => true,
+                'is_partner' => true,
                 'is_admin' => false,
             ],
             [
@@ -57,7 +57,7 @@ class UserSeeder extends Seeder
                 'email' => 'loloayala@gmail.com',
                 'phone' => '1123456734',
                 'password' => bcrypt('12345678'),
-                'is_manager' => true,
+                'is_partner' => true,
                 'is_admin' => false,
             ],
             [
@@ -66,7 +66,7 @@ class UserSeeder extends Seeder
                 'email' => 'juanugarte@gmail.com',
                 'phone' => '1123456734',
                 'password' => bcrypt('12345678'),
-                'is_manager' => true,
+                'is_partner' => true,
                 'is_admin' => false,
             ],
             [
@@ -75,7 +75,7 @@ class UserSeeder extends Seeder
                 'email' => 'pedrocontreras@gmail.com',
                 'phone' => '12345678',
                 'password' => bcrypt('12345678'),
-                'is_manager' => true,
+                'is_partner' => true,
                 'is_admin' => false,
             ],
             [
@@ -84,7 +84,7 @@ class UserSeeder extends Seeder
                 'email' => 'agusrisso@gmail.com',
                 'phone' => '12345678',
                 'password' => bcrypt('12345678'),
-                'is_manager' => false,
+                'is_partner' => false,
                 'is_admin' => false,
             ]
         ]);

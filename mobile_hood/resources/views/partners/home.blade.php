@@ -27,7 +27,7 @@
                                     placeholder="{{ __('messages.name') }} *">
                                 <input type="text" name="lastname" class="form-control mb-3 py-3"
                                     placeholder="{{ __('messages.lastname') }} *">
-                                <select name="buisness_category[]" class="form-select mb-3 py-3">
+                                <select name="business_category[]" class="form-select mb-3 py-3">
                                     <option value="" selected>{{ __('messages.select_category') }}</option>
                                     <option value="butcher_shop">{{ __('messages.butcher_shop') }}</option>
                                     <option value="grocery_store">{{ __('messages.grocery_store') }}

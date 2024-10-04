@@ -63,7 +63,7 @@ class ProcessPayment implements ShouldQueue
 
                 $email = $data['additional_info']['payer']['first_name'];
                 $payment = $data['transaction_amount'];
-                $buisness = $data['metadata']['buisness'];
+                $business = $data['metadata']['business'];
 
                 $user = User::select('id')
                     ->where('is_active', true)
@@ -77,7 +77,7 @@ class ProcessPayment implements ShouldQueue
                 $order->payment = $payment;
                 $current_date_time = Carbon::now()->toDateTimeString();
                 $order->created_at = $current_date_time;
-                $order->buisness_id = $buisness;
+                $order->business_id = $business;
 
                 $order->save();
 

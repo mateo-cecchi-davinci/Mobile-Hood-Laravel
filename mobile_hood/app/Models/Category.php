@@ -13,7 +13,7 @@ class Category extends Model
     protected $fillable = [
         'name',
         'parent_id',
-        'fk_categories_buisnesses',
+        'fk_categories_businesses',
         'is_active',
     ];
 
@@ -24,9 +24,9 @@ class Category extends Model
         return $this->hasMany(Product::class, 'fk_products_categories', 'id');
     }
 
-    public function buisness()
+    public function business()
     {
-        return $this->belongsTo(Buisness::class, 'fk_categories_buisnesses', 'id');
+        return $this->belongsTo(Business::class, 'fk_categories_businesses', 'id');
     }
 
     public function parent()

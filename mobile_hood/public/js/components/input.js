@@ -10,7 +10,7 @@ function debounce(func, delay) {
 }
 
 function filterProducts() {
-    let buisnessId = document.getElementById("buisnessId").value;
+    let businessId = document.getElementById("businessId").value;
     let query = "";
 
     document.querySelectorAll(".search-input").forEach((input) => {
@@ -19,7 +19,7 @@ function filterProducts() {
         }
     });
 
-    fetch(`/filter-products?query=${query}&buisness=${buisnessId}`, {
+    fetch(`/filter-products?query=${query}&business=${businessId}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",

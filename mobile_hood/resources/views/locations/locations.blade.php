@@ -37,7 +37,7 @@
                                 @foreach ($locations as $l)
                                     <tr>
                                         <td>{{ $l->id }}</td>
-                                        <td>{{ $l->buisness->name }}</td>
+                                        <td>{{ $l->business->name }}</td>
                                         <td>{{ $l->lat }}</td>
                                         <td>{{ $l->lng }}</td>
                                         <td>

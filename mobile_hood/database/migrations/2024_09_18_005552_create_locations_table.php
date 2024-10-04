@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->float('lat', 10, 7);
             $table->float('lng', 10, 7);
-            $table->unsignedBigInteger('fk_locations_buisnesses')->unique();
-            $table->foreign('fk_locations_buisnesses')->references('id')->on('buisnesses')->onDelete('cascade');
+            $table->unsignedBigInteger('fk_locations_businesses')->unique();
+            $table->foreign('fk_locations_businesses')->references('id')->on('businesses')->onDelete('cascade');
         });
     }
 
@@ -30,7 +30,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('locations', function (Blueprint $table) {
-            $table->dropForeign(['fk_locations_buisnesses']);
+            $table->dropForeign(['fk_locations_businesses']);
         });
 
         Schema::dropIfExists('locations');

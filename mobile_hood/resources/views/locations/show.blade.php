@@ -18,7 +18,7 @@
                         <div class="row mb-3">
                             <div class="col-sm-10">
                                 <p class="mb-4">
-                                    {{ $location->buisness->name }}
+                                    {{ $location->business->name }}
                                 </p>
                                 <span id="lat" class="d-none">{{ $location->lat }}</span>
                                 <span id="lng" class="d-none">{{ $location->lng }}</span>

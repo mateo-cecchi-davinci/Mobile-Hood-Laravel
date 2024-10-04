@@ -1,15 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
     const sidebar = document.querySelector(".sidebar");
     const closeBtn = document.querySelector("#btn");
-    const searchBtn = document.querySelector(".bx-search");
     const menu = document.querySelector(".bx-menu");
 
     closeBtn.addEventListener("click", function () {
-        sidebar.classList.toggle("open");
-        menuBtnChange();
-    });
-
-    searchBtn.addEventListener("click", function () {
         sidebar.classList.toggle("open");
         menuBtnChange();
     });

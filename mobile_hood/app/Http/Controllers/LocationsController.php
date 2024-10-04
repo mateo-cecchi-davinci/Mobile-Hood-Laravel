@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Buisness;
+use App\Models\Business;
 use App\Models\Location;
 use Illuminate\Http\Request;
 
@@ -15,14 +15,14 @@ class LocationsController extends Controller
      */
 
     protected $locations;
-    protected $buisnesses;
+    protected $businesses;
     protected $maps;
 
     public function __construct()
     {
         $this->middleware('auth');
         $this->locations = Location::all();
-        $this->buisnesses = Buisness::where('is_active', true)->get();
+        $this->businesses = Business::where('is_active', true)->get();
         $this->maps = config('googlemaps.maps');
     }
 
@@ -40,7 +40,7 @@ class LocationsController extends Controller
     {
 
         return view('locations.create', [
-            'buisnesses' => $this->buisnesses,
+            'businesses' => $this->businesses,
             'maps' => $this->maps,
         ]);
     }
@@ -56,14 +56,14 @@ class LocationsController extends Controller
         $request->validate([
             'lat' => 'required|numeric',
             'lng' => 'required|numeric',
-            'buisness' => 'required|array|min:0|max:1',
+            'business' => 'required|array|min:0|max:1',
         ]);
 
         $location = new Location();
 
         $location->lat = $request->lat;
         $location->lng = $request->lng;
-        $location->fk_locations_buisnesses = $request->buisness[0];
+        $location->fk_locations_businesses = $request->business[0];
 
         $location->save();
 
@@ -94,7 +94,7 @@ class LocationsController extends Controller
     {
         return view('locations.edit', [
             'location' => $location,
-            'buisnesses' => $this->buisnesses,
+            'businesses' => $this->businesses,
             'maps' => $this->maps,
         ]);
     }
@@ -111,12 +111,12 @@ class LocationsController extends Controller
         $request->validate([
             'lat' => 'required|numeric',
             'lng' => 'required|numeric',
-            'buisness' => 'required|array|min:0|max:1',
+            'business' => 'required|array|min:0|max:1',
         ]);
 
         $location->lat = $request->lat;
         $location->lng = $request->lng;
-        $location->fk_locations_buisnesses = $request->buisness[0];
+        $location->fk_locations_businesses = $request->business[0];
 
         $location->save();
 

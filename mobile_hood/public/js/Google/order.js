@@ -2,8 +2,8 @@ let map;
 let marker = null;
 let lat, lng;
 
-const buisnessLat = document.getElementById("buisnessLat").innerHTML;
-const buisnessLng = document.getElementById("buisnessLng").innerHTML;
+const businessLat = document.getElementById("businessLat").innerHTML;
+const businessLng = document.getElementById("businessLng").innerHTML;
 const mapElement = document.getElementById("map");
 
 const userMarker = document.createElement("img");
@@ -31,7 +31,7 @@ function initMap() {
     map.setCenter(origin);
     addUserMarker(origin);
 
-    var destination = new google.maps.LatLng(buisnessLat, buisnessLng);
+    var destination = new google.maps.LatLng(businessLat, businessLng);
 
     addBusinessMarker(destination);
 

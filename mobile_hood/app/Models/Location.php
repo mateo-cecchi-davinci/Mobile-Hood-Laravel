@@ -12,11 +12,11 @@ class Location extends Model
     protected $fillable = [
         'lat',
         'lng',
-        'fk_locations_buisnesses',
+        'fk_locations_businesses',
     ];
 
-    public function buisness()
+    public function business()
     {
-        return $this->belongsTo(Buisness::class, 'fk_locations_buisnesses', 'id');
+        return $this->belongsTo(Business::class, 'fk_locations_businesses', 'id');
     }
 }

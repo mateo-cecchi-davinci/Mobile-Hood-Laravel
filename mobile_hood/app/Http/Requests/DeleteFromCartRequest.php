@@ -29,7 +29,7 @@ class DeleteFromCartRequest extends FormRequest
     {
         return [
             'user' => 'required|exists:users,id',
-            'buisness' => 'required|exists:buisnesses,id',
+            'business' => 'required|exists:businesses,id',
             'products.*' => 'regex:/^[0-9]+$/',
             'cartProducts' => 'required|array',
             //'cartProducts.*' => 'exists:carts,id|nullable',

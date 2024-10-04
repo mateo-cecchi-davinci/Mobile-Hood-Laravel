@@ -38,8 +38,8 @@
     </nav>
 
     <div class="d-flex h-100">
-        <div id="buisnessLat" class="d-none">{{ $buisness->location->lat }}</div>
-        <div id="buisnessLng" class="d-none">{{ $buisness->location->lng }}</div>
+        <div id="businessLat" class="d-none">{{ $business->location->lat }}</div>
+        <div id="businessLng" class="d-none">{{ $business->location->lng }}</div>
         <div id="orderTime" class="d-none">{{ $order->created_at }}</div>
         <div id="map" class="w-100 h-100">
 
@@ -64,7 +64,7 @@
                 </div>
                 <i class="bx bx-dish bx-border-circle bx-sm bg-light"></i>
             </div>
-            <p class="m-0 lh-1 fw-light">{{ $buisness->name }} está preparando tu orden</p>
+            <p class="m-0 lh-1 fw-light">{{ $business->name }} está preparando tu orden</p>
             <div class="mt-4 mb-3 border-bottom border-light opacity-75"></div>
             <div role="button" class="d-flex justify-content-center align-items-center">
                 <p class="m-0 fw-medium me-1 btn-hola">Ver detalles</p>

@@ -1,0 +1,62 @@
+.topBar {
+    background-color: var(--color-default);
+    height: 70px;
+}
+
+@media (max-width: 1285px) {
+    .display-menu-icon {
+        display: block;
+    }
+
+    .topBar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+@media (min-width: 1285px) {
+    .display-menu-icon {
+        display: none;
+    }
+
+    .topBar {
+        display: flex;
+        flex-direction: row-reverse;
+    }
+}
+
+.user-navbar {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.user2-img {
+    position: absolute;
+    margin-right: 10px;
+}
+
+.user2-img img {
+    height: 60px;
+    width: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.username-role {
+    color: var(--color-white);
+    white-space: nowrap;
+    margin-right: 80px;
+}
+
+.username {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.role {
+    font-size: 0.75rem;
+    font-weight: 600;
+    opacity: 90%;
+}

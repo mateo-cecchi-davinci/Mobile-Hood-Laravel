@@ -20,7 +20,7 @@ class LocationSeeder extends Seeder
                 [
                     'lat' => '-34.4376063',
                     'lng' => '-58.5625781',
-                    'fk_locations_buisnesses' => $i
+                    'fk_locations_businesses' => $i
                 ]
             ]);
         }

@@ -15,90 +15,90 @@ class HoursSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('buisness_hours')->insert([
+        DB::table('business_hours')->insert([
             [
                 'day_of_week' => 0,
                 'opening_time' => '07:00:00',
                 'closing_time' => '13:00:00',
-                'fk_buisness_hours_buisness' => 1
+                'fk_business_hours_business' => 1
             ],
             [
                 'day_of_week' => 3,
                 'opening_time' => '07:00:00',
                 'closing_time' => '15:00:00',
-                'fk_buisness_hours_buisness' => 1
+                'fk_business_hours_business' => 1
             ],
             [
                 'day_of_week' => 4,
                 'opening_time' => '07:00:00',
                 'closing_time' => '15:00:00',
-                'fk_buisness_hours_buisness' => 1
+                'fk_business_hours_business' => 1
             ],
             [
                 'day_of_week' => 5,
                 'opening_time' => '07:00:00',
                 'closing_time' => '18:00:00',
-                'fk_buisness_hours_buisness' => 1
+                'fk_business_hours_business' => 1
             ],
             [
                 'day_of_week' => 6,
                 'opening_time' => '07:00:00',
                 'closing_time' => '18:00:00',
-                'fk_buisness_hours_buisness' => 1
+                'fk_business_hours_business' => 1
             ]
         ]);
 
         for ($i = 0; $i < 7; $i++) {
-            DB::table('buisness_hours')->insert([
+            DB::table('business_hours')->insert([
                 [
                     'day_of_week' => $i,
                     'opening_time' => '07:00:00',
                     'closing_time' => '18:00:00',
-                    'fk_buisness_hours_buisness' => 2
+                    'fk_business_hours_business' => 2
                 ]
             ]);
         }
 
         for ($i = 0; $i < 7; $i++) {
-            DB::table('buisness_hours')->insert([
+            DB::table('business_hours')->insert([
                 [
                     'day_of_week' => $i,
                     'opening_time' => '07:00:00',
                     'closing_time' => '18:00:00',
-                    'fk_buisness_hours_buisness' => 3
+                    'fk_business_hours_business' => 3
                 ]
             ]);
         }
 
         for ($i = 0; $i < 7; $i++) {
-            DB::table('buisness_hours')->insert([
+            DB::table('business_hours')->insert([
                 [
                     'day_of_week' => $i,
                     'opening_time' => '07:00:00',
                     'closing_time' => '18:00:00',
-                    'fk_buisness_hours_buisness' => 4
+                    'fk_business_hours_business' => 4
                 ]
             ]);
         }
 
         for ($i = 0; $i < 7; $i++) {
-            DB::table('buisness_hours')->insert([
+            DB::table('business_hours')->insert([
                 [
                     'day_of_week' => $i,
                     'opening_time' => '07:00:00',
                     'closing_time' => '18:00:00',
-                    'fk_buisness_hours_buisness' => 5
+                    'fk_business_hours_business' => 5
                 ]
             ]);
         }
 
         for ($i = 0; $i < 7; $i++) {
-            DB::table('buisness_hours')->insert([
+            DB::table('business_hours')->insert([
                 [
                     'day_of_week' => $i,
                     'opening_time' => '07:00:00',
                     'closing_time' => '18:00:00',
-                    'fk_buisness_hours_buisness' => 6
+                    'fk_business_hours_business' => 6
                 ]
             ]);
         }

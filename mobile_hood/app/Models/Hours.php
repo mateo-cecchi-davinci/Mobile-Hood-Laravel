@@ -7,17 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 class Hours extends Model
 {
     public $timestamps = false;
-    protected $table = 'buisness_hours';
+    protected $table = 'business_hours';
 
     protected $fillable = [
         'day_of_week',
         'opening_time',
         'closing_time',
-        'fk_buisness_hours_buisness',
+        'fk_business_hours_business',
     ];
 
     public function business()
     {
-        return $this->belongsTo(Buisness::class, 'fk_buisness_hours_buisness', 'id');
+        return $this->belongsTo(Business::class, 'fk_business_hours_business', 'id');
     }
 }

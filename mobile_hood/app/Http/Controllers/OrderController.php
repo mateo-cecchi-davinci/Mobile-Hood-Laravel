@@ -6,7 +6,7 @@ use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Order;
 use App\Jobs\ProcessPayment;
-use App\Models\Buisness;
+use App\Models\Business;
 use Illuminate\Http\Request;
 use App\Services\MercadoPagoService;
 
@@ -117,7 +117,7 @@ class OrderController extends Controller
 
         $request->validate([
             'user' => 'required|exists:users,id',
-            'buisness' => 'required|exists:buisnesses,id',
+            'business' => 'required|exists:businesses,id',
             'cartProducts' => 'required|array',
         ]);
 
@@ -126,14 +126,14 @@ class OrderController extends Controller
         $data = [
             'user' => $user,
             'product_data' => $request->cartProducts,
-            'buisness' => intval($request->buisness)
+            'business' => intval($request->business)
         ];
 
         $preference = $this->mercadoPagoService->createPreference($data);
 
         return view('order', [
             'user' => $request->user,
-            'buisness' => $request->buisness,
+            'business' => $request->business,
             'cartProducts' => $request->cartProducts,
             'preference' => $preference
         ]);
@@ -159,11 +159,11 @@ class OrderController extends Controller
         ]);
 
         $order = $this->getOrder(intval($request->orders[0]));
-        $buisness = $this->getBuisness($order->buisness_id);
+        $business = $this->getBusiness($order->business_id);
 
         return view('orders', [
             'order' => $order,
-            'buisness' => $buisness,
+            'business' => $business,
             'maps' => $this->maps
         ]);
     }
@@ -173,8 +173,8 @@ class OrderController extends Controller
         return Order::firstWhere(['id' => $order, 'state' => 'Pendiente', 'is_active' => true]);
     }
 
-    private function getBuisness($buisness)
+    private function getBusiness($business)
     {
-        return Buisness::where(['id' => $buisness, 'is_active' => true])->with(['location'])->first();
+        return Business::where(['id' => $business, 'is_active' => true])->with(['location'])->first();
     }
 }

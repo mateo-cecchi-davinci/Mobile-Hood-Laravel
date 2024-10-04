@@ -33,10 +33,10 @@
                             <div class="form-group row mb-3 align-items-center">
                                 <label class="col-sm-2 col-label-form">Negocio</label>
                                 <div class="col-sm-10">
-                                    <select name="buisness[]" class="form-select">
+                                    <select name="business[]" class="form-select">
                                         <option value="" selected>Seleccione un negocio</option>
-                                        @foreach ($buisnesses as $b)
-                                            <option @selected($location->fk_locations_buisnesses == $b->id) value="{{ $b->id }}">
+                                        @foreach ($businesses as $b)
+                                            <option @selected($location->fk_locations_businesses == $b->id) value="{{ $b->id }}">
                                                 {{ $b->name }}
                                             </option>
                                         @endforeach

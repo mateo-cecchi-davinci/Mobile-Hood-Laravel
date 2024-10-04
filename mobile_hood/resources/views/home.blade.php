@@ -2,13 +2,12 @@
 
 @section('content')
     <div class="home-container bg-body-tertiary py-4">
-        @include('components.inputs.buisnesses')
+        @include('components.inputs.businesses')
 
-        <div id="buisnesses">
-            @include('components.buisnesses', [
-                'buisnesses' => $buisnesses,
+        <div id="businesses">
+            @include('components.businesses', [
+                'businesses' => $businesses,
             ])
         </div>
     </div>
 @endsection
-

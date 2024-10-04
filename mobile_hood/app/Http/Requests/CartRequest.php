@@ -29,7 +29,7 @@ class CartRequest extends FormRequest
     {
         return [
             'user' => 'required|exists:users,id',
-            'buisness' => 'required|exists:buisnesses,id',
+            'business' => 'required|exists:businesses,id',
             'product' => 'required|exists:products,id',
             'quantity' => 'required|integer|min:1',
             'productsByCategory' => 'required|array',

@@ -97,7 +97,7 @@ function handleFormSubmit(event) {
         return;
     }
 
-    const buisnessId = this.querySelector('input[name="buisness"]').value;
+    const businessId = this.querySelector('input[name="business"]').value;
     const productId = this.getAttribute("data-product-id");
     const quantity = this.querySelector('input[name="quantity"]').value;
     const productsByCategory = JSON.parse(
@@ -117,7 +117,7 @@ function handleFormSubmit(event) {
         },
         body: JSON.stringify({
             user: userId,
-            buisness: buisnessId,
+            business: businessId,
             product: productId,
             quantity: quantity,
             productsByCategory: productsByCategory,

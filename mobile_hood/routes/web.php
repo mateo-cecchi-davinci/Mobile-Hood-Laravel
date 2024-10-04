@@ -8,8 +8,10 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\OrderController;
+use App\Http\Middleware\PartnerMiddleware;
+use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\BuisnessController;
+use App\Http\Controllers\BusinessController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LocationsController;
 
@@ -32,11 +34,18 @@ Auth::routes();
 
 Route::prefix('admin')->middleware([Authenticate::class, AdminMiddleware::class])->group(function () {
     Route::resource('/users', UserController::class);
-    Route::resource('/buisnesses', BuisnessController::class);
+    Route::resource('/businesses', BusinessController::class);
     Route::resource('/categories', CategoryController::class);
     Route::resource('/products', ProductController::class);
     Route::resource('/orders', OrderController::class);
     Route::resource('/locations', LocationsController::class);
+});
+
+Route::prefix('partner')->middleware([Authenticate::class, PartnerMiddleware::class])->group(function () {
+    Route::get('/dashboard', [PartnerController::class, 'index'])->name('dashboard');
+    Route::post('/dashboard/menu/category', [PartnerController::class, 'category']);
+    Route::post('/dashboard/menu/category-state', [PartnerController::class, 'categoryState']);
+    Route::post('/dashboard/menu/product-state', [PartnerController::class, 'productState']);
 });
 
 Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);
@@ -47,10 +56,10 @@ Route::get('/profile', function () {
     return view('profile');
 })->name('profile');
 
-Route::post('/buisness', [HomeController::class, 'buisness'])->name('buisness');
+Route::post('/business', [HomeController::class, 'business'])->name('business');
 
 Route::get('/filter-products', [HomeController::class, 'filterProducts']);
-Route::get('/filter-buisnesses', [HomeController::class, 'filterBuisnesses']);
+Route::get('/filter-businesses', [HomeController::class, 'filterBusinesses']);
 Route::post('/add-products', [CartController::class, 'addProducts']);
 Route::post('/delete-cart-products', [CartController::class, 'delete']);
 Route::post('/order', [OrderController::class, 'order'])->name('order');

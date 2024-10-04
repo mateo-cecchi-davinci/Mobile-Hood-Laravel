@@ -45,9 +45,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function buisnesses()
+    public function businesses()
     {
-        return $this->hasMany(Buisness::class, 'id', 'fk_buisnesses_users');
+        return $this->hasMany(Business::class, 'id', 'fk_businesses_users');
     }
 
     public function carts()
