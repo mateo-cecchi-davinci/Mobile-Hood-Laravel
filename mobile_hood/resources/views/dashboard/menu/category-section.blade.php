@@ -12,7 +12,7 @@
 
 <div class="collapse" id="categories">
     @foreach ($data as $category)
-        @if ($category->products()->exists())
+        @if ($category->products()->exists() || !$category->hasChildren())
             <div class="category-container">
                 <form method="POST" id="{{ $category->id }}" class="category">
                     @csrf
@@ -29,12 +29,6 @@
                 </form>
             </div>
         @endif
-
-        {{-- @if ($category->hasChildren())
-            <div id="category-{{ $category->id }}" class="collapse text-nowrap">
-                @include('dashboard.menu.categories', ['categories' => $category->children])
-            </div>
-        @endif --}}
     @endforeach
 </div>
 

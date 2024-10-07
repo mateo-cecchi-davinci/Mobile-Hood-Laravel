@@ -123,7 +123,16 @@ class PartnerController extends Controller
             'id' => 'required|integer'
         ]);
 
-        $category = $this->getCategoryWithoutProducts($request->id);
+        $category = $this->getCategory($request->id);
+
+        foreach ($category->products as $product) {
+            if ($product->image) {
+                Storage::disk('public')->delete($product->image);
+            }
+
+            $product->delete();
+        }
+
         $category->delete();
 
         return response()->json('Categoría eliminada');

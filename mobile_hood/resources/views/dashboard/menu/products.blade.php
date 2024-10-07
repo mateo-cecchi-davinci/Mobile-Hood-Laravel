@@ -60,8 +60,8 @@
             </div>
         </div>
         @include('dashboard.modals.product.edit', [
-            'data' => $data,
             'product' => $product,
+            'category' => $category,
         ])
         @include('dashboard.modals.product.delete', [
             'product' => $product,
@@ -76,4 +76,6 @@
 @include('dashboard.modals.category.delete', [
     'category' => $category,
 ])
-@include('dashboard.modals.product.add')
+@include('dashboard.modals.product.add', [
+    'category' => $category,
+])

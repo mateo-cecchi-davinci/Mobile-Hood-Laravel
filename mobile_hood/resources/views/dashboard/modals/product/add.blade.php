@@ -17,17 +17,8 @@
                     <input type="text" name="description" class="form-control mb-3" placeholder="Descripción*"
                         required>
                     <input type="number" name="stock" class="form-control mb-3" placeholder="Stock*" required>
-                    <select name="category" class="form-select mb-3" required>
-                        <option value="" selected>Elegí una categoría</option>
-                        @foreach ($data as $category)
-                            @if ($category->products()->exists())
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
-                            @elseif (!$category->hasChildren())
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
-                            @endif
-                        @endforeach
-                    </select>
                     <input type="file" name="image" class="form-control" required>
+                    <input type="hidden" name="category" value="{{ $category->id }}" required>
                 </div>
                 <div class="modal-footer">
                     <button id="add-product" class="bg-red rounded-1 w-100 border-0 text-light py-2"
