@@ -12,30 +12,29 @@
 
 <div class="collapse" id="categories">
     @foreach ($data as $category)
-        <div class="category-container">
-            <form method="POST" id="{{ $category->id }}" class="category">
-                @csrf
-                <input type="hidden" value="{{ $category->id }}">
-                <button type="button" class="bg-transparent py-2 px-0 w-100 btn-category" data-bs-toggle="collapse"
-                    data-bs-target="#category-{{ $category->id }}" aria-expanded="false"
-                    aria-controls="category-{{ $category->id }}">
-                    <div class="d-flex align-items-center justify-content-between">
-                        <div class="d-flex align-items-center">
-                            <span id="category-name-{{ $category->id }}" class="ps-2">{{ $category->name }}</span>
+        @if ($category->products()->exists())
+            <div class="category-container">
+                <form method="POST" id="{{ $category->id }}" class="category">
+                    @csrf
+                    <input type="hidden" value="{{ $category->id }}">
+                    <button type="button" class="bg-transparent py-2 px-0 w-100 btn-category" data-bs-toggle="collapse"
+                        data-bs-target="#category-{{ $category->id }}" aria-expanded="false"
+                        aria-controls="category-{{ $category->id }}">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center">
+                                <span id="category-name-{{ $category->id }}" class="ps-2">{{ $category->name }}</span>
+                            </div>
                         </div>
-                        @if ($category->hasChildren())
-                            <i class="bx bx-chevron-down bx-sm pt-1"></i>
-                        @endif
-                    </div>
-                </button>
-            </form>
-        </div>
+                    </button>
+                </form>
+            </div>
+        @endif
 
-        @if ($category->hasChildren())
+        {{-- @if ($category->hasChildren())
             <div id="category-{{ $category->id }}" class="collapse text-nowrap">
                 @include('dashboard.menu.categories', ['categories' => $category->children])
             </div>
-        @endif
+        @endif --}}
     @endforeach
 </div>
 

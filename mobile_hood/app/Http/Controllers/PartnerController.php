@@ -33,8 +33,10 @@ class PartnerController extends Controller
         ]);
 
         $category = $this->getCategory($request->category);
+        $business = $this->getBusiness(auth()->user()->id);
+        $data = $this->getMenu($business);
 
-        $data = view('dashboard.menu.products', compact('category'))->render();
+        $data = view('dashboard.menu.products', compact('category', 'data'))->render();
 
         return response()->json([
             'data' => $data
@@ -233,7 +235,7 @@ class PartnerController extends Controller
 
     private function getMenu($business)
     {
-        return Category::where(['fk_categories_businesses' => $business->id])->whereNull('parent_id')->with(['children', 'products'])->get();
+        return Category::where(['fk_categories_businesses' => $business->id])->with(['products'])->get();
     }
 
     private function getCategory($category)

@@ -20,13 +20,9 @@
                     <select name="category" class="form-select mb-3" required>
                         <option value="" selected>Elegí una categoría</option>
                         @foreach ($data as $category)
-                            @if ($category->hasChildren())
+                            @if ($category->products()->exists())
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
-
-                                @foreach ($category->children as $category)
-                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                @endforeach
-                            @else
+                            @elseif (!$category->hasChildren())
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endif
                         @endforeach
