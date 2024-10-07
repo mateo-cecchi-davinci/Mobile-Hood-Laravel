@@ -18,3 +18,19 @@
         padding-left: 24px;
     }
 }
+
+.btn-add-product {
+    color: #e31010;
+    border: none;
+    outline: none;
+    outline-width: 2px;
+    padding: 4px 6px;
+}
+
+.cancel {
+    color: #e31010;
+}
+
+.pointer {
+    cursor: pointer;
+}

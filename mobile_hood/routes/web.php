@@ -46,6 +46,12 @@ Route::prefix('partner')->middleware([Authenticate::class, PartnerMiddleware::cl
     Route::post('/dashboard/menu/category', [PartnerController::class, 'category']);
     Route::post('/dashboard/menu/category-state', [PartnerController::class, 'categoryState']);
     Route::post('/dashboard/menu/product-state', [PartnerController::class, 'productState']);
+    Route::post('/dashboard/menu/add-category', [PartnerController::class, 'addCategory']);
+    Route::post('/dashboard/menu/edit-category', [PartnerController::class, 'editCategory']);
+    Route::post('/dashboard/menu/delete-category', [PartnerController::class, 'deleteCategory']);
+    Route::post('/dashboard/menu/add-product', [PartnerController::class, 'addProduct'])->name('add-product');
+    Route::post('/dashboard/menu/edit-product', [PartnerController::class, 'editProduct'])->name('edit-product');
+    Route::post('/dashboard/menu/delete-product', [PartnerController::class, 'deleteProduct'])->name('delete-product');
 });
 
 Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);

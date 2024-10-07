@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\Business;
 use App\Models\Category;
-use App\Models\Product;
+use App\Rules\AspectRatio;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PartnerController extends Controller
 {
@@ -16,7 +18,8 @@ class PartnerController extends Controller
 
     public function index()
     {
-        $data = $this->getMenu(auth()->user()->id);
+        $business = $this->getBusiness(auth()->user()->id);
+        $data = $this->getMenu($business);
 
         return view('dashboard.menu.menu', [
             'data' => $data
@@ -31,15 +34,11 @@ class PartnerController extends Controller
 
         $category = $this->getCategory($request->category);
 
-        if (!$category->products->isEmpty()) {
-            $data = view('dashboard.menu.products', compact('category'))->render();
+        $data = view('dashboard.menu.products', compact('category'))->render();
 
-            return response()->json([
-                'data' => $data
-            ]);
-        }
-
-        return response()->json('');
+        return response()->json([
+            'data' => $data
+        ]);
     }
 
     public function categoryState(Request $request)
@@ -52,7 +51,7 @@ class PartnerController extends Controller
         $category->is_active = !$category->is_active;
         $category->save();
 
-        return response()->json(['success' => 'estado actualizado']);
+        return response()->json(['Estado actualizado']);
     }
 
     public function productState(Request $request)
@@ -65,13 +64,175 @@ class PartnerController extends Controller
         $product->is_active = !$product->is_active;
         $product->save();
 
-        return response()->json(['success' => 'estado actualizado']);
+        return response()->json(['Estado actualizado']);
     }
 
-    private function getMenu($user)
+    public function addCategory(Request $request)
     {
-        $business = Business::firstWhere(['is_active' => true, 'fk_businesses_users' => $user]);
+        $request->validate([
+            'name' => 'required|regex:/^[\p{L}\s]+$/u|max:255',
+            'category' => 'nullable|integer'
+        ]);
 
+        $business = $this->getBusiness(auth()->user()->id);
+
+        $category = new Category();
+
+        $category->name = $request->name;
+
+        if ($request->has('category')) {
+            $category->parent_id = $request->category;
+        }
+
+        $category->fk_categories_businesses = $business->id;
+
+        $category->save();
+
+        $data = $this->getMenu($business);
+
+        $data = view('dashboard.menu.category-section', compact('data'))->render();
+
+        return response()->json([
+            'data' => $data,
+        ]);
+    }
+
+    public function editCategory(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|regex:/^[\p{L}\s]+$/u|max:255',
+            'id' => 'required|integer'
+        ]);
+
+        $category = $this->getCategoryWithoutProducts($request->id);
+
+        $category->name = $request->name;
+        $category->save();
+
+        return response()->json([
+            'id' => $category->id,
+            'name' => $category->name
+        ]);
+    }
+
+    public function deleteCategory(Request $request)
+    {
+        $request->validate([
+            'id' => 'required|integer'
+        ]);
+
+        $category = $this->getCategoryWithoutProducts($request->id);
+        $category->delete();
+
+        return response()->json('Categoría eliminada');
+    }
+
+    public function addProduct(Request $request)
+    {
+        $request->validate([
+            'model' => 'required|regex:/^[\p{L}\s]+$/u|max:255',
+            'brand' => 'string|regex:/^[\p{L}\s]+$/u|max:255',
+            'description' => 'required|string|regex:/^[0-9\p{L}\s]+$/u',
+            'price' => 'required|numeric',
+            'category' => 'required|regex:/^[0-9]+$/',
+            'stock' => 'required|integer|min:0',
+            'image' => [
+                'required',
+                'image',
+                'mimes:jpg,png,jpeg,webp',
+                new AspectRatio(1),
+            ],
+        ]);
+
+        $product = new Product();
+
+        $product->model = $request->model;
+        $imagePath = $request->file('image')->store('products', 'public');
+        $product->image = $imagePath;
+
+        if ($request->has($request->brand)) {
+            $product->brand = $request->brand;
+        } else {
+            $product->brand = "N/A";
+        }
+
+        $product->description = $request->description;
+        $product->price = $request->price;
+        $product->stock = $request->stock;
+        $product->fk_products_categories = $request->category;
+
+        $product->save();
+
+        return redirect(route('dashboard'));
+    }
+
+    public function editProduct(Request $request)
+    {
+        $request->validate([
+            'model' => 'required|regex:/^[\p{L}\s]+$/u|max:255',
+            'brand' => 'string|regex:/^[\p{L}\s\/]+$/u|max:255',
+            'description' => 'required|string|regex:/^[0-9\p{L}\s]+$/u',
+            'price' => 'required|numeric',
+            'category' => 'required|regex:/^[0-9]+$/',
+            'stock' => 'required|integer|min:0',
+            'product' => 'required|regex:/^[0-9]+$/',
+            'image' => [
+                'image',
+                'mimes:jpg,png,jpeg,webp',
+                new AspectRatio(1),
+            ],
+        ]);
+
+        $product = $this->getProduct($request->product);
+
+        $product->model = $request->model;
+
+        if ($request->has('image')) {
+            $imagePath = $request->file('image')->store('products', 'public');
+
+            if ($product->image) {
+                Storage::disk('public')->delete($product->image);
+            }
+
+            $product->image = $imagePath;
+        }
+
+        if ($request->brand != '') {
+            $product->brand = $request->brand;
+        } else {
+            $product->brand = "N/A";
+        }
+
+        $product->description = $request->description;
+        $product->price = $request->price;
+        $product->stock = $request->stock;
+        $product->fk_products_categories = $request->category;
+
+        $product->save();
+
+        return redirect(route('dashboard'));
+    }
+
+    public function deleteProduct(Request $request)
+    {
+        $product = $this->getProduct($request->product);
+
+        if ($product->image) {
+            Storage::disk('public')->delete($product->image);
+        }
+
+        $product->delete();
+
+        return redirect(route('dashboard'))->with('success', 'Producto eliminado');
+    }
+
+    private function getBusiness($user)
+    {
+        return Business::where(['is_active' => true, 'fk_businesses_users' => $user])->first();
+    }
+
+    private function getMenu($business)
+    {
         return Category::where(['fk_categories_businesses' => $business->id])->whereNull('parent_id')->with(['children', 'products'])->get();
     }
 

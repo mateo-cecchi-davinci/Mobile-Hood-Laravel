@@ -1,6 +1,6 @@
 @foreach ($categories as $category)
     <div class="category-container">
-        <form method="POST" id="{{ $category->id }}" class="{{ $category->products()->exists() ? 'category' : '' }}">
+        <form method="POST" id="{{ $category->id }}" class="category">
             @csrf
             <input type="hidden" value="{{ $category->id }}">
             <button type="button" class="bg-transparent py-2 px-0 w-100 btn-category" data-bs-toggle="collapse"
@@ -8,7 +8,7 @@
                 aria-controls="category-{{ $category->id }}">
                 <div class="d-flex align-items-center justify-content-between">
                     <div class="d-flex align-items-center">
-                        <span class="ps-2">{{ $category->name }}</span>
+                        <span id="category-name-{{ $category->id }}" class="ps-2">{{ $category->name }}</span>
                     </div>
                     @if ($category->hasChildren())
                         <i class="bx bx-chevron-down bx-sm pt-1"></i>

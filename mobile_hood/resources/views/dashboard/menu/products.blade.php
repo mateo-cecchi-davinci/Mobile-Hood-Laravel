@@ -1,17 +1,23 @@
 <div class="d-flex justify-content-between align-items-center pb-3 border-header">
     <div class="d-flex align-items-center justify-content-between justify-content-sm-start">
-        <h3 class="m-0 me-4 lh-1">{{ $category->name }}</h3>
+        <h3 id="category-name-{{ $category->id }}" class="m-0 me-4 lh-1">{{ $category->name }}</h3>
         <div class="form-check form-switch my-auto d-flex align-items-center">
-            <input class="form-check-input switch me-3" type="checkbox" role="switch" id="category-{{ $category->id }}"
-                {{ $category->is_active ? 'checked' : '' }}>
+            <input class="form-check-input switch me-3 pointer" type="checkbox" role="switch"
+                id="category-{{ $category->id }}" {{ $category->is_active ? 'checked' : '' }}>
             <span id="category-state" class="opacity-75 font-sm lh-1 d-none d-md-block">
                 Categoría {{ $category->is_active ? 'activa' : 'inactiva' }}
             </span>
         </div>
     </div>
-    <button class="rounded-1 bg-transparent btn-add-product lh-1">
-        AGREGAR PRODUCTO
-    </button>
+    <div class="d-flex align-items-center justify-content-between">
+        <button data-bs-toggle="modal" data-bs-target="#addProduct"
+            class="rounded-1 bg-transparent btn-add-product lh-1 fw-medium d-flex align-items-center">
+            <span class="fs-4 me-2">+</span>
+            <span>Agregar producto</span>
+        </button>
+        <i role="button" data-bs-toggle="modal" data-bs-target="#editCategory" class="bx bx-pencil bx-sm mx-3"></i>
+        <i role="button" data-bs-toggle="modal" data-bs-target="#deleteCategory" class="bx bxs-trash bx-sm"></i>
+    </div>
 </div>
 <p id="amount" class="m-0 opacity-75 mt-3">
     @php
@@ -43,12 +49,31 @@
                 <p class="m-0 me-4">${{ $product->price }}</p>
                 <div class="d-flex">
                     <div class="form-check form-switch my-auto">
-                        <input class="form-check-input switch me-4" type="checkbox" role="switch"
+                        <input class="form-check-input switch pointer" type="checkbox" role="switch"
                             id="product-{{ $product->id }}" {{ $product->is_active ? 'checked' : '' }}>
                     </div>
-                    <i class="bx bx-dots-vertical-rounded bx-sm opacity-75"></i>
+                    <i role="button" data-bs-toggle="modal" data-bs-target="#editProduct{{ $product->id }}"
+                        class="bx bx-pencil bx-sm mx-3"></i>
+                    <i role="button" data-bs-toggle="modal" data-bs-target="#deleteProduct{{ $product->id }}"
+                        class="bx bxs-trash bx-sm"></i>
                 </div>
             </div>
         </div>
+        @include('dashboard.modals.product.edit', [
+            'data' => $data,
+            'product' => $product,
+        ])
+        @include('dashboard.modals.product.delete', [
+            'product' => $product,
+        ])
     @endforeach
 @endif
+
+@include('dashboard.modals.category.add')
+@include('dashboard.modals.category.edit', [
+    'category' => $category,
+])
+@include('dashboard.modals.category.delete', [
+    'category' => $category,
+])
+@include('dashboard.modals.product.add')
