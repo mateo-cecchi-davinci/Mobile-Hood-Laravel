@@ -52,6 +52,11 @@ Route::prefix('partner')->middleware([Authenticate::class, PartnerMiddleware::cl
     Route::post('/dashboard/menu/add-product', [PartnerController::class, 'addProduct'])->name('add-product');
     Route::post('/dashboard/menu/edit-product', [PartnerController::class, 'editProduct'])->name('edit-product');
     Route::post('/dashboard/menu/delete-product', [PartnerController::class, 'deleteProduct'])->name('delete-product');
+
+    Route::get('/dashboard/profile', [PartnerController::class, 'profile'])->name('partner-profile');
+    Route::post('/dashboard/edit-frontPage', [PartnerController::class, 'editFrontPage'])->name('edit-frontPage');
+    Route::post('/dashboard/edit-logo', [PartnerController::class, 'editLogo'])->name('edit-logo');
+    Route::post('/dashboard/edit-name', [PartnerController::class, 'editName'])->name('edit-name');
 });
 
 Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);

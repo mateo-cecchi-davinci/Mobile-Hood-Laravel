@@ -12,6 +12,7 @@ class Business extends Model
     protected $fillable = [
         'name',
         'logo',
+        'frontPage',
         'street',
         'number',
         'category',
@@ -47,6 +48,14 @@ class Business extends Model
             return url('storage/' . $this->logo);
         }
         return "/img/noImageFound.jpg";
+    }
+
+    public function getFrontPageURL()
+    {
+        if ($this->frontPage) {
+            return url('storage/' . $this->frontPage);
+        }
+        return "/img/business_front_pages/hola.png";
     }
 
     public function convertTo12HourFormat($time)

@@ -26,6 +26,77 @@ class PartnerController extends Controller
         ]);
     }
 
+    public function profile()
+    {
+        $business = $this->getBusiness(auth()->user()->id);
+
+        return view('dashboard.profile.profile', [
+            'business' => $business
+        ]);
+    }
+
+    public function editFrontPage(Request $request)
+    {
+        $request->validate([
+            'frontPage' => [
+                'required',
+                'image',
+                'mimes:jpg,png,jpeg,webp',
+                'dimensions:min_width=1080,max_width=1440,min_height=412,max_height=720'
+            ],
+        ]);
+
+        $business = $this->getBusiness(auth()->user()->id);
+
+        if ($business->frontPage) {
+            Storage::disk('public')->delete($business->frontPage);
+        }
+
+        $imagePath = $request->file('frontPage')->store('frontPages', 'public');
+        $business->frontPage = $imagePath;
+
+        $business->save();
+
+        return redirect(route('partner-profile'));
+    }
+
+    public function editLogo(Request $request)
+    {
+        $request->validate([
+            'logo' => [
+                'required',
+                'image',
+                'mimes:jpg,png,jpeg,webp',
+                new AspectRatio(1),
+            ],
+        ]);
+
+        $business = $this->getBusiness(auth()->user()->id);
+
+        Storage::disk('public')->delete($business->logo);
+
+        $imagePath = $request->file('logo')->store('businesses_logos', 'public');
+        $business->logo = $imagePath;
+
+        $business->save();
+
+        return redirect(route('partner-profile'));
+    }
+
+    public function editName(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|regex:/^[\p{L}\s]+$/u|max:255',
+        ]);
+
+        $business = $this->getBusiness(auth()->user()->id);
+
+        $business->name = $request->name;
+        $business->save();
+
+        return redirect(route('partner-profile'));
+    }
+
     public function category(Request $request)
     {
         $request->validate([

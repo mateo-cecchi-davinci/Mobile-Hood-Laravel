@@ -20,6 +20,7 @@
 
     <link rel="stylesheet" href="/css/dashboard/styles.css">
     <link rel="stylesheet" href="/css/dashboard/menu/styles.css">
+    <link rel="stylesheet" href="/css/dashboard/profile/styles.css">
     <link rel="stylesheet" href="/css/dashboard/sidebar/styles.css">
     <link rel="stylesheet" href="/css/dashboard/navbar/styles.css">
 
@@ -41,6 +42,7 @@
 
     <script src="/js/components/sidebar.js"></script>
     <script src="/js/dashboard/menu.js"></script>
+    <script src="/js/dashboard/profile.js"></script>
     <script src="https://unpkg.com/simplebar@latest/dist/simplebar.min.js"></script>
 
 </body>

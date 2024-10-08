@@ -114,8 +114,8 @@
                         </li>
                     @else
                         <li class="nav-item ms-3">
-                            <a href="{{ route('dashboard') }}" class="text-decoration-none text-light bg-red p-2 rounded"
-                                type="button">
+                            <a href="{{ route('partner-profile') }}"
+                                class="text-decoration-none text-light bg-red p-2 rounded" type="button">
                                 Dashboard
                             </a>
                         </li>

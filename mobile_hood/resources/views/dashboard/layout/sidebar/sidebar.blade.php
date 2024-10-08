@@ -29,13 +29,13 @@
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="{{ route('partner-profile') }}">
                     <i class="bx bxs-store mt-1"></i>
                     <span class="link_name">Perfil</span>
                 </a>
             </li>
             <li>
-                <a href="{{ route('partners') }}">
+                <a href="{{ route('dashboard') }}">
                     <i class="bx bxs-food-menu mt-1"></i>
                     <span class="link_name">Menú</span>
                 </a>

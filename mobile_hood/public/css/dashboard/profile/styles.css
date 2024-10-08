@@ -1,0 +1,67 @@
+.header-container {
+    width: 100%;
+    height: 14.375rem;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.header {
+    width: 100%;
+    height: 14.375rem;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(0, 0, 0, 0.8015581232492998) 100%
+    );
+}
+
+.edit-frontPage {
+    display: none;
+}
+
+.header:hover .edit-frontPage {
+    display: block;
+}
+
+.frontPage-conditions {
+    max-width: 59.375rem;
+}
+
+.frontPage-conditions p {
+    font-size: 1rem;
+}
+
+.dot {
+    font-size: 0.75rem;
+    padding-top: 0.125rem;
+}
+
+.business-logo-container {
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+}
+
+.logo {
+    width: 100%;
+    height: 100%;
+}
+
+.edit-logo {
+    display: none;
+}
+
+.logo:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+}
+
+.logo:hover .edit-logo {
+    display: block;
+}
+
+.card-container {
+    width: 450px;
+}
