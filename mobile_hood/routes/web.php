@@ -57,6 +57,11 @@ Route::prefix('partner')->middleware([Authenticate::class, PartnerMiddleware::cl
     Route::post('/dashboard/edit-frontPage', [PartnerController::class, 'editFrontPage'])->name('edit-frontPage');
     Route::post('/dashboard/edit-logo', [PartnerController::class, 'editLogo'])->name('edit-logo');
     Route::post('/dashboard/edit-name', [PartnerController::class, 'editName'])->name('edit-name');
+
+    Route::get('/dashboard/hours', [PartnerController::class, 'hours'])->name('hours');
+    Route::post('/dashboard/save-hours', [PartnerController::class, 'saveHours'])->name('save-hours');
+
+    Route::get('/dashboard/location', [PartnerController::class, 'location'])->name('location');
 });
 
 Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);

@@ -1,0 +1,21 @@
+.hours-card {
+    width: 900px;
+}
+
+.until {
+    margin: 0;
+}
+
+@media (max-width: 991px) {
+    .time {
+        margin-top: 10px !important;
+    }
+
+    .until {
+        margin: 10px 0 !important;
+    }
+}
+
+.btn-save {
+    background-color: #e31010;
+}

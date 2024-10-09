@@ -48,13 +48,13 @@
             </li>
             <div class="line"></div>
             <li>
-                <a href="">
+                <a href="{{ route('hours') }}">
                     <i class="bx bxs-alarm mt-1"></i>
                     <span class="link_name">Horarios</span>
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="{{ route('location') }}">
                     <i class="bx bxs-map mt-1"></i>
                     <span class="link_name">Ubicación</span>
                 </a>
