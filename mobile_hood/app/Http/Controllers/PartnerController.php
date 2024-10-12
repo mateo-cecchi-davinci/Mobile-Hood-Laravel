@@ -10,13 +10,17 @@ use App\Models\Category;
 use App\Rules\AspectRatio;
 use Illuminate\Http\Request;
 use App\Http\Requests\HoursRequest;
+use App\Models\Order;
 use Illuminate\Support\Facades\Storage;
 
 class PartnerController extends Controller
 {
+    protected $maps;
+
     public function __construct()
     {
         $this->middleware('auth');
+        $this->maps = config('googlemaps.maps');
     }
 
     public function index()
@@ -160,6 +164,34 @@ class PartnerController extends Controller
         }
 
         return redirect(route('hours'))->with('success', 'Se guardaron tus horarios!');
+    }
+
+    public function orders()
+    {
+        $business = $this->getBusiness(auth()->user()->id);
+
+        $pendingOrders = $this->getPendingOrders($business->id);
+        $acceptedOrders = $this->getAcceptedOrders($business->id);
+
+        return view('dashboard.orders.incoming.orders', [
+            'business' => $business,
+            'pendingOrders' => $pendingOrders,
+            'acceptedOrders' => $acceptedOrders,
+            'maps' => $this->maps
+        ]);
+    }
+
+    public function recentOrders()
+    {
+        $business = $this->getBusiness(auth()->user()->id);
+
+        $rejectedOrders = $this->getRejectedOrders($business->id);
+        $deliveredOrders = $this->getDeliveredOrders($business->id);
+
+        return view('dashboard.orders.recent.recent', [
+            'rejectedOrders' => $rejectedOrders,
+            'deliveredOrders' => $deliveredOrders,
+        ]);
     }
 
     public function location() {}
@@ -377,7 +409,7 @@ class PartnerController extends Controller
 
     private function getBusiness($user)
     {
-        return Business::where(['is_active' => true, 'fk_businesses_users' => $user])->with(['hours'])->first();
+        return Business::where(['is_active' => true, 'fk_businesses_users' => $user])->with(['hours', 'location'])->first();
     }
 
     private function getMenu($business)
@@ -409,5 +441,25 @@ class PartnerController extends Controller
     {
         $dateTime = DateTime::createFromFormat('h:i A', $time . ' ' . $period);
         return $dateTime->format('H:i');
+    }
+
+    private function getPendingOrders($business)
+    {
+        return Order::where(['is_active' => true, 'business_id' => $business, 'state' => 'Pendiente'])->with(['products', 'user'])->get();
+    }
+
+    private function getAcceptedOrders($business)
+    {
+        return Order::where(['is_active' => true, 'business_id' => $business, 'state' => 'Aceptado'])->with(['products', 'user'])->get();
+    }
+
+    private function getDeliveredOrders($business)
+    {
+        return Order::where(['is_active' => true, 'business_id' => $business, 'state' => 'Entregado'])->with(['products', 'user'])->get();
+    }
+
+    private function getRejectedOrders($business)
+    {
+        return Order::where(['is_active' => true, 'business_id' => $business, 'state' => 'Rechazado'])->with(['products', 'user'])->get();
     }
 }

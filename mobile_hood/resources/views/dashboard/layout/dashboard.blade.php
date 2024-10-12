@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="/css/dashboard/menu/styles.css">
     <link rel="stylesheet" href="/css/dashboard/profile/styles.css">
     <link rel="stylesheet" href="/css/dashboard/hours/styles.css">
+    <link rel="stylesheet" href="/css/dashboard/orders/styles.css">
     <link rel="stylesheet" href="/css/dashboard/sidebar/styles.css">
     <link rel="stylesheet" href="/css/dashboard/navbar/styles.css">
 

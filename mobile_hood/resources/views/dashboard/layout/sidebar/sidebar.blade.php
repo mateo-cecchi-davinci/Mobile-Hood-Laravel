@@ -41,9 +41,15 @@
                 </a>
             </li>
             <li>
-                <a href="">
-                    <i class="bx bxs-cart mt-1"></i>
-                    <span class="link_name mt-1">Órdenes</span>
+                <a href="{{ route('orders') }}">
+                    <i class="bx bxs-shopping-bag mt-1"></i>
+                    <span class="link_name mt-1">Pedidos en curso</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('recent-orders') }}">
+                    <i class="bx bx-revision bx-sm mt-1"></i>
+                    <span class="link_name mt-1">Pedidos recientes</span>
                 </a>
             </li>
             <div class="line"></div>

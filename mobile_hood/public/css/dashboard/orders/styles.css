@@ -1,0 +1,163 @@
+/* -------New Incoming orders------- */
+
+.red {
+    color: #e31010;
+}
+
+.bg-red {
+    background-color: #e31010;
+}
+
+.red-border {
+    border-left: solid;
+    border-width: 3px;
+    border-color: #e31010;
+}
+
+.sm-font {
+    font-size: 10px;
+}
+
+.top-shadow {
+    box-shadow: -2px -4px 35px -6px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: -2px -4px 35px -6px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -2px -4px 35px -6px rgba(0, 0, 0, 0.75);
+}
+
+.tall-modal {
+    min-height: 800px;
+}
+
+.reject-col {
+    width: 200px;
+}
+
+.checkbox {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    font-size: 22px;
+}
+
+/* Hide the browser's default checkbox */
+.checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border: 2px solid rgba(60, 60, 60, 0.5);
+    border-radius: 4px;
+}
+
+/* On mouse-over, add a grey background color */
+.checkbox:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a red background */
+.checkbox input:checked ~ .checkmark {
+    background-color: #e31010;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.checkbox input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkbox .checkmark:after {
+    left: 7px;
+    top: 1px;
+    width: 8px;
+    height: 16px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.user-location {
+    height: 800px;
+}
+
+.user-location .gm-style-mtc {
+    display: none;
+}
+
+/* -------Recent orders------- */
+
+.recent-orders-content {
+    margin: 0 10%;
+    padding: 48px 48px 0;
+}
+
+.recent-orders-title {
+    margin: 0;
+}
+
+.today-dropdown {
+    margin-right: 4.5rem;
+}
+
+@media (max-width: 992px) {
+    .recent-orders-title {
+        margin-bottom: 15px;
+    }
+
+    .recent-orders-content {
+        margin: 0;
+    }
+}
+
+.orders-table {
+    min-width: 500px;
+    border-spacing: 0 10px;
+    border-collapse: separate;
+}
+
+.orders-table th {
+    padding: 8px;
+}
+
+.orders-table td {
+    padding: 20px 10px;
+    background-color: #cccccc3c;
+}
+
+.orders-table-sm {
+    display: none;
+}
+
+@media (max-width: 596px) {
+    .recent-orders-content {
+        padding: 48px 14px 0;
+    }
+
+    .orders-table {
+        display: none;
+    }
+
+    .orders-table-sm {
+        display: flex;
+    }
+}

@@ -61,6 +61,9 @@ Route::prefix('partner')->middleware([Authenticate::class, PartnerMiddleware::cl
     Route::get('/dashboard/hours', [PartnerController::class, 'hours'])->name('hours');
     Route::post('/dashboard/save-hours', [PartnerController::class, 'saveHours'])->name('save-hours');
 
+    Route::get('/dashboard/orders', [PartnerController::class, 'orders'])->name('orders');
+    Route::get('/dashboard/recent-orders', [PartnerController::class, 'recentOrders'])->name('recent-orders');
+
     Route::get('/dashboard/location', [PartnerController::class, 'location'])->name('location');
 });
 
