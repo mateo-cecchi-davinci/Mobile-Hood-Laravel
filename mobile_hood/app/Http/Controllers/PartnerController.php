@@ -170,13 +170,8 @@ class PartnerController extends Controller
     {
         $business = $this->getBusiness(auth()->user()->id);
 
-        $pendingOrders = $this->getPendingOrders($business->id);
-        $acceptedOrders = $this->getAcceptedOrders($business->id);
-
         return view('dashboard.orders.incoming.orders', [
             'business' => $business,
-            'pendingOrders' => $pendingOrders,
-            'acceptedOrders' => $acceptedOrders,
             'maps' => $this->maps
         ]);
     }
@@ -441,16 +436,6 @@ class PartnerController extends Controller
     {
         $dateTime = DateTime::createFromFormat('h:i A', $time . ' ' . $period);
         return $dateTime->format('H:i');
-    }
-
-    private function getPendingOrders($business)
-    {
-        return Order::where(['is_active' => true, 'business_id' => $business, 'state' => 'Pendiente'])->with(['products', 'user'])->get();
-    }
-
-    private function getAcceptedOrders($business)
-    {
-        return Order::where(['is_active' => true, 'business_id' => $business, 'state' => 'Aceptado'])->with(['products', 'user'])->get();
     }
 
     private function getDeliveredOrders($business)

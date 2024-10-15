@@ -30,6 +30,7 @@
 
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
+    @livewireStyles
 </head>
 
 <body class="user-select-none bg-body-tertiary">
@@ -47,6 +48,7 @@
     <script src="/js/dashboard/profile.js"></script>
     <script src="https://unpkg.com/simplebar@latest/dist/simplebar.min.js"></script>
 
+    @livewireScripts
 </body>
 
 </html>

@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Events\IncomingOrder;
 use Carbon\Carbon;
 use App\Models\Cart;
 use App\Models\User;
@@ -15,7 +16,6 @@ use Illuminate\Queue\InteractsWithQueue;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
 
 class ProcessPayment implements ShouldQueue
 {
@@ -80,6 +80,8 @@ class ProcessPayment implements ShouldQueue
                 $order->business_id = $business;
 
                 $order->save();
+
+                event(new IncomingOrder($order));
 
                 $items = $data['additional_info']['items'];
 
