@@ -28,4 +28,9 @@ class Order extends Model
         return $this->belongsToMany(Product::class, 'orders_products', 'fk_orders_products_orders', 'fk_orders_products_products')
             ->withPivot('amount');
     }
+
+    function convertTo12HourFormatWithoutMeridian($time)
+    {
+        return date('h:i', strtotime($time));
+    }
 }

@@ -74,12 +74,11 @@ class Orders extends Component
         $this->refreshAcceptedOrders();
     }
 
-    public function readyOrder($order)
+    public function deliverOrder($order)
     {
         $order = $this->getOrder($order);
 
-        $order->is_active = false;
-        $order->state = 'Aceptado';
+        $order->state = 'Entregado';
         $order->save();
 
         $this->refreshPendingOrders();

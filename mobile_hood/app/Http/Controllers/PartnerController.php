@@ -180,12 +180,8 @@ class PartnerController extends Controller
     {
         $business = $this->getBusiness(auth()->user()->id);
 
-        $rejectedOrders = $this->getRejectedOrders($business->id);
-        $deliveredOrders = $this->getDeliveredOrders($business->id);
-
         return view('dashboard.orders.recent.recent', [
-            'rejectedOrders' => $rejectedOrders,
-            'deliveredOrders' => $deliveredOrders,
+            'business' => $business
         ]);
     }
 
@@ -438,15 +434,5 @@ class PartnerController extends Controller
     {
         $dateTime = DateTime::createFromFormat('h:i A', $time . ' ' . $period);
         return $dateTime->format('H:i');
-    }
-
-    private function getDeliveredOrders($business)
-    {
-        return Order::where(['is_active' => true, 'business_id' => $business, 'state' => 'Entregado'])->with(['products', 'user'])->get();
-    }
-
-    private function getRejectedOrders($business)
-    {
-        return Order::where(['is_active' => true, 'business_id' => $business, 'state' => 'Rechazado'])->with(['products', 'user'])->get();
     }
 }

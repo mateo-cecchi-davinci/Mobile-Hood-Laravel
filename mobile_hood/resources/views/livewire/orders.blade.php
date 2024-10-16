@@ -503,7 +503,7 @@
                                             </div>
                                             <div
                                                 class="top-shadow p-3 position-absolute start-0 bottom-0 end-0 bg-white">
-                                                <button wire:click="readyOrder({{ $order->id }})"
+                                                <button wire:click="deliverOrder({{ $order->id }})"
                                                     data-bs-dismiss="modal"
                                                     class="border-0 bg-primary text-light fw-semibold rounded-1 px-5 py-3 w-100">
                                                     <div class="d-flex justify-content-between">
