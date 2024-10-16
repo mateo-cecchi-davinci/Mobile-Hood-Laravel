@@ -96,6 +96,11 @@
     transform: rotate(45deg);
 }
 
+.new-products {
+    max-height: 522px;
+    overflow-y: scroll;
+}
+
 .user-location {
     height: 800px;
 }

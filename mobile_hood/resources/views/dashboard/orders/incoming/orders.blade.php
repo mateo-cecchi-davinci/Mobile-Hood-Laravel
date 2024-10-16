@@ -11,7 +11,6 @@
 
             window.Echo.private(`business.${id}`)
                 .listen('IncomingOrder', (e) => {
-                    console.log('Evento IncomingOrder recibido:', e);
                     Livewire.emit('orderReceived');
                 });
         });

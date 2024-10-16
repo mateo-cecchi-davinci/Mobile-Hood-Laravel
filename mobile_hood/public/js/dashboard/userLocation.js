@@ -83,4 +83,12 @@ function addBusinessMarker(map, location) {
     });
 }
 
+document.addEventListener("livewire:load", function () {
+    initMap();
+
+    Livewire.hook("message.processed", () => {
+        initMap();
+    });
+});
+
 window.onload = initMap;

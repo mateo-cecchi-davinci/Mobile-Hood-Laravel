@@ -404,7 +404,9 @@ class PartnerController extends Controller
 
     private function getBusiness($user)
     {
-        return Business::where(['is_active' => true, 'fk_businesses_users' => $user])->with(['hours', 'location'])->first();
+        return Business::where(['is_active' => true, 'fk_businesses_users' => $user])
+            ->with(['hours', 'location', 'categories.products'])
+            ->first();
     }
 
     private function getMenu($business)

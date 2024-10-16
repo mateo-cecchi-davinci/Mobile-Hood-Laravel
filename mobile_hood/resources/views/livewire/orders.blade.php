@@ -90,7 +90,8 @@
                                                 <p class="text-success fw-semibold mb-2">
                                                     Retiro en aproximadamente 10 minutos
                                                 </p>
-                                                <button
+                                                <button wire:click="acceptOrder({{ $order->id }})"
+                                                    data-bs-dismiss="modal"
                                                     class="border-0 bg-success text-light fw-semibold rounded-1 px-5 py-3 w-100">
                                                     <div class="d-flex justify-content-between">
                                                         <span>Aceptar</span>
@@ -147,7 +148,8 @@
                                                     <p class="text-success fw-semibold mb-2">
                                                         Retiro en aproximadamente 10 minutos
                                                     </p>
-                                                    <button
+                                                    <button wire:click="acceptOrder({{ $order->id }})"
+                                                        data-bs-dismiss="modal"
                                                         class="border-0 bg-success text-light fw-semibold rounded-1 px-5 py-3 w-100">
                                                         <div class="d-flex justify-content-between">
                                                             <span>Aceptar</span>
@@ -208,7 +210,7 @@
                     </div>
 
                     <div class="modal fade" id="{{ $order->id }}-not-enough-products" tabindex="-1"
-                        aria-hidden="true">
+                        aria-hidden="true" wire:ignore.self>
                         <div class="modal-dialog modal-lg modal-dialog-centered">
                             <div class="modal-content tall-modal">
                                 <div class="modal-header justify-content-between py-1 ps-2 border-0">
@@ -233,7 +235,8 @@
                                         @foreach ($order->products as $product)
                                             <div class="d-flex mb-4">
                                                 <label class="checkbox">
-                                                    <input type="checkbox">
+                                                    <input type="checkbox" wire:model.defer="unavailableProducts"
+                                                        value="{{ $product->id }}">
                                                     <span class="checkmark"></span>
                                                 </label>
                                                 <p class="m-0 fw-medium">
@@ -290,11 +293,69 @@
                                         </div>
                                     </div>
                                     <div class="p-3 top-shadow position-absolute bottom-0 start-0 end-0 bg-white">
-                                        <button
+                                        <button wire:click="loadProducts()" data-bs-toggle="modal"
+                                            data-bs-target="#{{ $order->id }}-edit-order"
                                             class="bg-success fw-semibold text-light border-0 rounded-1 w-100 py-3">
-                                            Aceptar orden
+                                            Modificar orden
                                         </button>
-                                        <p class="m-0 red fw-semibold pt-3">Rechazar pedido</p>
+                                        <p role="button" wire:click="rejectOrder({{ $order->id }})"
+                                            data-bs-dismiss="modal" class="m-0 red fw-semibold pt-3">
+                                            Rechazar pedido
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="{{ $order->id }}-edit-order" tabindex="-1" aria-hidden="true"
+                        wire:ignore.self>
+                        <div class="modal-dialog modal-lg modal-dialog-centered">
+                            <div class="modal-content tall-modal">
+                                <div class="modal-header justify-content-between py-1 ps-2 border-0">
+                                    <button type="button" class="bg-transparent border-0"
+                                        data-bs-target="#{{ $order->id }}-save-order" data-bs-toggle="modal"
+                                        aria-label="Go back">
+                                        <i class="bx bx-chevron-left bx-md"></i>
+                                    </button>
+                                    <button type="button" class="bg-transparent border-0" data-bs-dismiss="modal"
+                                        aria-label="Close">
+                                        <i class="bx bx-x bx-md"></i>
+                                    </button>
+                                </div>
+                                <div class="modal-body text-center p-0">
+                                    <div class="bg-white">
+                                        <h1 class="fw-bold px-4">Modificar pedido</h1>
+                                        <p class="pb-4 px-4 m-0">
+                                            Seleccioná los nuevos productos elegidos por el cliente.
+                                        </p>
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-between border-top">
+                                        <div class="px-5 py-3 new-products">
+                                            @foreach ($products as $product)
+                                                <div class="d-flex mb-4">
+                                                    <label class="checkbox">
+                                                        <input type="checkbox" wire:model.defer="newProducts"
+                                                            value="{{ $product->id }}">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <p class="m-0 fw-medium">
+                                                        {{ $product->model }}
+                                                    </p>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                        <div class="p-3 top-shadow bg-white rounded-bottom-3">
+                                            <button wire:click="editAndAcceptOrder({{ $order->id }})"
+                                                data-bs-dismiss="modal"
+                                                class="bg-success fw-semibold text-light border-0 rounded-1 w-100 py-3">
+                                                Aceptar orden
+                                            </button>
+                                            <p role="button" wire:click="rejectOrder({{ $order->id }})"
+                                                data-bs-dismiss="modal" class="m-0 red fw-semibold pt-3">
+                                                Rechazar pedido
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -442,7 +503,8 @@
                                             </div>
                                             <div
                                                 class="top-shadow p-3 position-absolute start-0 bottom-0 end-0 bg-white">
-                                                <button
+                                                <button wire:click="readyOrder({{ $order->id }})"
+                                                    data-bs-dismiss="modal"
                                                     class="border-0 bg-primary text-light fw-semibold rounded-1 px-5 py-3 w-100">
                                                     <div class="d-flex justify-content-between">
                                                         <span>Listo para la entrega</span>
@@ -476,7 +538,7 @@
                                 </div>
                                 <div class="modal-body p-0">
                                     <div class="tall-modal">
-                                        <div id="map" class="user-location"></div>
+                                        <div wire:ignore id="map" class="user-location"></div>
                                         <div class="position-absolute start-0 bottom-0 end-0 p-4">
                                             <button type="button" data-bs-target="#{{ $order->id }}-accepted"
                                                 data-bs-toggle="modal"
