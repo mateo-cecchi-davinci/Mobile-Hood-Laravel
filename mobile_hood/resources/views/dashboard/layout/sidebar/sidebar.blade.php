@@ -29,12 +29,6 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('partner-profile') }}">
-                    <i class="bx bxs-store mt-1"></i>
-                    <span class="link_name">Perfil</span>
-                </a>
-            </li>
-            <li>
                 <a href="{{ route('dashboard') }}">
                     <i class="bx bxs-food-menu mt-1"></i>
                     <span class="link_name">Menú</span>
@@ -60,15 +54,9 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('location') }}">
-                    <i class="bx bxs-map mt-1"></i>
-                    <span class="link_name">Ubicación</span>
-                </a>
-            </li>
-            <li>
-                <a href="">
+                <a href="{{ route('partner-profile') }}">
                     <i class="bx bxs-user mt-1"></i>
-                    <span class="link_name">Info personal</span>
+                    <span class="link_name">Mi cuenta</span>
                 </a>
             </li>
             <li>

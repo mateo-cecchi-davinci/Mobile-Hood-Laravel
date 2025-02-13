@@ -54,9 +54,12 @@ Route::prefix('partner')->middleware([Authenticate::class, PartnerMiddleware::cl
     Route::post('/dashboard/menu/delete-product', [PartnerController::class, 'deleteProduct'])->name('delete-product');
 
     Route::get('/dashboard/profile', [PartnerController::class, 'profile'])->name('partner-profile');
+    Route::get('/dashboard/profile/personalInfo', [PartnerController::class, 'personalInfo'])->name('personal-info');
+    Route::get('/dashboard/profile/editPersonalInfo', [PartnerController::class, 'editPersonalInfo'])->name('edit-personal-info');
+    Route::post('/dashboard/edit-username', [PartnerController::class, 'editUsername'])->name('edit-username');
     Route::post('/dashboard/edit-frontPage', [PartnerController::class, 'editFrontPage'])->name('edit-frontPage');
-    Route::post('/dashboard/edit-logo', [PartnerController::class, 'editLogo'])->name('edit-logo');
-    Route::post('/dashboard/edit-name', [PartnerController::class, 'editName'])->name('edit-name');
+    Route::get('/dashboard/profile/businessInfo', [PartnerController::class, 'businessInfo'])->name('business-info');
+    Route::post('/dashboard/edit-business', [PartnerController::class, 'editBusiness'])->name('edit-business');
 
     Route::get('/dashboard/hours', [PartnerController::class, 'hours'])->name('hours');
     Route::post('/dashboard/save-hours', [PartnerController::class, 'saveHours'])->name('save-hours');

@@ -2,5 +2,5 @@
 
 return [
     'es' => 'Español',
-    //'en' => 'English',
+    'en' => 'English',
 ];

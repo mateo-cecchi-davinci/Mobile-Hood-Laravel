@@ -70,3 +70,8 @@
 .card-container {
     width: 550px;
 }
+
+.edit-pi-btn {
+    background-color: #e31010;
+    border: none;
+}

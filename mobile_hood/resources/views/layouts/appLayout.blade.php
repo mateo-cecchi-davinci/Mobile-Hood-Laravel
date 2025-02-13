@@ -114,8 +114,8 @@
                         </li>
                     @else
                         <li class="nav-item ms-3">
-                            <a href="{{ route('partner-profile') }}"
-                                class="text-decoration-none text-light bg-red p-2 rounded" type="button">
+                            <a href="{{ route('dashboard') }}" class="text-decoration-none text-light bg-red p-2 rounded"
+                                type="button">
                                 Dashboard
                             </a>
                         </li>
@@ -138,7 +138,8 @@
                         @foreach (Config::get('languages') as $lang => $language)
                             @if ($lang != App::getLocale())
                                 <li class="dropdown-item">
-                                    <a href="{{ route('lang.switch', $lang) }}" class="text-decoration-none text-dark">
+                                    <a href="{{ route('lang.switch', $lang) }}"
+                                        class="text-decoration-none text-dark">
                                         {{ $language }}
                                     </a>
                                 </li>

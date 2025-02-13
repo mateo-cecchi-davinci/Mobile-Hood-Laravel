@@ -44,7 +44,7 @@ class MercadoPagoService
                     "business" => $data['business'],
                 ],
                 "auto_return" => "approved",
-                "notification_url" => "https://c125-186-138-51-114.ngrok-free.app/mp_payment_notification",
+                "notification_url" => "https://8433-186-138-51-114.ngrok-free.app/mp_payment_notification",
             ]);
         } catch (MPApiException $MPApiException) {
             throw new MercadoPagoException($MPApiException->getMessage(), $MPApiException->getStatusCode());

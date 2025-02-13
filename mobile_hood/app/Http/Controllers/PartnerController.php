@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use DateTime;
+use App\Models\User;
 use App\Models\Hours;
 use App\Models\Product;
 use App\Models\Business;
@@ -10,7 +11,6 @@ use App\Models\Category;
 use App\Rules\AspectRatio;
 use Illuminate\Http\Request;
 use App\Http\Requests\HoursRequest;
-use App\Models\Order;
 use Illuminate\Support\Facades\Storage;
 
 class PartnerController extends Controller
@@ -42,63 +42,77 @@ class PartnerController extends Controller
         ]);
     }
 
-    public function editFrontPage(Request $request)
+    public function personalInfo()
     {
-        $request->validate([
-            'frontPage' => [
-                'required',
-                'image',
-                'mimes:jpg,png,jpeg,webp',
-                'dimensions:min_width=1080,max_width=1440,min_height=412,max_height=720'
-            ],
-        ]);
-
-        $business = $this->getBusiness(auth()->user()->id);
-
-        if ($business->frontPage) {
-            Storage::disk('public')->delete($business->frontPage);
-        }
-
-        $imagePath = $request->file('frontPage')->store('frontPages', 'public');
-        $business->frontPage = $imagePath;
-
-        $business->save();
-
-        return redirect(route('partner-profile'));
+        return view('dashboard.profile.personalInfo');
     }
 
-    public function editLogo(Request $request)
+    public function businessInfo()
+    {
+        $business = $this->getBusiness(auth()->user()->id);
+
+        return view('dashboard.profile.businessInfo', [
+            'business' => $business
+        ]);
+    }
+
+    public function editPersonalInfo()
+    {
+        return view('dashboard.profile.editPersonalInfo');
+    }
+
+    public function editUsername(Request $request)
     {
         $request->validate([
+            'name' => 'required|regex:/^[\p{L}\s]+$/u|max:255',
+            'lastname' => 'required|regex:/^[\p{L}\s]+$/u|max:255',
+        ]);
+
+        $user = $this->getUser(auth()->user()->id);
+
+        $user->name = $request->name;
+        $user->lastname = $request->lastname;
+        $user->save();
+
+        return redirect(route('personal-info'));
+    }
+
+    public function editBusiness(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|regex:/^[\p{L}\s]+$/u|max:255',
+            'street' => 'required|regex:/^[\p{L}\s]+$/u|max:255',
+            'number' => 'required|integer',
             'logo' => [
-                'required',
                 'image',
                 'mimes:jpg,png,jpeg,webp',
                 new AspectRatio(1),
             ],
+            'frontPage' => [
+                'image',
+                'mimes:jpg,png,jpeg,webp',
+            ],
         ]);
 
         $business = $this->getBusiness(auth()->user()->id);
 
-        Storage::disk('public')->delete($business->logo);
+        if ($request->has('logo')) {
+            Storage::disk('public')->delete($business->logo);
 
-        $imagePath = $request->file('logo')->store('businesses_logos', 'public');
-        $business->logo = $imagePath;
+            $logoImagePath = $request->file('logo')->store('businesses_logos', 'public');
+            $business->logo = $logoImagePath;
+        }
 
-        $business->save();
+        if ($request->has('frontPage')) {
+            Storage::disk('public')->delete($business->frontPage);
 
-        return redirect(route('partner-profile'));
-    }
-
-    public function editName(Request $request)
-    {
-        $request->validate([
-            'name' => 'required|regex:/^[\p{L}\s]+$/u|max:255',
-        ]);
-
-        $business = $this->getBusiness(auth()->user()->id);
+            $frontPageImagePath = $request->file('frontPage')->store('frontPages', 'public');
+            $business->frontPage = $frontPageImagePath;
+        }
 
         $business->name = $request->name;
+        $business->street = $request->street;
+        $business->number = $request->number;
         $business->save();
 
         return redirect(route('partner-profile'));
@@ -403,6 +417,11 @@ class PartnerController extends Controller
         return Business::where(['is_active' => true, 'fk_businesses_users' => $user])
             ->with(['hours', 'location', 'categories.products'])
             ->first();
+    }
+
+    private function getUser($user)
+    {
+        return User::where(['is_active' => true, 'id' => $user])->first();
     }
 
     private function getMenu($business)
