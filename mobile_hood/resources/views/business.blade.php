@@ -1,7 +1,7 @@
 @extends('layouts.businessLayout')
 
 @section('content')
-    <div class="business-header">
+    <div class="business-header" style="background-image: url('{{ $businessModel->getFrontPageURL() }}');">
 
         <div class="header text-light">
             <h3>{{ $business['name'] }}</h3>
